@@ -51,12 +51,12 @@ extension Main {
                         view.backgroundColor = .secondarySystemGroupedBackground
                         config.duration = .automatic
 
-                        titleContent = NSLocalizedString("Info", comment: "Info title")
+                        titleContent = NSLocalizedString("信息", comment: "Info title")
                     case .warning:
                         view.configureTheme(.warning, iconStyle: .subtle)
                         config.duration = .forever
                         view.button?.setImage(Icon.warningSubtle.image, for: .normal)
-                        titleContent = NSLocalizedString("Warning", comment: "Warning title")
+                        titleContent = NSLocalizedString("警告", comment: "Warning title")
                         view.buttonTapHandler = { _ in
                             SwiftMessages.hide()
                         }
@@ -64,7 +64,7 @@ extension Main {
                         view.configureTheme(.error, iconStyle: .subtle)
                         config.duration = .forever
                         view.button?.setImage(Icon.errorSubtle.image, for: .normal)
-                        titleContent = NSLocalizedString("Error", comment: "Error title")
+                        titleContent = NSLocalizedString("错误", comment: "Error title")
                         view.buttonTapHandler = { _ in
                             SwiftMessages.hide()
                             // display the pump configuration immediatly

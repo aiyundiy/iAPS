@@ -33,7 +33,7 @@ struct PodDiagnosticsView: View  {
     var body: some View {
         List {
             NavigationLink(destination: ReadPodStatusView(getDetailedStatus: diagnosticCommands.getDetailedStatus)) {
-                FrameworkLocalText("Read Pod Status", comment: "Text for read pod status navigation link")
+                FrameworkLocalText("读取POD状态", comment: "Text for read pod status navigation link")
                     .foregroundColor(Color.primary)
             }
             .disabled(noPod)
@@ -41,58 +41,58 @@ struct PodDiagnosticsView: View  {
             NavigationLink(destination: PlayTestBeepsView(playTestBeeps: {
                 try await diagnosticCommands.playTestBeeps()
             })) {
-                FrameworkLocalText("Play Test Beeps", comment: "Text for play test beeps navigation link")
+                FrameworkLocalText("播放测试哔哔声", comment: "Text for play test beeps navigation link")
                     .foregroundColor(Color.primary)
             }
             .disabled(!podOk)
 
             NavigationLink(destination: ReadPodInfoView(
-                title: LocalizedString("Read Pulse Log", comment: "Text for read pulse log title"),
-                actionString: LocalizedString("Reading Pulse Log...", comment: "Text for read pulse log action"),
-                failedString: LocalizedString("Failed to read pulse log.", comment: "Alert title for error when reading pulse log"),
+                title: LocalizedString("读取脉冲日志", comment: "Text for read pulse log title"),
+                actionString: LocalizedString("阅读脉冲日志...", comment: "Text for read pulse log action"),
+                failedString: LocalizedString("无法读取脉冲日志。", comment: "Alert title for error when reading pulse log"),
                 action: { try await diagnosticCommands.readPulseLog() }))
             {
-                FrameworkLocalText("Read Pulse Log", comment: "Text for read pulse log navigation link")
+                FrameworkLocalText("读取脉冲日志", comment: "Text for read pulse log navigation link")
                     .foregroundColor(Color.primary)
             }
             .disabled(noPod)
 
             NavigationLink(destination: ReadPodInfoView(
-                title: LocalizedString("Read Pulse Log Plus", comment: "Text for read pulse log plus title"),
-                actionString: LocalizedString("Reading Pulse Log Plus...", comment: "Text for read pulse log plus action"),
-                failedString: LocalizedString("Failed to read pulse log plus.", comment: "Alert title for error when reading pulse log plus"),
+                title: LocalizedString("读取脉冲日志加上", comment: "Text for read pulse log plus title"),
+                actionString: LocalizedString("阅读脉冲日志加...", comment: "Text for read pulse log plus action"),
+                failedString: LocalizedString("未能读取脉冲日志加。", comment: "Alert title for error when reading pulse log plus"),
                 action: { try await diagnosticCommands.readPulseLogPlus() }))
             {
-                FrameworkLocalText("Read Pulse Log Plus", comment: "Text for read pulse log plus navigation link")
+                FrameworkLocalText("读取脉冲日志加上", comment: "Text for read pulse log plus navigation link")
                     .foregroundColor(Color.primary)
             }
             .disabled(noPod)
 
             NavigationLink(destination: ReadPodInfoView(
-                title: LocalizedString("Read Activation Time", comment: "Text for read activation time title"),
-                actionString: LocalizedString("Reading Activation Time...", comment: "Text for read activation time action"),
-                failedString: LocalizedString("Failed to read activation time.", comment: "Alert title for error when reading activation time"),
+                title: LocalizedString("读取激活时间", comment: "Text for read activation time title"),
+                actionString: LocalizedString("阅读激活时间...", comment: "Text for read activation time action"),
+                failedString: LocalizedString("未能读取激活时间。", comment: "Alert title for error when reading activation time"),
                 action: { try await diagnosticCommands.readActivationTime() }))
             {
-                FrameworkLocalText("Read Activation Time", comment: "Text for read activation time navigation link")
+                FrameworkLocalText("读取激活时间", comment: "Text for read activation time navigation link")
                     .foregroundColor(Color.primary)
             }
             .disabled(noPod)
 
             NavigationLink(destination: ReadPodInfoView(
-                title: LocalizedString("Read Triggered Alerts", comment: "Text for read triggered alerts title"),
-                actionString: LocalizedString("Reading Triggered Alerts...", comment: "Text for read triggered alerts action"),
-                failedString: LocalizedString("Failed to read triggered alerts.", comment: "Alert title for error when reading triggered alerts"),
+                title: LocalizedString("读取触发的警报", comment: "Text for read triggered alerts title"),
+                actionString: LocalizedString("阅读触发警报...", comment: "Text for read triggered alerts action"),
+                failedString: LocalizedString("未能读取触发警报。", comment: "Alert title for error when reading triggered alerts"),
                 action: { try await diagnosticCommands.readTriggeredAlerts() }))
             {
-                FrameworkLocalText("Read Triggered Alerts", comment: "Text for read triggered alerts navigation link")
+                FrameworkLocalText("读取触发的警报", comment: "Text for read triggered alerts navigation link")
                     .foregroundColor(Color.primary)
             }
             .disabled(noPod)
 
             NavigationLink(destination: PumpManagerDetailsView() { diagnosticCommands.pumpManagerDetails() })
             {
-                FrameworkLocalText("Pump Manager Details", comment: "Text for pump manager details navigation link")
+                FrameworkLocalText("泵管理员详细信息", comment: "Text for pump manager details navigation link")
                     .foregroundColor(Color.primary)
             }
         }

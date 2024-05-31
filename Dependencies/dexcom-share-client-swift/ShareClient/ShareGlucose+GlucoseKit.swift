@@ -64,9 +64,9 @@ extension ShareGlucose {
 extension GlucoseDisplayable {
     public var stateDescription: String {
         if isStateValid {
-            return LocalizedString("OK", comment: "Sensor state description for the valid state")
+            return LocalizedString("好的", comment: "Sensor state description for the valid state")
         } else {
-            return LocalizedString("Needs Attention", comment: "Sensor state description for the non-valid state")
+            return LocalizedString("需要注意", comment: "Sensor state description for the non-valid state")
         }
     }
 }

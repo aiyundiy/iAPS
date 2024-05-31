@@ -13,17 +13,17 @@ enum FontWeight: String, JSON, Identifiable, CaseIterable, Codable {
     var displayName: String {
         switch self {
         case .light:
-            return NSLocalizedString("LightFontWeight", comment: "")
+            return NSLocalizedString("轻量轻量级", comment: "")
         case .regular:
-            return NSLocalizedString("RegularFontWeight", comment: "")
+            return NSLocalizedString("常规轻量级", comment: "")
         case .medium:
-            return NSLocalizedString("MediumFontWeight", comment: "")
+            return NSLocalizedString("中量级", comment: "")
         case .semibold:
-            return NSLocalizedString("SemiboldFontWeight", comment: "")
+            return NSLocalizedString("SemiboldFont量级", comment: "")
         case .bold:
-            return NSLocalizedString("BoldFontWeight", comment: "")
+            return NSLocalizedString("boldfont量级", comment: "")
         case .black:
-            return NSLocalizedString("BlackFontWeight", comment: "")
+            return NSLocalizedString("blackfont量级", comment: "")
         }
     }
 }

@@ -65,7 +65,7 @@ struct NotificationSettingsView: View {
     static let formatter = NumberFormatter()
 
     var additionalNotificationsSection : some View {
-        Section(header: Text("Additional notification types")) {
+        Section(header: Text("其他通知类型")) {
             Toggle("Low battery", isOn:$mmAlertLowBatteryWarning)
             Toggle("Invalid sensor", isOn:$mmAlertInvalidSensorDetected)
             Toggle("Sensor change", isOn:$mmAlertNewSensorDetected)
@@ -76,10 +76,10 @@ struct NotificationSettingsView: View {
     }
 
     var miscSection : some View {
-        Section(header: Text("Misc")) {
+        Section(header: Text("杂项")) {
             HStack {
-                Text("Unit override")
-                Picker(selection: $favoriteGlucoseUnit, label: Text("Unit override")) {
+                Text("单位覆盖")
+                Picker(selection: $favoriteGlucoseUnit, label: Text("单位覆盖")) {
                     Text(HKUnit.millimolesPerLiter.localizedShortUnitString).tag(0)
                     Text(HKUnit.milligramsPerDeciliter.localizedShortUnitString).tag(1)
                 }
@@ -109,7 +109,7 @@ struct NotificationSettingsView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("知道了！")))
         }
 
         .navigationBarTitle("Notification Settings")

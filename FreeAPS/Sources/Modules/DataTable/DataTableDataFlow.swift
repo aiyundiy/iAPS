@@ -141,16 +141,16 @@ enum DataTable {
                 var bolusText = " "
                 if isSMB ?? false {}
                 else if isExternal ?? false {
-                    bolusText += NSLocalizedString("External", comment: "External Insulin")
+                    bolusText += NSLocalizedString("外部的", comment: "External Insulin")
                 } else {
-                    bolusText += NSLocalizedString("Manual", comment: "Manual Bolus")
+                    bolusText += NSLocalizedString("手动的", comment: "Manual Bolus")
                 }
 
                 return numberFormatter
                     .string(from: amount as NSNumber)! + NSLocalizedString(" U", comment: "Insulin unit") + bolusText
             case .tempBasal:
                 return numberFormatter
-                    .string(from: amount as NSNumber)! + NSLocalizedString(" U/hr", comment: "Unit insulin per hour")
+                    .string(from: amount as NSNumber)! + NSLocalizedString("u/hr", comment: "Unit insulin per hour")
             case .tempTarget:
                 var converted = amount
                 if units == .mmolL {

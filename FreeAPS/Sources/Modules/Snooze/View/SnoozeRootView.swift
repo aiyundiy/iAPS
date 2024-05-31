@@ -59,11 +59,11 @@ extension Snooze {
 
             switch state.alarm {
             case .high:
-                celltext = NSLocalizedString("High Glucose Alarm active", comment: "High Glucose Alarm active")
+                celltext = NSLocalizedString("高血糖警报活动", comment: "High Glucose Alarm active")
             case .low:
-                celltext = NSLocalizedString("Low Glucose Alarm active", comment: "Low Glucose Alarm active")
+                celltext = NSLocalizedString("低血糖警报活动", comment: "Low Glucose Alarm active")
             case .none:
-                celltext = NSLocalizedString("No Glucose Alarm active", comment: "No Glucose Alarm active")
+                celltext = NSLocalizedString("没有血糖警报活动", comment: "No Glucose Alarm active")
             }
 
             if state.snoozeUntilDate > Date() {
@@ -72,7 +72,7 @@ extension Snooze {
                     dateFormatter.string(from: state.snoozeUntilDate)
                 )
             } else {
-                snoozeDescription = NSLocalizedString("not snoozing", comment: "not snoozing")
+                snoozeDescription = NSLocalizedString("不打喷嚏", comment: "not snoozing")
             }
 
             return [celltext, snoozeDescription].joined(separator: ", ")
@@ -90,7 +90,7 @@ extension Snooze {
                     BaseUserNotificationsManager.stopSound()
                     state.hideModal()
                 } label: {
-                    Text("Click to Snooze Alerts")
+                    Text("单击以暂停警报")
                         .padding()
                 }
             }
@@ -98,7 +98,7 @@ extension Snooze {
 
         private var snoozePicker: some View {
             VStack {
-                Picker(selection: $selectedInterval, label: Text("Strength")) {
+                Picker(selection: $selectedInterval, label: Text("力量")) {
                     ForEach(0 ..< pickerTimes.count) {
                         Text(formatInterval(self.pickerTimes[$0]))
                     }

@@ -21,7 +21,7 @@ extension AppleHealthKit {
                     if state.needShowInformationTextForSetPermissions {
                         HStack {
                             Image(systemName: "exclamationmark.circle.fill")
-                            Text("For write data to Apple Health you must give permissions in Settings > Health > Data Access")
+                            Text("对于苹果健康的写数据，您必须在设置>健康>数据访问中授予权限")
                                 .font(.caption)
                         }
                         .foregroundColor(Color.secondary)

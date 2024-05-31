@@ -48,7 +48,7 @@ extension Bolus {
             Form {
                 Section {
                     if state.waitForSuggestion {
-                        Text("Please wait")
+                        Text("请稍等")
                     } else {
                         predictionChart
                     }
@@ -57,19 +57,19 @@ extension Bolus {
                 if fetch {
                     Section {
                         mealEntries.asAny()
-                    } // header: { Text("Meal Summary") }
+                    } // header: { Text("进餐摘要") }
                 }
 
                 Section {
                     if state.waitForSuggestion {
                         HStack {
-                            Text("Wait please").foregroundColor(.secondary)
+                            Text("请等一下").foregroundColor(.secondary)
                             Spacer()
                             ActivityIndicator(isAnimating: .constant(true), style: .medium) // fix iOS 15 bug
                         }
                     } else {
                         HStack {
-                            Text("Insulin recommended")
+                            Text("推荐胰岛素")
                             Image(systemName: "info.bubble")
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(.primary, .blue)
@@ -90,7 +90,7 @@ extension Bolus {
                         }.contentShape(Rectangle())
                     }
                     HStack {
-                        Text("Amount")
+                        Text("数量")
                         Spacer()
                         DecimalTextField(
                             "0",
@@ -109,9 +109,9 @@ extension Bolus {
                         Button {
                             if let remoteBolus = state.remoteBolus() {
                                 remoteBolusAlert = Alert(
-                                    title: Text("A Remote Bolus Was Just Delivered!"),
+                                    title: Text("刚刚交付了一个远程推注！"),
                                     message: Text(remoteBolus),
-                                    primaryButton: .destructive(Text("Bolus"), action: {
+                                    primaryButton: .destructive(Text("推注"), action: {
                                         keepForNextWiew = true
                                         state.add()
                                     }),
@@ -142,8 +142,8 @@ extension Bolus {
                         }
                         label: {
                             fetch ?
-                                Text("Save Meal without bolus") :
-                                Text("Continue without bolus") }
+                                Text("不用推注而保存饭") :
+                                Text("继续没有推注") }
                             .frame(maxWidth: .infinity, alignment: .center)
                             .listRowBackground(Color(.systemBlue))
                             .tint(.white)
@@ -176,11 +176,11 @@ extension Bolus {
                 label: {
                     HStack {
                         Image(systemName: "chevron.backward")
-                        Text("Meal")
+                        Text("进餐")
                     }
                 },
                 trailing: Button { state.hideModal() }
-                label: { Text("Cancel") }
+                label: { Text("取消") }
             )
             .popup(isPresented: presentInfo, alignment: .bottom, direction: .bottom, type: .default) {
                 formulasView()
@@ -221,13 +221,13 @@ extension Bolus {
         @ViewBuilder private func formulasView() -> some View {
             let entries = [
                 Formulas(
-                    variable: NSLocalizedString("Eventual Glucose", comment: ""),
+                    variable: NSLocalizedString("最终的血糖", comment: ""),
                     value: glucoseFormatter.string(for: state.evBG) ?? "",
                     unit: state.units.rawValue,
                     color: .primary
                 ),
                 Formulas(
-                    variable: NSLocalizedString("Target Glucose", comment: ""),
+                    variable: NSLocalizedString("血糖", comment: ""),
                     value: state.target.formatted(),
                     unit: state.units.rawValue,
                     color: .primary
@@ -235,11 +235,11 @@ extension Bolus {
                 Formulas(
                     variable: NSLocalizedString("ISF", comment: ""),
                     value: state.isf.formatted(),
-                    unit: state.units.rawValue + NSLocalizedString("/U", comment: "Insulin unit"),
+                    unit: state.units.rawValue + NSLocalizedString("/u", comment: "Insulin unit"),
                     color: .primary
                 ),
                 Formulas(
-                    variable: NSLocalizedString("Factor", comment: ""),
+                    variable: NSLocalizedString("因素", comment: ""),
                     value: state.fraction.formatted(),
                     unit: "",
                     color: .primary
@@ -259,8 +259,8 @@ extension Bolus {
                     Divider().padding(.top, 10)
 
                     HStack {
-                        Text("Formula:")
-                        Text("(Eventual Glucose - Target) / ISF")
+                        Text("公式：")
+                        Text("（最终血糖 - 目标） / ISF")
                     }.foregroundStyle(.secondary).italic().padding(.vertical, 10)
                     Divider()
                     // Formula
@@ -273,7 +273,7 @@ extension Bolus {
                             let color: Color = (state.fraction != 1 && state.insulin > 0) ? .secondary : .blue
                             let fontWeight: Font.Weight = (state.fraction != 1 && state.insulin > 0) ? .regular : .bold
                             HStack {
-                                Text(NSLocalizedString("Insulin recommended", comment: "") + ":")
+                                Text(NSLocalizedString("推荐胰岛素", comment: "") + ":")
                                 Text(formatter.string(for: state.insulin) ?? "" + unit).foregroundStyle(color)
                             }.padding(.vertical, 10)
                             if state.fraction != 1, state.insulin > 0 {
@@ -308,7 +308,7 @@ extension Bolus {
                         // Hide button
                         VStack {
                             Button { presentInfo = false }
-                            label: { Text("Hide") }.frame(maxWidth: .infinity, alignment: .center)
+                            label: { Text("隐藏") }.frame(maxWidth: .infinity, alignment: .center)
                                 .tint(.blue)
                         }.padding(.bottom, 10)
                     }

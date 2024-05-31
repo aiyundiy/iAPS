@@ -46,11 +46,11 @@ struct CarbsView: View {
         HStack {
             switch selection {
             case .protein:
-                Text("Protein")
+                Text("蛋白质")
             case .fat:
-                Text("Fat")
+                Text("胖的")
             default:
-                Text("Carbs")
+                Text("碳水化合物")
             }
         }.font(.footnote).frame(maxWidth: .infinity, alignment: .center)
     }
@@ -223,7 +223,7 @@ struct CarbsView: View {
                     Int(proteinAmount.rounded())
                 state.addMeal(amountCarbs, fat: amountFat, protein: amountProtein)
             }
-            label: { Text("Save") }
+            label: { Text("保存") }
                 .buttonStyle(.borderless)
                 .font(.callout)
                 .foregroundColor(carbAmount > 0 || fatAmount > 0 || proteinAmount > 0 ? .blue : .secondary)

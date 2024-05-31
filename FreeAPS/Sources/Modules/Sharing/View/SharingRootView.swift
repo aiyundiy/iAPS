@@ -46,12 +46,12 @@ extension Sharing {
                                 .datePickerStyle(.compact)
                         }
                     }
-                } header: { Text("Statistics") }
+                } header: { Text("统计数据") }
 
                 if !state.uploadStats {
                     Section {
                         Toggle("Just iAPS version number", isOn: $state.uploadVersion)
-                    } header: { Text("Share Bare Minimum") }
+                    } header: { Text("共享最低限度") }
                 }
 
                 Section {}
@@ -76,7 +76,7 @@ extension Sharing {
                         }
                     }
                 }
-                header: { Text("Your identifier") }
+                header: { Text("您的标识符") }
                 footer: { Text((copied && display) ? "Copied" : "") }
 
                 Section {}

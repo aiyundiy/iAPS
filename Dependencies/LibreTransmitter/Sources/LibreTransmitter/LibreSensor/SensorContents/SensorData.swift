@@ -205,12 +205,12 @@ public struct SensorData: Codable {
 
     var humanReadableSensorAge: String {
         let days = TimeInterval(minutesSinceStart * 60) / aday
-        return String(format: "%.2f", days) + NSLocalizedString(" day(s)", comment: "Sensor day(s)")
+        return String(format: "%.2f", days) + NSLocalizedString("天）", comment: "Sensor day(s)")
     }
 
     var humanReadableTimeLeft: String {
         let days = TimeInterval(minutesLeft * 60) / aday
-        return String(format: "%.2f", days) + NSLocalizedString(" day(s)", comment: "Sensor day(s)")
+        return String(format: "%.2f", days) + NSLocalizedString("天）", comment: "Sensor day(s)")
     }
 
     var toJson: String {

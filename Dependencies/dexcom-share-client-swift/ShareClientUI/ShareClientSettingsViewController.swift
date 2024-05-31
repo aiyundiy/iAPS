@@ -120,7 +120,7 @@ public class ShareClientSettingsViewController: UITableViewController {
 
             let service = cgmManager.shareService
 
-            cell.textLabel?.text = LocalizedString("Credentials", comment: "Title of cell to set credentials")
+            cell.textLabel?.text = LocalizedString("证书", comment: "Title of cell to set credentials")
             cell.detailTextLabel?.text = service.username ?? SettingsTableViewCell.TapToSetString
             cell.accessoryType = .disclosureIndicator
 
@@ -131,7 +131,7 @@ public class ShareClientSettingsViewController: UITableViewController {
 
             switch LatestReadingRow(rawValue: indexPath.row)! {
             case .glucose:
-                cell.textLabel?.text = LocalizedString("Glucose", comment: "Title describing glucose value")
+                cell.textLabel?.text = LocalizedString("血糖", comment: "Title describing glucose value")
 
                 if let quantity = glucose?.quantity, let formatted = glucoseFormatter.string(from: quantity, for: glucoseUnit) {
                     cell.detailTextLabel?.text = formatted
@@ -139,7 +139,7 @@ public class ShareClientSettingsViewController: UITableViewController {
                     cell.detailTextLabel?.text = SettingsTableViewCell.NoValueString
                 }
             case .date:
-                cell.textLabel?.text = LocalizedString("Date", comment: "Title describing glucose date")
+                cell.textLabel?.text = LocalizedString("日期", comment: "Title describing glucose date")
 
                 if let date = glucose?.timestamp {
                     cell.detailTextLabel?.text = dateFormatter.string(from: date)
@@ -147,7 +147,7 @@ public class ShareClientSettingsViewController: UITableViewController {
                     cell.detailTextLabel?.text = SettingsTableViewCell.NoValueString
                 }
             case .trend:
-                cell.textLabel?.text = LocalizedString("Trend", comment: "Title describing glucose trend")
+                cell.textLabel?.text = LocalizedString("趋势", comment: "Title describing glucose trend")
 
                 cell.detailTextLabel?.text = glucose?.trendType?.localizedDescription ?? SettingsTableViewCell.NoValueString
             }
@@ -156,7 +156,7 @@ public class ShareClientSettingsViewController: UITableViewController {
         case .delete:
             let cell = tableView.dequeueReusableCell(withIdentifier: TextButtonTableViewCell.className, for: indexPath) as! TextButtonTableViewCell
 
-            cell.textLabel?.text = LocalizedString("Delete CGM", comment: "Title text for the button to remove a CGM from Loop")
+            cell.textLabel?.text = LocalizedString("删除CGM", comment: "Title text for the button to remove a CGM from Loop")
             cell.textLabel?.textAlignment = .center
             cell.tintColor = .delete
             cell.isEnabled = true
@@ -169,7 +169,7 @@ public class ShareClientSettingsViewController: UITableViewController {
         case .authentication:
             return nil
         case .latestReading:
-            return LocalizedString("Latest Reading", comment: "Section title for latest glucose reading")
+            return LocalizedString("最新阅读", comment: "Section title for latest glucose reading")
         case .delete:
             return nil
         }
@@ -209,19 +209,19 @@ private extension UIAlertController {
     convenience init(cgmDeletionHandler handler: @escaping () -> Void) {
         self.init(
             title: nil,
-            message: LocalizedString("Are you sure you want to delete this CGM?", comment: "Confirmation message for deleting a CGM"),
+            message: LocalizedString("您确定要删除此CGM吗？", comment: "Confirmation message for deleting a CGM"),
             preferredStyle: .actionSheet
         )
 
         addAction(UIAlertAction(
-            title: LocalizedString("Delete CGM", comment: "Button title to delete CGM"),
+            title: LocalizedString("删除CGM", comment: "Button title to delete CGM"),
             style: .destructive,
             handler: { (_) in
                 handler()
             }
         ))
 
-        let cancel = LocalizedString("Cancel", comment: "The title of the cancel action in an action sheet")
+        let cancel = LocalizedString("取消", comment: "The title of the cancel action in an action sheet")
         addAction(UIAlertAction(title: cancel, style: .cancel, handler: nil))
     }
 }

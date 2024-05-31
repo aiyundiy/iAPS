@@ -43,7 +43,7 @@ struct PumpView: View {
             if let reservoir = reservoir {
                 if reservoir == 0xDEAD_BEEF {
                     HStack(spacing: 0) {
-                        Text("50+ ").font(.statusFont).bold()
+                        Text("50").font(.statusFont).bold()
                         Text(NSLocalizedString("U", comment: "Insulin unit")).font(.statusFont).foregroundStyle(.secondary)
                     }
                     .offset(x: 0, y: expiresAtDate == nil ? -4 : 0)
@@ -58,7 +58,7 @@ struct PumpView: View {
                     .offset(x: 0, y: expiresAtDate == nil ? -4 : 0)
                 }
             } else {
-                Text("No Pump").font(.statusFont).foregroundStyle(.secondary)
+                Text("没有泵").font(.statusFont).foregroundStyle(.secondary)
                     .offset(x: 0, y: -4)
             }
 
@@ -94,7 +94,7 @@ struct PumpView: View {
                     .font(.pumpFont)
                     .offset(x: -7, y: 0)
             } else if state.pumpName.contains("Omni") {
-                Text("No Pod").font(.statusFont).foregroundStyle(.secondary)
+                Text("没有Pod").font(.statusFont).foregroundStyle(.secondary)
                     .offset(x: 0, y: -4)
             }
         }
@@ -110,14 +110,14 @@ struct PumpView: View {
                 if days >= 1 {
                     Text(" \(days)" + NSLocalizedString("d", comment: "abbreviation for days" + "+"))
                 } else if hours >= 1 {
-                    Text(" \(hours)" + NSLocalizedString("h", comment: "abbreviation for hours"))
+                    Text(" \(hours)" + NSLocalizedString("H", comment: "abbreviation for hours"))
                         .foregroundStyle(time < 4 * 60 * 60 ? .red : .primary)
                 } else {
                     Text(" \(minutes)" + NSLocalizedString("m", comment: "abbreviation for minutes"))
                         .foregroundStyle(time < 4 * 60 * 60 ? .red : .primary)
                 }
             } else {
-                Text(NSLocalizedString("Replace", comment: "View/Header when pod expired")).foregroundStyle(.red)
+                Text(NSLocalizedString("代替", comment: "View/Header when pod expired")).foregroundStyle(.red)
             }
         }
     }

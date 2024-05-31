@@ -12,11 +12,11 @@ enum AwConfig: String, JSON, CaseIterable, Identifiable, Codable {
     var displayName: String {
         switch self {
         case .BGTarget:
-            return NSLocalizedString("Glucose Target", comment: "")
+            return NSLocalizedString("血糖靶标", comment: "")
         case .HR:
-            return NSLocalizedString("Heart Rate", comment: "")
+            return NSLocalizedString("心率", comment: "")
         case .steps:
-            return NSLocalizedString("Steps", comment: "")
+            return NSLocalizedString("脚步", comment: "")
         case .isf:
             return NSLocalizedString("ISF", comment: "")
         case .override:

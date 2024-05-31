@@ -16,9 +16,9 @@ struct PumpManagerDetailsView: View {
 
     var getPumpManagerDetails: () -> String
 
-    private let title = LocalizedString("Pump Manager Details", comment: "navigation title for pump manager details")
-    private let actionString = LocalizedString("Retrieving Pump Manager Details...", comment: "button title when retrieving pump manager details")
-    private let buttonTitle = LocalizedString("Refresh Pump Manager Details", comment: "button title to refresh pump manager details")
+    private let title = LocalizedString("泵管理员详细信息", comment: "navigation title for pump manager details")
+    private let actionString = LocalizedString("检索泵管理员的详细信息...", comment: "button title when retrieving pump manager details")
+    private let buttonTitle = LocalizedString("刷新泵管理员详细信息", comment: "button title to refresh pump manager details")
 
     @State private var displayString: String = ""
     @State private var error: Error? = nil

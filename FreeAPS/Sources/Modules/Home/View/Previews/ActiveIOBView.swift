@@ -17,7 +17,7 @@ struct ActiveIOBView: View {
 
     var body: some View {
         VStack {
-            Text("Active Insulin").font(.previewHeadline).padding(.top, 20)
+            Text("活性胰岛素").font(.previewHeadline).padding(.top, 20)
             iobView().frame(maxHeight: 200).padding(.horizontal, 20)
             sumView().frame(maxHeight: 100).padding(.vertical, 20)
         }.dynamicTypeSize(...DynamicTypeSize.medium)
@@ -57,13 +57,13 @@ struct ActiveIOBView: View {
     @ViewBuilder private func sumView() -> some View {
         let entries = [
             BolusSummary(
-                variable: NSLocalizedString("Time with negative insulin", comment: ""),
-                formula: NSLocalizedString(" min", comment: ""),
+                variable: NSLocalizedString("阴性胰岛素的时间", comment: ""),
+                formula: NSLocalizedString("最小", comment: ""),
                 insulin: Decimal(neg),
                 color: .red
             ),
             BolusSummary(
-                variable: NSLocalizedString("TDD compared to yesterday", comment: ""),
+                variable: NSLocalizedString("与昨天相比", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tddChange,
                 color: Color(.insulin)

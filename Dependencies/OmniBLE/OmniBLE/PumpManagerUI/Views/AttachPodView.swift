@@ -32,9 +32,9 @@ struct AttachPodView: View {
 
                 HStack {
                     InstructionList(instructions: [
-                        LocalizedString("Prepare site.", comment: "Label text for step one of attach pod instructions"),
-                        LocalizedString("Remove the Pod's blue needle cap and check cannula. Then remove paper backing.", comment: "Label text for step 1 of pair pod instructions "),
-                        LocalizedString("Check Pod, apply to site, then confirm pod attachment.", comment: "Label text for step three of attach pod instructions")
+                        LocalizedString("准备站点。", comment: "Label text for step one of attach pod instructions"),
+                        LocalizedString("卸下泵的蓝色针帽，然后检查套管。然后取下纸张衬里。", comment: "Label text for step 1 of pair pod instructions "),
+                        LocalizedString("检查POD，申请站点，然后确认POD附件。", comment: "Label text for step three of attach pod instructions")
                     ])
                 }
                 .padding(.bottom, 8)
@@ -44,7 +44,7 @@ struct AttachPodView: View {
             Button(action: {
                 activeModal = .attachConfirmationModal
             }) {
-                FrameworkLocalText("Continue", comment: "Action button title for attach pod view")
+                FrameworkLocalText("继续", comment: "Action button title for attach pod view")
                     .accessibility(identifier: "button_next_action")
                     .actionButtonStyle(.primary)
             }
@@ -55,13 +55,13 @@ struct AttachPodView: View {
         }
         .animation(.default)
         .alert(item: $activeModal, content: self.alert(for:))
-        .navigationBarTitle(LocalizedString("Attach Pod", comment: "navigation bar title attach pod"), displayMode: .automatic)
+        .navigationBarTitle(LocalizedString("附加泵", comment: "navigation bar title attach pod"), displayMode: .automatic)
         .navigationBarItems(trailing: cancelButton)
         .navigationBarBackButtonHidden(true)
     }
     
     var cancelButton: some View {
-        Button(LocalizedString("Cancel", comment: "Cancel button text in navigation bar on pair pod UI")) {
+        Button(LocalizedString("取消", comment: "Cancel button text in navigation bar on pair pod UI")) {
             activeModal = .cancelModal
         }
         .accessibility(identifier: "button_cancel")
@@ -78,19 +78,19 @@ struct AttachPodView: View {
     
     var confirmationModal: Alert {
         return Alert(
-            title: FrameworkLocalText("Confirm Pod Attachment", comment: "Alert title for confirm pod attachment"),
+            title: FrameworkLocalText("确认泵附件", comment: "Alert title for confirm pod attachment"),
             message: FrameworkLocalText("Please confirm that the Pod is securely attached to your body.\n\nThe cannula can be inserted only once with each Pod. Tap “Confirm” when Pod is attached.", comment: "Alert message body for confirm pod attachment"),
-            primaryButton: .default(FrameworkLocalText("Confirm", comment: "Button title for confirm attachment option"), action: didConfirmAttachment),
+            primaryButton: .default(FrameworkLocalText("确认", comment: "Button title for confirm attachment option"), action: didConfirmAttachment),
             secondaryButton: .cancel()
         )
     }
     
     var cancelPairingModal: Alert {
         return Alert(
-            title: FrameworkLocalText("Are you sure you want to cancel Pod setup?", comment: "Alert title for cancel pairing modal"),
-            message: FrameworkLocalText("If you cancel Pod setup, the current Pod will be deactivated and will be unusable.", comment: "Alert message body for confirm pod attachment"),
-            primaryButton: .destructive(FrameworkLocalText("Yes, Deactivate Pod", comment: "Button title for confirm deactivation option"), action: didRequestDeactivation),
-            secondaryButton: .default(FrameworkLocalText("No, Continue With Pod", comment: "Continue pairing button title of in pairing cancel modal"))
+            title: FrameworkLocalText("您确定要取消POD设置吗？", comment: "Alert title for cancel pairing modal"),
+            message: FrameworkLocalText("如果取消POD设置，则当前POD将被停用，并且将无法使用。", comment: "Alert message body for confirm pod attachment"),
+            primaryButton: .destructive(FrameworkLocalText("是的，停用Pod", comment: "Button title for confirm deactivation option"), action: didRequestDeactivation),
+            secondaryButton: .default(FrameworkLocalText("不，继续使用Pod", comment: "Continue pairing button title of in pairing cancel modal"))
         )
     }
 }

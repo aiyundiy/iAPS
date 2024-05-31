@@ -23,16 +23,16 @@ extension CREditor {
         var body: some View {
             Form {
                 if let autotune = state.autotune, !state.settingsManager.settings.onlyAutotuneBasals {
-                    Section(header: Text("Autotune")) {
+                    Section(header: Text("自动")) {
                         HStack {
-                            Text("Calculated Ratio")
+                            Text("计算的比率")
                             Spacer()
                             Text(rateFormatter.string(from: autotune.carbRatio as NSNumber) ?? "0")
                             Text("g/U").foregroundColor(.secondary)
                         }
                     }
                 }
-                Section(header: Text("Schedule")) {
+                Section(header: Text("日程")) {
                     list
                     addButton
                 }
@@ -43,7 +43,7 @@ extension CREditor {
                         state.save()
                     }
                     label: {
-                        Text("Save")
+                        Text("保存")
                     }
                     .disabled(state.items.isEmpty)
                 }
@@ -65,8 +65,8 @@ extension CREditor {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        Text("Ratio").frame(width: geometry.size.width / 2)
-                        Text("Time").frame(width: geometry.size.width / 2)
+                        Text("比率").frame(width: geometry.size.width / 2)
+                        Text("时间").frame(width: geometry.size.width / 2)
                     }
                     HStack(spacing: 0) {
                         Picker(selection: $state.items[index].rateIndex, label: EmptyView()) {
@@ -105,12 +105,12 @@ extension CREditor {
                 ForEach(state.items.indexed(), id: \.1.id) { index, item in
                     NavigationLink(destination: pickers(for: index)) {
                         HStack {
-                            Text("Ratio").foregroundColor(.secondary)
+                            Text("比率").foregroundColor(.secondary)
                             Text(
                                 "\(rateFormatter.string(from: state.rateValues[item.rateIndex] as NSNumber) ?? "0") g/U"
                             )
                             Spacer()
-                            Text("starts at").foregroundColor(.secondary)
+                            Text("开始于").foregroundColor(.secondary)
                             Text(
                                 "\(dateFormatter.string(from: Date(timeIntervalSince1970: state.timeValues[item.timeIndex])))"
                             )
@@ -129,7 +129,7 @@ extension CREditor {
 
             switch editMode {
             case .inactive:
-                return AnyView(Button(action: onAdd) { Text("Add") })
+                return AnyView(Button(action: onAdd) { Text("添加") })
             default:
                 return AnyView(EmptyView())
             }

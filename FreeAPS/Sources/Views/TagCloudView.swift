@@ -100,11 +100,11 @@ struct TagCloudView: View {
 struct TestTagCloudView: View {
     var body: some View {
         VStack {
-            Text("Header").font(.largeTitle)
+            Text("标题").font(.largeTitle)
             TagCloudView(tags: ["Ninetendo", "XBox", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4"])
-            Text("Some other text")
+            Text("其他一些文字")
             Divider()
-            Text("Some other cloud")
+            Text("其他一些云")
             TagCloudView(tags: ["Apple", "Google", "Amazon", "Microsoft", "Oracle", "Facebook"])
         }
     }

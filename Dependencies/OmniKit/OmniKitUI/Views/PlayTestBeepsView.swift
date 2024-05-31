@@ -16,9 +16,9 @@ struct PlayTestBeepsView: View {
 
     var playTestBeeps: () async throws -> Void
 
-    private let title = LocalizedString("Play Test Beeps", comment: "navigation title for play test beeps")
-    private let actionString = LocalizedString("Playing Test Beeps...", comment: "button title when executing play test beeps")
-    private let failedString: String = LocalizedString("Failed to play test beeps.", comment: "Alert title for error when playing test beeps")
+    private let title = LocalizedString("播放测试哔哔声", comment: "navigation title for play test beeps")
+    private let actionString = LocalizedString("演奏测试哔哔声...", comment: "button title when executing play test beeps")
+    private let failedString: String = LocalizedString("无法演奏测试哔哔声。", comment: "Alert title for error when playing test beeps")
     private let successMessage = LocalizedString("Play test beeps command sent successfully.\n\nIf you did not hear any beeps from your Pod, the piezo speaker in your Pod may be broken or disabled.", comment: "Success message for play test beeps")
 
     @State private var alertIsPresented: Bool = false

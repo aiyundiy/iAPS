@@ -17,12 +17,12 @@ extension ManualTempBasal {
             Form {
                 Section {
                     HStack {
-                        Text("Amount")
+                        Text("数量")
                         Spacer()
                         DecimalTextField("0", value: $state.rate, formatter: formatter, autofocus: true, cleanInput: true)
                         Text("U/hr").foregroundColor(.secondary)
                     }
-                    Picker(selection: $state.durationIndex, label: Text("Duration")) {
+                    Picker(selection: $state.durationIndex, label: Text("期间")) {
                         ForEach(0 ..< state.durationValues.count) { index in
                             Text(
                                 String(
@@ -37,9 +37,9 @@ extension ManualTempBasal {
 
                 Section {
                     Button { state.enact() }
-                    label: { Text("Enact") }
+                    label: { Text("制定") }
                     Button { state.cancel() }
-                    label: { Text("Cancel Temp Basal") }
+                    label: { Text("取消临时基础") }
                 }
             }
             .dynamicTypeSize(...DynamicTypeSize.xxLarge)

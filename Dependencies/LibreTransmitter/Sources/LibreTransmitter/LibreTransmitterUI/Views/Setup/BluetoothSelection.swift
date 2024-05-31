@@ -152,7 +152,7 @@ private struct DeviceItem: View {
 
         }
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("知道了！")))
         }
         .listRowBackground(getRowBackground(device: device))
         .onTapGesture {
@@ -265,12 +265,12 @@ struct BluetoothSelection: View {
 
     var headerSection: some View {
         Section {
-            Text("Select the third party transmitter you want to connect to")
+            Text("选择要连接到的第三方发射器")
                 .listRowBackground(Defaults.background)
                 .padding(.top)
             HStack {
                 Image(systemName: "link.circle")
-                Text("Libre Transmitters")
+                Text("Libre发射器")
             }
         }
     }

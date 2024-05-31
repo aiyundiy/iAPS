@@ -23,13 +23,13 @@ extension PeripheralManagerError: LocalizedError {
         case .cbPeripheralError(let error):
             return error.localizedDescription
         case .notReady:
-            return LocalizedString("Peripheral isnʼt connected", comment: "Not ready error description")
+            return LocalizedString("外围不是连接的", comment: "Not ready error description")
         case .invalidConfiguration:
-            return LocalizedString("Peripheral command was invalid", comment: "invlid config error description")
+            return LocalizedString("外围命令无效", comment: "invlid config error description")
         case .timeout:
-            return LocalizedString("Peripheral did not respond in time", comment: "Timeout error description")
+            return LocalizedString("外围未及时响应", comment: "Timeout error description")
         case .unknownCharacteristic:
-            return LocalizedString("Unknown characteristic", comment: "Error description")
+            return LocalizedString("未知的特征", comment: "Error description")
         }
     }
 

@@ -24,17 +24,17 @@ extension PeripheralManagerError: LocalizedError {
         case .cbPeripheralError(let error):
             return error.localizedDescription
         case .notReady:
-            return LocalizedString("Peripheral Not Ready", comment: "Error message description for PeripheralManagerError.notReady")
+            return LocalizedString("外围没有准备就绪", comment: "Error message description for PeripheralManagerError.notReady")
         case .incorrectResponse:
-            return LocalizedString("Incorrect Response", comment: "Error message description for PeripheralManagerError.incorrectResponse")
+            return LocalizedString("不正确的响应", comment: "Error message description for PeripheralManagerError.incorrectResponse")
         case .timeout:
-            return LocalizedString("Timeout", comment: "Error message description for PeripheralManagerError.timeout")
+            return LocalizedString("暂停", comment: "Error message description for PeripheralManagerError.timeout")
         case .emptyValue:
-            return LocalizedString("Empty Value", comment: "Error message description for PeripheralManagerError.emptyValue")
+            return LocalizedString("空值", comment: "Error message description for PeripheralManagerError.emptyValue")
         case .unknownCharacteristic:
-            return LocalizedString("Unknown Characteristic", comment: "Error message description for PeripheralManagerError.unknownCharacteristic")
+            return LocalizedString("未知的特征", comment: "Error message description for PeripheralManagerError.unknownCharacteristic")
         case .nack:
-            return LocalizedString("Nack", comment: "Error message description for PeripheralManagerError.nack")
+            return LocalizedString("纳克", comment: "Error message description for PeripheralManagerError.nack")
         }
     }
 }

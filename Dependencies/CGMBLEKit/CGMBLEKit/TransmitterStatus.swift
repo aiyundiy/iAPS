@@ -47,9 +47,9 @@ extension TransmitterStatus {
     public var localizedDescription: String {
         switch self {
         case .ok:
-            return LocalizedString("OK", comment: "Describes a functioning transmitter")
+            return LocalizedString("好的", comment: "Describes a functioning transmitter")
         case .lowBattery:
-            return LocalizedString("Low Battery", comment: "Describes a low battery")
+            return LocalizedString("低电量", comment: "Describes a low battery")
         case .unknown(let value):
             return "TransmitterStatus.unknown(\(value))"
         }

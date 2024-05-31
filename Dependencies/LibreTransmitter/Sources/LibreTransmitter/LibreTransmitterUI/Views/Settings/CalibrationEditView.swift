@@ -62,11 +62,11 @@ struct CalibrationEditView: View {
 
 
             }, label: {
-                Text("Save")
+                Text("保存")
 
             }).buttonStyle(BlueButtonStyle())
             .alert(item: $presentableStatus) { status in
-                Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("Got it!")))
+                Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("知道了！")))
             }
 
         }

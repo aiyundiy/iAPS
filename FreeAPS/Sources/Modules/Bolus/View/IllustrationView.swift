@@ -52,16 +52,16 @@ struct IllustrationView: View {
         }
         .chartForegroundStyleScale(
             [
-                NSLocalizedString("Carbs", comment: ""): Color(.loopYellow),
+                NSLocalizedString("碳水化合物", comment: ""): Color(.loopYellow),
                 NSLocalizedString("IOB", comment: ""): Color(.insulin),
-                NSLocalizedString("Glucose", comment: ""): Color(.loopGreen),
-                NSLocalizedString("Trend", comment: ""): Color(.purple),
-                NSLocalizedString("Factors", comment: ""): .gray,
+                NSLocalizedString("血糖", comment: ""): Color(.loopGreen),
+                NSLocalizedString("趋势", comment: ""): Color(.purple),
+                NSLocalizedString("因素", comment: ""): .gray,
                 "": .clear
             ]
         )
         .dynamicTypeSize(...DynamicTypeSize.large)
-        .chartYAxisLabel(NSLocalizedString("Insulin", comment: "Insulin unit"))
+        .chartYAxisLabel(NSLocalizedString("胰岛素", comment: "Insulin unit"))
         .chartYAxis(.hidden)
         .chartXAxis {
             AxisMarks(position: .bottom) { _ in
@@ -83,7 +83,7 @@ struct IllustrationView: View {
     @ViewBuilder private func BolusLegend() -> some View {
         let entries = [
             BolusSummary(
-                variable: NSLocalizedString("Carbs", comment: ""),
+                variable: NSLocalizedString("碳水化合物", comment: ""),
                 formula: "COB / CR",
                 insulin: data[0].amount,
                 color: Color(.loopYellow)
@@ -95,19 +95,19 @@ struct IllustrationView: View {
                 color: Color(.insulin)
             ),
             BolusSummary(
-                variable: NSLocalizedString("Glucose", comment: ""),
+                variable: NSLocalizedString("血糖", comment: ""),
                 formula: "(BG - Target) / ISF",
                 insulin: data[2].amount,
                 color: Color(.loopGreen)
             ),
             BolusSummary(
-                variable: NSLocalizedString("Trend", comment: ""),
+                variable: NSLocalizedString("趋势", comment: ""),
                 formula: "15 min delta / ISF",
                 insulin: data[3].amount,
                 color: .purple
             ),
             BolusSummary(
-                variable: NSLocalizedString("Factors", comment: ""),
+                variable: NSLocalizedString("因素", comment: ""),
                 formula: "Ev. adjustments",
                 insulin: data[4].amount,
                 color: .gray

@@ -117,7 +117,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 self?.setupCanceled()
             }
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Expiration Reminder", comment: "Title for ExpirationReminderSetupView")
+            hostedView.navigationItem.title = LocalizedString("到期提醒", comment: "Title for ExpirationReminderSetupView")
             return hostedView
         case .lowReservoirReminderSetup:
             var view = LowReservoirReminderSetupView(lowReservoirReminderValue: Int(pumpManager.lowReservoirReminderValue))
@@ -132,7 +132,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 self?.setupCanceled()
             }
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Low Reservoir", comment: "Title for LowReservoirReminderSetupView")
+            hostedView.navigationItem.title = LocalizedString("低水箱", comment: "Title for LowReservoirReminderSetupView")
             hostedView.navigationItem.backButtonDisplayMode = .generic
             return hostedView
         case .insulinTypeSelection:
@@ -146,7 +146,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             
             let insulinSelectionView = InsulinTypeConfirmation(initialValue: .novolog, supportedInsulinTypes: allowedInsulinTypes, didConfirm: didConfirm, didCancel: didCancel)
             let hostedView = hostingController(rootView: insulinSelectionView)
-            hostedView.navigationItem.title = LocalizedString("Insulin Type", comment: "Title for insulin type selection screen")
+            hostedView.navigationItem.title = LocalizedString("胰岛素类型", comment: "Title for insulin type selection screen")
             return hostedView
         case .deactivate:
             let viewModel = DeactivatePodViewModel(podDeactivator: pumpManager, podAttachedToBody: pumpManager.podAttachmentConfirmed, fault: pumpManager.state.podState?.fault)
@@ -159,7 +159,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             }
             let view = DeactivatePodView(viewModel: viewModel)
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Deactivate Pod", comment: "Title for deactivate pod screen")
+            hostedView.navigationItem.title = LocalizedString("停用Pod", comment: "Title for deactivate pod screen")
             return hostedView
         case .settings:
             let viewModel = OmniBLESettingsViewModel(pumpManager: pumpManager)
@@ -187,7 +187,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             }
 
             let view = hostingController(rootView: PairPodView(viewModel: viewModel))
-            view.navigationItem.title = LocalizedString("Pair Pod", comment: "Title for pod pairing screen")
+            view.navigationItem.title = LocalizedString("配对Pod", comment: "Title for pod pairing screen")
             view.navigationItem.backButtonDisplayMode = .generic
             return view
         case .confirmAttachment:
@@ -201,7 +201,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 })
             
             let vc = hostingController(rootView: view)
-            vc.navigationItem.title = LocalizedString("Attach Pod", comment: "Title for Attach Pod screen")
+            vc.navigationItem.title = LocalizedString("附加泵", comment: "Title for Attach Pod screen")
             vc.navigationItem.hidesBackButton = true
             return vc
 
@@ -216,7 +216,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             }
 
             let view = hostingController(rootView: InsertCannulaView(viewModel: viewModel))
-            view.navigationItem.title = LocalizedString("Insert Cannula", comment: "Title for insert cannula screen")
+            view.navigationItem.title = LocalizedString("插入套管", comment: "Title for insert cannula screen")
             view.navigationItem.hidesBackButton = true
             return view
         case .checkInsertedCannula:
@@ -229,7 +229,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 }
             )
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Check Cannula", comment: "Title for check cannula screen")
+            hostedView.navigationItem.title = LocalizedString("检查套管", comment: "Title for check cannula screen")
             hostedView.navigationItem.hidesBackButton = true
             return hostedView
         case .setupComplete:
@@ -262,7 +262,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
             )
             
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Setup Complete", comment: "Title for setup complete screen")
+            hostedView.navigationItem.title = LocalizedString("设置完成", comment: "Title for setup complete screen")
             return hostedView
         case .pendingCommandRecovery:
             if let pendingCommand = pumpManager.state.podState?.unacknowledgedCommand, pumpManager.state.podState?.needsCommsRecovery == true {
@@ -285,7 +285,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 let view = DeliveryUncertaintyRecoveryView(model: model)
                 
                 let hostedView = hostingController(rootView: view)
-                hostedView.navigationItem.title = LocalizedString("Unable To Reach Pod", comment: "Title for pending command recovery screen")
+                hostedView.navigationItem.title = LocalizedString("无法连接Pod", comment: "Title for pending command recovery screen")
                 return hostedView
             } else {
                 fatalError("Pending command recovery UI attempted without pending command")
@@ -296,7 +296,7 @@ class DashUICoordinator: UINavigationController, PumpManagerOnboarding, Completi
                 self?.stepFinished()
             }
             let hostedView = hostingController(rootView: view)
-            hostedView.navigationItem.title = LocalizedString("Comms Recovered", comment: "Title for uncertainty recovered screen")
+            hostedView.navigationItem.title = LocalizedString("通讯恢复了", comment: "Title for uncertainty recovered screen")
             return hostedView
         }
     }

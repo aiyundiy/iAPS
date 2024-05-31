@@ -11,7 +11,7 @@ import RileyLinkKit
 
 private let ConfigCellIdentifier = "ConfigTableViewCell"
 
-private let TapToSetString = NSLocalizedString("Tap to set", comment: "The empty-state text for a configuration value")
+private let TapToSetString = NSLocalizedString("点击设置", comment: "The empty-state text for a configuration value")
 
 class SettingsTableViewController: UITableViewController, TextFieldTableViewControllerDelegate {
 
@@ -82,7 +82,7 @@ class SettingsTableViewController: UITableViewController, TextFieldTableViewCont
                 let switchCell = tableView.dequeueReusableCellWithIdentifier(SwitchTableViewCell.className, forIndexPath: indexPath) as! SwitchTableViewCell
 
                 switchCell.`switch`?.on = Config.sharedInstance().uploadEnabled
-                switchCell.titleLabel.text = NSLocalizedString("Upload To Nightscout", comment: "The title text for the nightscout upload enabled switch cell")
+                switchCell.titleLabel.text = NSLocalizedString("上传到Nightscout", comment: "The title text for the nightscout upload enabled switch cell")
                 switchCell.`switch`?.addTarget(self, action: #selector(uploadEnabledChanged(_:)), forControlEvents: .ValueChanged)
                 
                 return switchCell
@@ -92,7 +92,7 @@ class SettingsTableViewController: UITableViewController, TextFieldTableViewCont
 
             switch ConfigurationRow(rawValue: indexPath.row)! {
             case .PumpID:
-                configCell.textLabel?.text = NSLocalizedString("Pump ID", comment: "The title text for the pump ID config value")
+                configCell.textLabel?.text = NSLocalizedString("泵ID", comment: "The title text for the pump ID config value")
                 configCell.detailTextLabel?.text = DeviceDataManager.sharedManager.pumpID ?? TapToSetString
             case .Nightscout:
                 let nightscoutService = dataManager.remoteDataManager.nightscoutService
@@ -108,11 +108,11 @@ class SettingsTableViewController: UITableViewController, TextFieldTableViewCont
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch Section(rawValue: section)! {
         case .About:
-            return NSLocalizedString("About", comment: "The title of the about section")
+            return NSLocalizedString("关于", comment: "The title of the about section")
         case .Upload:
             return nil
         case .Configuration:
-            return NSLocalizedString("Configuration", comment: "The title of the configuration section in settings")
+            return NSLocalizedString("配置", comment: "The title of the configuration section in settings")
         }
     }
 
@@ -160,7 +160,7 @@ class SettingsTableViewController: UITableViewController, TextFieldTableViewCont
             case let vc as TextFieldTableViewController:
                 switch ConfigurationRow(rawValue: indexPath.row)! {
                 case .PumpID:
-                    vc.placeholder = NSLocalizedString("Enter the 6-digit pump ID", comment: "The placeholder text instructing users how to enter a pump ID")
+                    vc.placeholder = NSLocalizedString("输入6位泵ID", comment: "The placeholder text instructing users how to enter a pump ID")
                     vc.value = DeviceDataManager.sharedManager.pumpID
                 default:
                     break

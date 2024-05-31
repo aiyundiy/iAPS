@@ -25,13 +25,13 @@ extension PeripheralManagerError: LocalizedError {
         case .cbPeripheralError(let error):
             return error.localizedDescription
         case .notReady:
-            return LocalizedString("RileyLink is not connected", comment: "PeripheralManagerError.notReady error description")
+            return LocalizedString("Rileylink未连接", comment: "PeripheralManagerError.notReady error description")
         case .busy:
-            return LocalizedString("RileyLink is busy", comment: "PeripheralManagerError.busy error description")
+            return LocalizedString("Rileylink很忙", comment: "PeripheralManagerError.busy error description")
         case .timeout:
-            return LocalizedString("RileyLink did not respond in time", comment: "PeripheralManagerError.timeout error description")
+            return LocalizedString("Rileylink没有及时响应", comment: "PeripheralManagerError.timeout error description")
         case .emptyValue:
-            return LocalizedString("Characteristic value was empty", comment: "PeripheralManagerError.emptyValue error description")
+            return LocalizedString("特征价值是空的", comment: "PeripheralManagerError.emptyValue error description")
         case .unknownCharacteristic(let cbuuid):
             return String(format: LocalizedString("Unknown characteristic: %@", comment: "PeripheralManagerError.unknownCharacteristic error description"), cbuuid.uuidString)
         case .unknownService(let cbuuid):
@@ -44,7 +44,7 @@ extension PeripheralManagerError: LocalizedError {
         case .cbPeripheralError(let error as NSError):
             return error.localizedFailureReason
         case .unknownCharacteristic:
-            return LocalizedString("The RileyLink was temporarily disconnected", comment: "Failure reason: unknown peripheral characteristic")
+            return LocalizedString("Rileylink暂时断开", comment: "Failure reason: unknown peripheral characteristic")
         default:
             return nil
         }
@@ -55,7 +55,7 @@ extension PeripheralManagerError: LocalizedError {
         case .cbPeripheralError(let error as NSError):
             return error.localizedRecoverySuggestion
         case .unknownCharacteristic:
-            return LocalizedString("Make sure the device is nearby, and the issue should resolve automatically", comment: "Recovery suggestion for unknown peripheral characteristic")
+            return LocalizedString("确保设备在附近，并且问题应自动解决", comment: "Recovery suggestion for unknown peripheral characteristic")
         default:
             return nil
         }

@@ -9,7 +9,7 @@ extension PumpConfig {
         var body: some View {
             NavigationView {
                 Form {
-                    Section(header: Text("Model")) {
+                    Section(header: Text("模型")) {
                         if let pumpState = state.pumpState {
                             Button {
                                 state.setupPump = true

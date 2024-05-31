@@ -16,23 +16,23 @@ enum ContactTrickValue: String, JSON, CaseIterable, Identifiable, Codable {
     var displayName: String {
         switch self {
         case .none:
-            return NSLocalizedString("NoneContactValue", comment: "")
+            return NSLocalizedString("非进取值", comment: "")
         case .glucose:
-            return NSLocalizedString("GlucoseContactValue", comment: "")
+            return NSLocalizedString("血糖核心腔", comment: "")
         case .eventualBG:
-            return NSLocalizedString("EventualBGContactValue", comment: "")
+            return NSLocalizedString("最终BGContactValue", comment: "")
         case .delta:
-            return NSLocalizedString("DeltaContactValue", comment: "")
+            return NSLocalizedString("Deltacontactvalue", comment: "")
         case .trend:
             return NSLocalizedString("TrendContactValue", comment: "")
         case .lastLoopDate:
-            return NSLocalizedString("LastLoopTimeContactValue", comment: "")
+            return NSLocalizedString("Lastlooptimecontactvalue", comment: "")
         case .cob:
-            return NSLocalizedString("COBContactValue", comment: "")
+            return NSLocalizedString("共核Value", comment: "")
         case .iob:
-            return NSLocalizedString("IOBContactValue", comment: "")
+            return NSLocalizedString("iobcontactvalue", comment: "")
         case .ring:
-            return NSLocalizedString("LoopStatusContactValue", comment: "")
+            return NSLocalizedString("loopstatuscontactvalue", comment: "")
         }
     }
 }
@@ -45,9 +45,9 @@ enum ContactTrickLayout: String, JSON, CaseIterable, Identifiable, Codable {
     var displayName: String {
         switch self {
         case .single:
-            return NSLocalizedString("Single", comment: "")
+            return NSLocalizedString("单身的", comment: "")
         case .split:
-            return NSLocalizedString("Split", comment: "")
+            return NSLocalizedString("分裂", comment: "")
         }
     }
 }
@@ -63,15 +63,15 @@ enum ContactTrickLargeRing: String, JSON, CaseIterable, Identifiable, Codable {
     var displayName: String {
         switch self {
         case .none:
-            return NSLocalizedString("DontShowRing", comment: "")
+            return NSLocalizedString("不要展示", comment: "")
         case .loop:
-            return NSLocalizedString("LoopStatusRing", comment: "")
+            return NSLocalizedString("loopstatusring", comment: "")
         case .iob:
-            return NSLocalizedString("IOBRing", comment: "")
+            return NSLocalizedString("iobring", comment: "")
         case .cob:
-            return NSLocalizedString("COBRing", comment: "")
+            return NSLocalizedString("共同创作", comment: "")
         case .iobcob:
-            return NSLocalizedString("IOB+COBRing", comment: "")
+            return NSLocalizedString("IOB共同创图", comment: "")
         }
     }
 }

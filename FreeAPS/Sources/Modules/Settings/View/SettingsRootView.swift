@@ -48,55 +48,55 @@ extension Settings {
                 }
 
                 Section {
-                    Text("Pump").navigationLink(to: .pumpConfig, from: self)
+                    Text("泵").navigationLink(to: .pumpConfig, from: self)
                     Text("CGM").navigationLink(to: .cgm, from: self)
-                    Text("Watch").navigationLink(to: .watch, from: self)
-                } header: { Text("Devices") }
+                    Text("手表").navigationLink(to: .watch, from: self)
+                } header: { Text("设备") }
 
                 Section {
                     Text("Nightscout").navigationLink(to: .nighscoutConfig, from: self)
                     if HKHealthStore.isHealthDataAvailable() {
-                        Text("Apple Health").navigationLink(to: .healthkit, from: self)
+                        Text("苹果健康").navigationLink(to: .healthkit, from: self)
                     }
-                    Text("Notifications").navigationLink(to: .notificationsConfig, from: self)
-                } header: { Text("Services") }
+                    Text("通知").navigationLink(to: .notificationsConfig, from: self)
+                } header: { Text("服务") }
 
                 Section {
-                    Text("Pump Settings").navigationLink(to: .pumpSettingsEditor, from: self)
-                    Text("Basal Profile").navigationLink(to: .basalProfileEditor, from: self)
-                    Text("Insulin Sensitivities").navigationLink(to: .isfEditor, from: self)
-                    Text("Carb Ratios").navigationLink(to: .crEditor, from: self)
-                    Text("Target Glucose").navigationLink(to: .targetsEditor, from: self)
-                } header: { Text("Configuration") }
+                    Text("泵设置").navigationLink(to: .pumpSettingsEditor, from: self)
+                    Text("基础率设置").navigationLink(to: .basalProfileEditor, from: self)
+                    Text("胰岛素敏感性").navigationLink(to: .isfEditor, from: self)
+                    Text("碳水化合物比率").navigationLink(to: .crEditor, from: self)
+                    Text("血糖").navigationLink(to: .targetsEditor, from: self)
+                } header: { Text("配置") }
 
                 Section {
-                    Text("OpenAPS").navigationLink(to: .preferencesEditor, from: self)
-                    Text("Autotune").navigationLink(to: .autotuneConfig, from: self)
-                } header: { Text("OpenAPS") }
+                    Text("打开APS").navigationLink(to: .preferencesEditor, from: self)
+                    Text("自动").navigationLink(to: .autotuneConfig, from: self)
+                } header: { Text("打开APS") }
 
                 Section {
                     Text("UI/UX").navigationLink(to: .statisticsConfig, from: self)
-                    Text("App Icons").navigationLink(to: .iconConfig, from: self)
-                    Text("Bolus Calculator").navigationLink(to: .bolusCalculatorConfig, from: self)
-                    Text("Fat And Protein Conversion").navigationLink(to: .fpuConfig, from: self)
-                    Text("Dynamic ISF").navigationLink(to: .dynamicISF, from: self)
-                    Text("Sharing").navigationLink(to: .sharing, from: self)
-                    Text("Contact Image").navigationLink(to: .contactTrick, from: self)
-                } header: { Text("Extra Features") }
+                    Text("应用图标").navigationLink(to: .iconConfig, from: self)
+                    Text("推注计算器").navigationLink(to: .bolusCalculatorConfig, from: self)
+                    Text("脂肪和蛋白质转化").navigationLink(to: .fpuConfig, from: self)
+                    Text("动态ISF").navigationLink(to: .dynamicISF, from: self)
+                    Text("分享").navigationLink(to: .sharing, from: self)
+                    Text("联系图像").navigationLink(to: .contactTrick, from: self)
+                } header: { Text("额外功能") }
 
                 Section {
                     Toggle("Debug options", isOn: $state.debugOptions)
                     if state.debugOptions {
                         Group {
                             HStack {
-                                Text("NS Upload Profile and Settings")
+                                Text("NS上传配置文件和设置")
                                 Button("Upload") { state.uploadProfileAndSettings(true) }
                                     .frame(maxWidth: .infinity, alignment: .trailing)
                                     .buttonStyle(.borderedProminent)
                             }
                             /*
                              HStack {
-                                 Text("Delete All NS Overrides")
+                                 Text("删除所有NS覆盖")
                                  Button("Delete") { state.deleteOverrides() }
                                      .frame(maxWidth: .infinity, alignment: .trailing)
                                      .buttonStyle(.borderedProminent)
@@ -108,66 +108,66 @@ extension Settings {
                             }
                         }
                         Group {
-                            Text("Preferences")
+                            Text("优先")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.preferences), from: self)
-                            Text("Pump Settings")
+                            Text("泵设置")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.settings), from: self)
-                            Text("Autosense")
+                            Text("自动志")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.autosense), from: self)
-                            Text("Pump History")
+                            Text("泵历史")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Monitor.pumpHistory), from: self)
-                            Text("Basal profile")
+                            Text("基础率设置")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.basalProfile), from: self)
-                            Text("Targets ranges")
+                            Text("目标范围")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.bgTargets), from: self)
-                            Text("Temp targets")
+                            Text("临时目标")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.tempTargets), from: self)
-                            Text("Meal")
+                            Text("进餐")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Monitor.meal), from: self)
                         }
 
                         Group {
-                            Text("Pump profile")
+                            Text("泵轮廓")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.pumpProfile), from: self)
-                            Text("Profile")
+                            Text("轮廓")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.profile), from: self)
-                            Text("Carbs")
+                            Text("碳水化合物")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Monitor.carbHistory), from: self)
-                            Text("Enacted")
+                            Text("颁布")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Enact.enacted), from: self)
-                            Text("Announcements")
+                            Text("公告")
                                 .navigationLink(to: .configEditor(file: OpenAPS.FreeAPS.announcements), from: self)
-                            Text("Enacted announcements")
+                            Text("颁布公告")
                                 .navigationLink(to: .configEditor(file: OpenAPS.FreeAPS.announcementsEnacted), from: self)
-                            Text("Overrides Not Uploaded")
+                            Text("覆盖未上传")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Nightscout.notUploadedOverrides), from: self)
-                            Text("Autotune")
+                            Text("自动")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Settings.autotune), from: self)
-                            Text("Glucose")
+                            Text("血糖")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Monitor.glucose), from: self)
                         }
 
                         Group {
-                            Text("Target presets")
+                            Text("目标预设")
                                 .navigationLink(to: .configEditor(file: OpenAPS.FreeAPS.tempTargetsPresets), from: self)
-                            Text("Calibrations")
+                            Text("校准")
                                 .navigationLink(to: .configEditor(file: OpenAPS.FreeAPS.calibrations), from: self)
-                            Text("Middleware")
+                            Text("中间件")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Middleware.determineBasal), from: self)
-                            Text("Statistics")
+                            Text("统计数据")
                                 .navigationLink(to: .configEditor(file: OpenAPS.Monitor.statistics), from: self)
-                            Text("Edit settings json")
+                            Text("编辑设置JSON")
                                 .navigationLink(to: .configEditor(file: OpenAPS.FreeAPS.settings), from: self)
                         }
                     }
-                } header: { Text("Developer") }
+                } header: { Text("开发人员") }
 
                 Section {
                     Toggle("Animated Background", isOn: $state.animatedBackground)
                 }
 
                 Section {
-                    Text("Share logs")
+                    Text("共享日志")
                         .onTapGesture {
                             showShareSheet = true
                         }

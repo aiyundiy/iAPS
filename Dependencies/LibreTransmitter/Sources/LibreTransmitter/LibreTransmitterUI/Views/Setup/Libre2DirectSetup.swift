@@ -99,13 +99,13 @@ struct Libre2DirectSetup: View {
     }
 
     var pairingDescriptionSection: some View {
-        Section(header: Text("About the Process")){
+        Section(header: Text("关于该过程")){
             Text("Please make sure that your Libre 2 sensor is already activated and finished warming up. If you have other apps connecting to the sensor via bluetooth, these need to be shut down or uninstalled. \n\n You can only have one app communicating with the sensor via bluetooth. Then press the \"pariring and connection\" button below to start the process. Please note that the bluetooth connection might take up to a couple of minutes before it starts working.")
                 .padding()
         }
     }
     var pairingInfoSection: some View {
-        Section(header: Text("Pairinginfo")){
+        Section(header: Text("配对")){
             if showPairingInfo {
 
                 SettingsItem(title: "UUID", detail: Binding<String>(get: {
@@ -131,7 +131,7 @@ struct Libre2DirectSetup: View {
                 }))
 
             } else {
-                Text("Not paired yet")
+                Text("还没有配对")
             }
 
         }
@@ -153,7 +153,7 @@ struct Libre2DirectSetup: View {
         .navigationBarItems(leading: cancelButton)  // the pair button does the save process for us! //, trailing: saveButton)
         .onReceive(service.publisher, perform: receivePairingInfo)
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("知道了！")))
         }
     }
 }

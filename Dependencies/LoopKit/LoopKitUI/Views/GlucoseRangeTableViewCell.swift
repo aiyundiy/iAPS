@@ -24,9 +24,9 @@ class GlucoseRangeTableViewCell: UITableViewCell {
         var placeholderString: String? {
             switch self {
             case .minValue:
-                return LocalizedString("min", comment: "Placeholder for minimum value in glucose range")
+                return LocalizedString("最小", comment: "Placeholder for minimum value in glucose range")
             case .maxValue:
-                return LocalizedString("max", comment: "Placeholder for maximum value in glucose range")
+                return LocalizedString("最大限度", comment: "Placeholder for maximum value in glucose range")
             default:
                 return nil
             }

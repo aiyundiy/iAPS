@@ -150,7 +150,7 @@ struct SettingsView: View {
     var body: some View {
         overview
             //.navigationViewStyle(StackNavigationViewStyle())
-            .navigationBarTitle(Text("Libre Bluetooth"), displayMode: .inline)
+            .navigationBarTitle(Text("libre蓝牙"), displayMode: .inline)
             .navigationBarItems(leading: dismissButton)
             .onAppear{
                 print("dabear:: settingsview appeared")
@@ -182,7 +182,7 @@ struct SettingsView: View {
     }
 
     var measurementSection : some View {
-        Section(header: Text("Last measurement")) {
+        Section(header: Text("最后测量")) {
             if glucoseUnit == .millimolesPerLiter {
                     SettingsItem(title: "Glucose", detail: $glucoseMeasurement.glucoseMMOL)
             } else if glucoseUnit == .milligramsPerDeciliter {
@@ -195,7 +195,7 @@ struct SettingsView: View {
     }
 
     var predictionSection : some View {
-        Section(header: Text("Last Blood Sugar prediction")) {
+        Section(header: Text("最后的血糖预测")) {
             if glucoseUnit == .millimolesPerLiter {
                     SettingsItem(title: "CurrentBG", detail: $glucoseMeasurement.predictionMMOL)
             } else if glucoseUnit == .milligramsPerDeciliter {
@@ -208,7 +208,7 @@ struct SettingsView: View {
     }
 
     var sensorInfoSection : some View {
-        Section(header: Text("Sensor Info")) {
+        Section(header: Text("传感器信息")) {
             SettingsItem(title: "Sensor Age", detail: $sensorInfo.sensorAge )
             SettingsItem(title: "Sensor Age Left", detail: $sensorInfo.sensorAgeLeft )
             SettingsItem(title: "Sensor Endtime", detail: $sensorInfo.sensorEndTime )
@@ -219,7 +219,7 @@ struct SettingsView: View {
 
 
     var transmitterInfoSection: some View {
-        Section(header: Text("Transmitter Info")) {
+        Section(header: Text("发射器信息")) {
             if !transmitterInfo.battery.isEmpty {
                 SettingsItem(title: "Battery", detail: $transmitterInfo.battery )
             }
@@ -233,7 +233,7 @@ struct SettingsView: View {
     }
 
     var factoryCalibrationSection: some View {
-        Section(header: Text("Factory Calibration Parameters")) {
+        Section(header: Text("工厂校准参数")) {
             ForEach(self.model.factoryCalibrationInfos, id: \.self) { factoryCalibrationInfo in
 
                 SettingsItem(title: "i1", detail: factoryCalibrationInfo.i1 )
@@ -269,7 +269,7 @@ struct SettingsView: View {
             // to notify the parent to close the cgmviewcontrollers navigation
             notifyComplete.notify()
         }) {
-            Text("Close")
+            Text("关闭")
         }
     }
 
@@ -281,9 +281,9 @@ struct SettingsView: View {
             }.foregroundColor(.red)
             .alert(isPresented: $showingDestructQuestion) {
                 Alert(
-                    title: Text("Are you sure you want to remove this cgm from loop?"),
-                    message: Text("There is no undo"),
-                    primaryButton: .destructive(Text("Delete")) {
+                    title: Text("您确定要从闭环中删除此CGM吗？"),
+                    message: Text("没有撤消"),
+                    primaryButton: .destructive(Text("删除")) {
 
                         notifyDelete.notify()
                     },
@@ -296,7 +296,7 @@ struct SettingsView: View {
 
     //todo: replace sub with navigationlinks
     var advancedSection: some View {
-        Section(header: Text("Advanced")) {
+        Section(header: Text("先进的")) {
             ZStack {
                 NavigationLink(destination: GlucoseSettingsView(glucoseUnit: self.glucoseUnit)) {
                     SettingsItem(title: "Glucose Settings", detail: .constant(""))
@@ -353,7 +353,7 @@ struct SettingsView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("知道了！")))
         }
 
 

@@ -21,15 +21,15 @@ extension BluetoothManagerError: LocalizedError {
         case .bluetoothNotAvailable(let state):
             switch state {
             case .poweredOff:
-                return LocalizedString("Bluetooth is powered off", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.poweredOff)")
+                return LocalizedString("蓝牙电源关闭", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.poweredOff)")
             case .resetting:
-                return LocalizedString("Bluetooth is resetting", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.resetting)")
+                return LocalizedString("蓝牙正在重置", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.resetting)")
             case .unauthorized:
-                return LocalizedString("Bluetooth use is unauthorized", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.unauthorized)")
+                return LocalizedString("蓝牙使用未经授权", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.unauthorized)")
             case .unsupported:
-                return LocalizedString("Bluetooth use unsupported on this device", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.unsupported)")
+                return LocalizedString("在此设备上不受支持的蓝牙使用", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.unsupported)")
             case .unknown:
-                return LocalizedString("Bluetooth is unavailable for an unknown reason.", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.unknown)")
+                return LocalizedString("由于未知原因，蓝牙无法获得。", comment: "Error description for BluetoothManagerError.bluetoothNotAvailable(.unknown)")
             default:
                 return String(format: LocalizedString("Bluetooth is unavailable: %1$@", comment: "The format string for BluetoothManagerError.bluetoothNotAvailable for unknown state (1: the unknown state)"), String(describing: state))
             }
@@ -41,13 +41,13 @@ extension BluetoothManagerError: LocalizedError {
         case .bluetoothNotAvailable(let state):
             switch state {
             case .poweredOff:
-                return LocalizedString("Turn bluetooth on", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.poweredOff)")
+                return LocalizedString("打开蓝牙", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.poweredOff)")
             case .resetting:
-                return LocalizedString("Try again", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.resetting)")
+                return LocalizedString("再试一次", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.resetting)")
             case .unauthorized:
-                return LocalizedString("Please enable bluetooth permissions for this app in system settings", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.unauthorized)")
+                return LocalizedString("请在系统设置中启用此应用程序的蓝牙权限", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.unauthorized)")
             case .unsupported:
-                return LocalizedString("Please use a different device with bluetooth capabilities", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.unsupported)")
+                return LocalizedString("请使用具有蓝牙功能的其他设备", comment: "recoverySuggestion for BluetoothManagerError.bluetoothNotAvailable(.unsupported)")
             default:
                 return nil
             }

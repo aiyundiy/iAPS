@@ -35,7 +35,7 @@ public class ShareClientManager: CGMManager {
         }
     }
 
-    public let localizedTitle = LocalizedString("Dexcom Share", comment: "Title for the CGMManager option")
+    public let localizedTitle = LocalizedString("Dexcom共享", comment: "Title for the CGMManager option")
 
     public let appURL: URL? = nil
 

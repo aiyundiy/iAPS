@@ -14,9 +14,9 @@ extension PumpSettingsEditor {
 
         var body: some View {
             Form {
-                Section(header: Text("Delivery limits")) {
+                Section(header: Text("交互限制")) {
                     HStack {
-                        Text("Max Basal")
+                        Text("最大基础")
                         DecimalTextField("U/hr", value: $state.maxBasal, formatter: formatter)
                     }
                     HStack {
@@ -24,14 +24,14 @@ extension PumpSettingsEditor {
                         DecimalTextField("U", value: $state.maxBolus, formatter: formatter)
                     }
                     HStack {
-                        Text("Max Carbs")
+                        Text("最大碳水化合物")
                         DecimalTextField("g", value: $state.maxCarbs, formatter: formatter)
                     }
                 }
 
-                Section(header: Text("Duration of Insulin Action")) {
+                Section(header: Text("胰岛素作用的持续时间")) {
                     HStack {
-                        Text("DIA")
+                        Text("直径")
                         DecimalTextField("hours", value: $state.dia, formatter: formatter)
                     }
                 }

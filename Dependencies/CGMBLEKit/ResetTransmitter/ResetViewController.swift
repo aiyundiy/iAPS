@@ -139,12 +139,12 @@ class ResetViewController: UITableViewController {
 
     private func resetTransmitter(withID id: String) {
         let controller = UIAlertController(
-            title: NSLocalizedString("Are you sure you want to reset this transmitter?", comment: "Title of the reset confirmation sheet"),
-            message: NSLocalizedString("It will take up to 10 minutes to complete.", comment: "Message of the reset confirmation sheet"), preferredStyle: .actionSheet
+            title: NSLocalizedString("您确定要重置此发射器吗？", comment: "Title of the reset confirmation sheet"),
+            message: NSLocalizedString("最多需要10分钟才能完成。", comment: "Message of the reset confirmation sheet"), preferredStyle: .actionSheet
         )
 
         controller.addAction(UIAlertAction(
-            title: NSLocalizedString("Reset", comment: "Reset button title"),
+            title: NSLocalizedString("重置", comment: "Reset button title"),
             style: .destructive,
             handler: { (action) in
                 self.resetManager.resetTransmitter(withID: id)
@@ -152,7 +152,7 @@ class ResetViewController: UITableViewController {
         ))
 
         controller.addAction(UIAlertAction(
-            title: NSLocalizedString("Cancel", comment: "Title of button to cancel reset"),
+            title: NSLocalizedString("取消", comment: "Title of button to cancel reset"),
             style: .cancel,
             handler: nil
         ))
@@ -174,10 +174,10 @@ extension ResetViewController {
 
         switch state {
         case .empty, .needsConfiguration, .configured:
-            resetButton.setTitle(NSLocalizedString("Reset", comment: "Title of button to begin reset"), for: .normal)
+            resetButton.setTitle(NSLocalizedString("重置", comment: "Title of button to begin reset"), for: .normal)
             resetButton.tintColor = .red
         case .resetting, .completed:
-            resetButton.setTitle(NSLocalizedString("Cancel", comment: "Title of button to cancel reset"), for: .normal)
+            resetButton.setTitle(NSLocalizedString("取消", comment: "Title of button to cancel reset"), for: .normal)
             resetButton.tintColor = .darkGray
         }
     }

@@ -80,7 +80,7 @@ struct ManualTempBasalEntryView: View {
             VStack {
                 List {
                     HStack {
-                        Text(LocalizedString("Rate", comment: "Label text for basal rate summary"))
+                        Text(LocalizedString("速度", comment: "Label text for basal rate summary"))
                         Spacer()
                         Text(String(format: LocalizedString("%1$@ for %2$@", comment: "Summary string for temporary basal rate configuration page"), formatRate(rateEntered), formatDuration(durationEntered)))
                     }
@@ -95,7 +95,7 @@ struct ManualTempBasalEntryView: View {
                     .frame(maxHeight: 162.0)
                     .alert(isPresented: $showingMissingConfigAlert, content: { missingConfigAlert })
                     Section {
-                        Text(LocalizedString("Your insulin delivery will not be automatically adjusted until the temporary basal rate finishes or is canceled.", comment: "Description text on manual temp basal action sheet"))
+                        Text(LocalizedString("在临时基础速率完成或取消之前，您的胰岛素输送不会自动调整。", comment: "Description text on manual temp basal action sheet"))
                             .font(.footnote)
                             .foregroundColor(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
@@ -115,14 +115,14 @@ struct ManualTempBasalEntryView: View {
                         if enacting {
                             ProgressView()
                         } else {
-                            Text(LocalizedString("Set Temporary Basal", comment: "Button text for setting manual temporary basal rate"))
+                            Text(LocalizedString("设置临时基础", comment: "Button text for setting manual temporary basal rate"))
                         }
                     }
                 }
                 .buttonStyle(ActionButtonStyle(.primary))
                 .padding()
             }
-            .navigationTitle(LocalizedString("Temporary Basal", comment: "Navigation Title for ManualTempBasalEntryView"))
+            .navigationTitle(LocalizedString("临时基础", comment: "Navigation Title for ManualTempBasalEntryView"))
             .navigationBarItems(trailing: cancelButton)
             .alert(isPresented: $showingErrorAlert, content: { errorAlert })
             .disabled(enacting)
@@ -132,7 +132,7 @@ struct ManualTempBasalEntryView: View {
     var errorAlert: SwiftUI.Alert {
         let errorMessage = errorMessage(error: error!)
         return SwiftUI.Alert(
-            title: Text(LocalizedString("Temporary Basal Failed", comment: "Alert title for a failure to set temporary basal")),
+            title: Text(LocalizedString("暂时的基础失败", comment: "Alert title for a failure to set temporary basal")),
             message: errorMessage)
     }
 
@@ -146,14 +146,14 @@ struct ManualTempBasalEntryView: View {
 
     var missingConfigAlert: SwiftUI.Alert {
         return SwiftUI.Alert(
-            title: Text(LocalizedString("Missing Config", comment: "Alert title for missing temp basal configuration")),
-            message: Text(LocalizedString("This Pump has not been configured with a maximum basal rate because it was added before manual temp basal was a feature. Please go to Pump Settings in the settings CONFIGURATION section to set a new Max Basal.", comment: "Alert format string for missing temp basal configuration."))
+            title: Text(LocalizedString("缺少配置", comment: "Alert title for missing temp basal configuration")),
+            message: Text(LocalizedString("该泵尚未配置为最大基础速率，因为它在手动临时基础率是一个功能之前添加。请转到“设置配置”部分中的泵设置以设置新的最大基础。", comment: "Alert format string for missing temp basal configuration."))
         )
     }
 
 
     var cancelButton: some View {
-        Button(LocalizedString("Cancel", comment: "Cancel button text in navigation bar on insert cannula screen")) {
+        Button(LocalizedString("取消", comment: "Cancel button text in navigation bar on insert cannula screen")) {
             didCancel?()
         }
         .accessibility(identifier: "button_cancel")

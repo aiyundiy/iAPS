@@ -549,45 +549,45 @@ public class RileyLinkDeviceTableViewController: UITableViewController {
         case .device:
             switch deviceRows[indexPath.row] {
             case .customName:
-                cell.textLabel?.text = LocalizedString("Name", comment: "The title of the cell showing device name")
+                cell.textLabel?.text = LocalizedString("姓名", comment: "The title of the cell showing device name")
                 cell.detailTextLabel?.text = device.name
                 cell.accessoryType = .disclosureIndicator
             case .version:
-                cell.textLabel?.text = LocalizedString("Firmware", comment: "The title of the cell showing firmware version")
+                cell.textLabel?.text = LocalizedString("固件", comment: "The title of the cell showing firmware version")
                 cell.detailTextLabel?.text = firmwareVersion
             case .connection:
-                cell.textLabel?.text = LocalizedString("Connection State", comment: "The title of the cell showing BLE connection state")
+                cell.textLabel?.text = LocalizedString("连接状态", comment: "The title of the cell showing BLE connection state")
                 cell.detailTextLabel?.text = device.peripheralState.description
             case .rssi:
-                cell.textLabel?.text = LocalizedString("Signal Strength", comment: "The title of the cell showing BLE signal strength (RSSI)")
+                cell.textLabel?.text = LocalizedString("信号强度", comment: "The title of the cell showing BLE signal strength (RSSI)")
                 cell.setDetailRSSI(bleRSSI, formatter: integerFormatter)
             case .uptime:
-                cell.textLabel?.text = LocalizedString("Uptime", comment: "The title of the cell showing uptime")
+                cell.textLabel?.text = LocalizedString("正常运行时间", comment: "The title of the cell showing uptime")
                 cell.setDetailAge(uptime)
             case .frequency:
-                cell.textLabel?.text = LocalizedString("Frequency", comment: "The title of the cell showing current rileylink frequency")
+                cell.textLabel?.text = LocalizedString("频率", comment: "The title of the cell showing current rileylink frequency")
                 cell.setDetailFrequency(frequency, formatter: frequencyFormatter)
             case .battery:
-                cell.textLabel?.text = LocalizedString("Battery level", comment: "The title of the cell showing battery level")
+                cell.textLabel?.text = LocalizedString("电池水平", comment: "The title of the cell showing battery level")
                 cell.setDetailBatteryLevel(battery)
             case .voltage:
-                cell.textLabel?.text = LocalizedString("Voltage", comment: "The title of the cell showing ORL")
+                cell.textLabel?.text = LocalizedString("电压", comment: "The title of the cell showing ORL")
                 cell.setVoltage(voltage)
             }
         case .alert:
             switch AlertRow(rawValue: indexPath.row)! {
             case .battery:
                 cell.accessoryType = .disclosureIndicator
-                cell.textLabel?.text = LocalizedString("Low Battery Alert", comment: "The title of the cell showing battery level")
+                cell.textLabel?.text = LocalizedString("电池警报低", comment: "The title of the cell showing battery level")
                 cell.setBatteryAlert(batteryAlertLevel, formatter: integerFormatter)
             }
         case .rileyLinkCommands:
             switch RileyLinkCommandRow(rawValue: indexPath.row)! {
             case .diagnosticLEDSMode:
-                cell.textLabel?.text = LocalizedString("Toggle Diagnostic LEDs", comment: "The title of the command to update diagnostic LEDs")
+                cell.textLabel?.text = LocalizedString("切换诊断LED", comment: "The title of the command to update diagnostic LEDs")
                 cell.setLEDMode(ledMode)
             case .getStatistics:
-                cell.textLabel?.text = LocalizedString("Get RileyLink Statistics", comment: "The title of the command to fetch RileyLink statistics")
+                cell.textLabel?.text = LocalizedString("获取Rileylink统计", comment: "The title of the command to fetch RileyLink statistics")
             }
         case .orangeLinkCommands:
             cell.accessoryType = .disclosureIndicator
@@ -598,19 +598,19 @@ public class RileyLinkDeviceTableViewController: UITableViewController {
                 switchView.isHidden = false
                 cell.accessoryType = .none
                 switchView.isOn = yellowOn
-                cell.textLabel?.text = LocalizedString("Lighten Yellow LED", comment: "The title of the cell showing Lighten Yellow LED")
+                cell.textLabel?.text = LocalizedString("浅黄色的led", comment: "The title of the cell showing Lighten Yellow LED")
             case .red:
                 switchView.isHidden = false
                 cell.accessoryType = .none
                 switchView.isOn = redOn
-                cell.textLabel?.text = LocalizedString("Lighten Red LED", comment: "The title of the cell showing Lighten Red LED")
+                cell.textLabel?.text = LocalizedString("降低红色LED", comment: "The title of the cell showing Lighten Red LED")
             case .shake:
                 switchView.isHidden = false
                 switchView.isOn = shakeOn
                 cell.accessoryType = .none
-                cell.textLabel?.text = LocalizedString("Test Vibration", comment: "The title of the cell showing Test Vibration")
+                cell.textLabel?.text = LocalizedString("测试振动", comment: "The title of the cell showing Test Vibration")
             case .findDevice:
-                cell.textLabel?.text = LocalizedString("Find Device", comment: "The title of the cell for sounding device finding piezo")
+                cell.textLabel?.text = LocalizedString("查找设备", comment: "The title of the cell for sounding device finding piezo")
                 cell.detailTextLabel?.text = nil
             }
         case .configureCommand:
@@ -619,12 +619,12 @@ public class RileyLinkDeviceTableViewController: UITableViewController {
                 switchView.isHidden = false
                 switchView.isOn = ledOn
                 cell.accessoryType = .none
-                cell.textLabel?.text = LocalizedString("Connection LED", comment: "The title of the cell for connection LED")
+                cell.textLabel?.text = LocalizedString("连接LED", comment: "The title of the cell for connection LED")
             case .connectionVibrate:
                 switchView.isHidden = false
                 switchView.isOn = vibrationOn
                 cell.accessoryType = .none
-                cell.textLabel?.text = LocalizedString("Connection Vibration", comment: "The title of the cell for connection vibration")
+                cell.textLabel?.text = LocalizedString("连接振动", comment: "The title of the cell for connection vibration")
             }
         }
 
@@ -634,15 +634,15 @@ public class RileyLinkDeviceTableViewController: UITableViewController {
     public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch sections[section] {
         case .device:
-            return LocalizedString("Device", comment: "The title of the section describing the device")
+            return LocalizedString("设备", comment: "The title of the section describing the device")
         case .rileyLinkCommands:
-            return LocalizedString("Test Commands", comment: "The title of the section for rileylink commands")
+            return LocalizedString("测试命令", comment: "The title of the section for rileylink commands")
         case .orangeLinkCommands:
-            return LocalizedString("Test Commands", comment: "The title of the section for orangelink commands")
+            return LocalizedString("测试命令", comment: "The title of the section for orangelink commands")
         case .configureCommand:
-            return LocalizedString("Connection Monitoring", comment: "The title of the section for connection monitoring")
+            return LocalizedString("连接监视", comment: "The title of the section for connection monitoring")
         case .alert:
-            return LocalizedString("Alert", comment: "The title of the section for alerts")
+            return LocalizedString("警报", comment: "The title of the section for alerts")
         }
     }
 
@@ -822,11 +822,11 @@ private extension UITableViewCell {
     func setLEDMode(_ mode: RileyLinkLEDMode?) {
         switch mode {
         case .on:
-            detailTextLabel?.text = LocalizedString("On", comment: "Text indicating LED Mode is on")
+            detailTextLabel?.text = LocalizedString("打开", comment: "Text indicating LED Mode is on")
         case .off:
-            detailTextLabel?.text = LocalizedString("Off", comment: "Text indicating LED Mode is off")
+            detailTextLabel?.text = LocalizedString("关闭", comment: "Text indicating LED Mode is off")
         case .auto:
-            detailTextLabel?.text = LocalizedString("Auto", comment: "Text indicating LED Mode is auto")
+            detailTextLabel?.text = LocalizedString("自动", comment: "Text indicating LED Mode is auto")
         case .none:
             detailTextLabel?.text = ""
         }
@@ -841,6 +841,6 @@ private extension UITableViewCell {
     }
     
     func setBatteryAlert(_ level: Int?, formatter: NumberFormatter) {
-        detailTextLabel?.text = formatter.percentString(from: level) ?? LocalizedString("Off", comment: "Detail text when battery alert disabled.")
+        detailTextLabel?.text = formatter.percentString(from: level) ?? LocalizedString("关闭", comment: "Detail text when battery alert disabled.")
     }
 }

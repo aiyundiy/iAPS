@@ -44,7 +44,7 @@ extension Dynamic {
                 Section {
                     HStack {
                         Toggle(isOn: $state.useNewFormula) {
-                            Text("Activate Dynamic Sensitivity (ISF)")
+                            Text("激活动态灵敏度（ISF）")
                                 .onTapGesture {
                                     info(
                                         header: "Activate Dynamic Sensitivity (ISF)",
@@ -58,7 +58,7 @@ extension Dynamic {
                     if state.useNewFormula {
                         HStack {
                             Toggle(isOn: $state.enableDynamicCR) {
-                                Text("Activate Dynamic Carb Ratio (CR)")
+                                Text("激活动态碳水化合物比（CR）")
                                     .onTapGesture {
                                         scrollView = fontSize >= .extraLarge ? true : false
                                         info(
@@ -70,13 +70,13 @@ extension Dynamic {
                             }.disabled(isPresented)
                         }
                     }
-                } header: { Text("Enable") }
+                } header: { Text("开启") }
 
                 if state.useNewFormula {
                     Section {
                         HStack {
                             Toggle(isOn: $state.sigmoid) {
-                                Text("Use Sigmoid Function")
+                                Text("使用Sigmoid功能")
                                     .onTapGesture {
                                         scrollView = true
                                         info(
@@ -87,11 +87,11 @@ extension Dynamic {
                                     }
                             }.disabled(isPresented)
                         }
-                    } header: { Text("Formula") }
+                    } header: { Text("公式") }
 
                     Section {
                         HStack {
-                            Text("Adjustment Factor")
+                            Text("调整因子")
                                 .onTapGesture {
                                     info(
                                         header: "Adjustment Factor",
@@ -105,7 +105,7 @@ extension Dynamic {
                         }
 
                         HStack {
-                            Text("Weighted Average of TDD. Weight of past 24 hours:")
+                            Text("TDD的加权平均值。过去24小时的重量：")
                                 .onTapGesture {
                                     info(
                                         header: "Weighted Average of TDD. Weight of past 24 hours:",
@@ -120,7 +120,7 @@ extension Dynamic {
 
                         HStack {
                             Toggle(isOn: $state.tddAdjBasal) {
-                                Text("Adjust basal")
+                                Text("调整基础")
                                     .onTapGesture {
                                         info(
                                             header: "Adjust basal",
@@ -131,12 +131,12 @@ extension Dynamic {
                             }.disabled(isPresented)
                         }
 
-                    } header: { Text("Settings") }
+                    } header: { Text("设置") }
                 }
 
                 Section {
                     HStack {
-                        Text("Threshold Setting")
+                        Text("阈值设置")
                             .onTapGesture {
                                 scrollView = true
                                 graphics = thresholdTable().asAny()
@@ -147,7 +147,7 @@ extension Dynamic {
                                         "This setting lets you choose a level below which no insulin will be given.\n\nThe threshold is using the largest amount of your threshold setting and the computed threshold:\n\nTarget Glucose - (Target Glucose - 40) / 2\n, here using mg/dl as glucose unit.\n\nFor example, if your Target Glucose is ",
                                         comment: "Threshold string part 1"
                                     ) + "\(glucoseString(100)) \(unitString) , " +
-                                        NSLocalizedString("the threshold will be ", comment: "Threshold string part 2") +
+                                        NSLocalizedString("阈值将是", comment: "Threshold string part 2") +
                                         " \(glucoseString(70)) \(unitString), " + NSLocalizedString(
                                             "unless your threshold setting is set higher:",
                                             comment: "Threshold string part 3"
@@ -160,7 +160,7 @@ extension Dynamic {
                             .disabled(isPresented)
                         Text(state.unit.rawValue)
                     }
-                } header: { Text("Safety") }
+                } header: { Text("安全") }
             }
             .blur(radius: isPresented ? 5 : 0)
             .description(isPresented: isPresented, alignment: .center) {
@@ -227,9 +227,9 @@ extension Dynamic {
 
             Grid {
                 GridRow {
-                    Text("Glucose Target")
-                    Text("Setting")
-                    Text("Threshold")
+                    Text("血糖靶标")
+                    Text("环境")
+                    Text("临界点")
                 }
                 .bold()
                 Divider()

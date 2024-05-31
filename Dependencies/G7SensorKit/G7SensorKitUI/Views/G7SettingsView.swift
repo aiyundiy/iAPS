@@ -53,39 +53,39 @@ struct G7SettingsView: View {
             }
             if let activatedAt = viewModel.activatedAt {
                 HStack {
-                    Text(LocalizedString("Sensor Start", comment: "title for g7 settings row showing sensor start time"))
+                    Text(LocalizedString("传感器启动", comment: "title for g7 settings row showing sensor start time"))
                     Spacer()
                     Text(timeFormatter.string(from: activatedAt))
                         .foregroundColor(.secondary)
                 }
                 HStack {
-                    Text(LocalizedString("Sensor Expiration", comment: "title for g7 settings row showing sensor expiration time"))
+                    Text(LocalizedString("传感器到期", comment: "title for g7 settings row showing sensor expiration time"))
                     Spacer()
                     Text(timeFormatter.string(from: activatedAt.addingTimeInterval(G7Sensor.lifetime)))
                         .foregroundColor(.secondary)
                 }
                 HStack {
-                    Text(LocalizedString("Grace Period End", comment: "title for g7 settings row showing sensor grace period end time"))
+                    Text(LocalizedString("宽限期结束", comment: "title for g7 settings row showing sensor grace period end time"))
                     Spacer()
                     Text(timeFormatter.string(from: activatedAt.addingTimeInterval(G7Sensor.lifetime + G7Sensor.gracePeriod)))
                         .foregroundColor(.secondary)
                 }
             }
 
-            Section(LocalizedString("Last Reading", comment: "")) {
-                LabeledValueView(label: LocalizedString("Glucose", comment: "Field label"),
+            Section(LocalizedString("最后读", comment: "")) {
+                LabeledValueView(label: LocalizedString("血糖", comment: "Field label"),
                                  value: viewModel.lastGlucoseString)
-                LabeledDateView(label: LocalizedString("Time", comment: "Field label"),
+                LabeledDateView(label: LocalizedString("时间", comment: "Field label"),
                                 date: viewModel.latestReadingTimestamp,
                                 dateFormatter: viewModel.dateFormatter)
-                LabeledValueView(label: LocalizedString("Trend", comment: "Field label"),
+                LabeledValueView(label: LocalizedString("趋势", comment: "Field label"),
                                  value: viewModel.lastGlucoseTrendString)
             }
 
-            Section(LocalizedString("Bluetooth", comment: "")) {
+            Section(LocalizedString("蓝牙", comment: "")) {
                 if let name = viewModel.sensorName {
                     HStack {
-                        Text(LocalizedString("Name", comment: "title for g7 settings row showing BLE Name"))
+                        Text(LocalizedString("姓名", comment: "title for g7 settings row showing BLE Name"))
                         Spacer()
                         Text(name)
                             .foregroundColor(.secondary)
@@ -93,36 +93,36 @@ struct G7SettingsView: View {
                 }
                 if viewModel.scanning {
                     HStack {
-                        Text(LocalizedString("Scanning", comment: "title for g7 settings connection status when scanning"))
+                        Text(LocalizedString("扫描", comment: "title for g7 settings connection status when scanning"))
                         Spacer()
                         SwiftUI.ProgressView()
                     }
                 } else {
                     if viewModel.connected {
-                        Text(LocalizedString("Connected", comment: "title for g7 settings connection status when connected"))
+                        Text(LocalizedString("连接的", comment: "title for g7 settings connection status when connected"))
                     } else {
                         HStack {
-                            Text(LocalizedString("Connecting", comment: "title for g7 settings connection status when connecting"))
+                            Text(LocalizedString("连接", comment: "title for g7 settings connection status when connecting"))
                             Spacer()
                             SwiftUI.ProgressView()
                         }
                     }
                 }
                 if let lastConnect = viewModel.lastConnect {
-                    LabeledValueView(label: LocalizedString("Last Connect", comment: "title for g7 settings row showing sensor last connect time"),
+                    LabeledValueView(label: LocalizedString("最后一个连接", comment: "title for g7 settings row showing sensor last connect time"),
                                      value: timeFormatter.string(from: lastConnect))
                 }
             }
 
-            Section(LocalizedString("Configuration", comment: "")) {
+            Section(LocalizedString("配置", comment: "")) {
                 HStack {
-                    Toggle(LocalizedString("Upload Readings", comment: "title for g7 config settings to upload readings"), isOn: $viewModel.uploadReadings)
+                    Toggle(LocalizedString("上传读数", comment: "title for g7 config settings to upload readings"), isOn: $viewModel.uploadReadings)
                 }
             }
 
             Section () {
                 if !self.viewModel.scanning {
-                    Button(LocalizedString("Scan for new sensor", comment: ""), action: {
+                    Button(LocalizedString("扫描新传感器", comment: ""), action: {
                         self.viewModel.scanForNewSensor()
                     })
                 }
@@ -139,13 +139,13 @@ struct G7SettingsView: View {
         Button(action: {
             showingDeletionSheet = true
         }, label: {
-            Text(LocalizedString("Delete CGM", comment: "Button label for removing CGM"))
+            Text(LocalizedString("删除CGM", comment: "Button label for removing CGM"))
                 .foregroundColor(.red)
         }).actionSheet(isPresented: $showingDeletionSheet) {
             ActionSheet(
-                title: Text("Are you sure you want to delete this CGM?"),
+                title: Text("您确定要删除此CGM吗？"),
                 buttons: [
-                    .destructive(Text("Delete CGM")) {
+                    .destructive(Text("删除CGM")) {
                         self.deleteCGM()
                     },
                     .cancel(),

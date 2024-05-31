@@ -57,15 +57,15 @@ enum PodLifeState {
     var localizedLabelText: String {
         switch self {
         case .podActivating:
-            return LocalizedString("Unfinished Activation", comment: "Label for pod life state when pod not fully activated")
+            return LocalizedString("未完成的激活", comment: "Label for pod life state when pod not fully activated")
         case .timeRemaining:
-            return LocalizedString("Pod expires in", comment: "Label for pod life state when time remaining")
+            return LocalizedString("Pod到期", comment: "Label for pod life state when time remaining")
         case .expired:
-            return LocalizedString("Pod expired", comment: "Label for pod life state when within pod expiration window")
+            return LocalizedString("Pod过期", comment: "Label for pod life state when within pod expiration window")
         case .podDeactivating:
-            return LocalizedString("Unfinished deactivation", comment: "Label for pod life state when pod not fully deactivated")
+            return LocalizedString("未完成的停用", comment: "Label for pod life state when pod not fully deactivated")
         case .noPod:
-            return LocalizedString("No Pod", comment: "Label for pod life state when no pod paired")
+            return LocalizedString("没有Pod", comment: "Label for pod life state when no pod paired")
         }
     }
 
@@ -81,11 +81,11 @@ enum PodLifeState {
     var nextPodLifecycleActionDescription: String {
         switch self {
         case .podActivating, .noPod:
-            return LocalizedString("Pair Pod", comment: "Settings page link description when next lifecycle action is to pair new pod")
+            return LocalizedString("配对Pod", comment: "Settings page link description when next lifecycle action is to pair new pod")
         case .podDeactivating:
-            return LocalizedString("Finish deactivation", comment: "Settings page link description when next lifecycle action is to finish deactivation")
+            return LocalizedString("完成停用", comment: "Settings page link description when next lifecycle action is to finish deactivation")
         default:
-            return LocalizedString("Deactivate Pod", comment: "Settings page link description when next lifecycle action is to deactivate pod")
+            return LocalizedString("停用Pod", comment: "Settings page link description when next lifecycle action is to deactivate pod")
         }
     }
     

@@ -71,7 +71,7 @@ public struct OverrideSelectionHistory: View {
                 }
             }
         }
-        .navigationBarTitle(Text(LocalizedString("Override History", comment: "Title for override history view")), displayMode: .large)
+        .navigationBarTitle(Text(LocalizedString("覆盖历史记录", comment: "Title for override history view")), displayMode: .large)
     }
     
     private func makeTargetRangeText(from targetRange: ClosedRange<HKQuantity>) -> String {
@@ -131,7 +131,7 @@ public struct OverrideSelectionHistory: View {
         case .custom:
             return OverrideViewCell(
                 symbol: Text("···"),
-                name: Text("Custom", comment: "Title for custom override history cell"),
+                name: Text("自定义", comment: "Title for custom override history cell"),
                 targetRange: Text(targetRange),
                 duration: Text(duration),
                 subtitle: Text(startTime),
@@ -151,7 +151,7 @@ public struct OverrideSelectionHistory: View {
             let format = LocalizedString("%1$@ %2$@", comment: "The format for an override symbol and name (1: symbol)(2: name)")
             return String(format: format, symbol, name)
         case .custom:
-            return LocalizedString("Custom Override", comment: "Custom override preset title")
+            return LocalizedString("自定义覆盖", comment: "Custom override preset title")
         }
     }
     

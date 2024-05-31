@@ -463,7 +463,7 @@ extension CalibrationError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .unreliableState:
-            return LocalizedString("Glucose data is unavailable", comment: "Error description for unreliable state")
+            return LocalizedString("血糖数据不可用", comment: "Error description for unreliable state")
         }
     }
 
@@ -481,13 +481,13 @@ extension CalibrationState {
         case .known(let state):
             switch state {
             case .needCalibration7, .needCalibration14, .needFirstInitialCalibration, .needSecondInitialCalibration, .calibrationError8, .calibrationError9, .calibrationError10, .calibrationError13:
-                return LocalizedString("Sensor needs calibration", comment: "The description of sensor calibration state when sensor needs calibration.")
+                return LocalizedString("传感器需要校准", comment: "The description of sensor calibration state when sensor needs calibration.")
             case .ok:
-                return LocalizedString("Sensor calibration is OK", comment: "The description of sensor calibration state when sensor calibration is ok.")
+                return LocalizedString("传感器校准还可以", comment: "The description of sensor calibration state when sensor calibration is ok.")
             case .stopped, .sensorFailure11, .sensorFailure12, .sessionFailure15, .sessionFailure16, .sessionFailure17:
-                return LocalizedString("Sensor is stopped", comment: "The description of sensor calibration state when sensor sensor is stopped.")
+                return LocalizedString("传感器停止", comment: "The description of sensor calibration state when sensor sensor is stopped.")
             case .warmup, .questionMarks:
-                return LocalizedString("Sensor is warming up", comment: "The description of sensor calibration state when sensor sensor is warming up.")
+                return LocalizedString("传感器正在预热", comment: "The description of sensor calibration state when sensor sensor is warming up.")
             }
         case .unknown(let rawValue):
             return String(format: LocalizedString("Sensor is in unknown state %1$d", comment: "The description of sensor calibration state when raw value is unknown. (1: missing data details)"), rawValue)

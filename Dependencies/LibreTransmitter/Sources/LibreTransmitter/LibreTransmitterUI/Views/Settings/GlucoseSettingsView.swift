@@ -39,19 +39,19 @@ struct GlucoseSettingsView: View {
     var body: some View {
         List {
             
-            Section(header: Text("Backfill options"), footer:Text("Backfilling from trend is currently not well supported by Loop") ) {
+            Section(header: Text("回填选项"), footer:Text("闭环目前无法很好地支持趋势的回填") ) {
                 Toggle("Backfill from history", isOn:$mmBackfillFromHistory)
                 Toggle("Backfill from trend", isOn: $mmBackfillFromTrend)
             }
 
-            Section(header: Text("Debug options"), footer: Text("Adds a lot of data to the Issue Report ")) {
+            Section(header: Text("调试选项"), footer: Text("在问题报告中添加了很多数据")) {
                 Toggle("Persist sensordata", isOn:$shouldPersistSensorData)
             }
 
         }
         .listStyle(InsetGroupedListStyle())
         .alert(item: $presentableStatus) { status in
-            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("Got it!")))
+            Alert(title: Text(status.title), message: Text(status.message) , dismissButton: .default(Text("知道了！")))
         }
         .navigationBarTitle("Glucose Settings")
 
