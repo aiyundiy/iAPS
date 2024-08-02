@@ -49,30 +49,30 @@ extension NotificationsConfig {
 
         var body: some View {
             Form {
-                Section(header: Text("Glucose")) {
+                Section(header: Text("血糖")) {
                     Toggle("Show glucose on the app badge", isOn: $state.glucoseBadge)
                     Toggle("Always Notify Glucose", isOn: $state.glucoseNotificationsAlways)
                     Toggle("Also play alert sound", isOn: $state.useAlarmSound)
                     Toggle("Also add source info", isOn: $state.addSourceInfoToGlucoseNotifications)
 
                     HStack {
-                        Text("Low")
+                        Text("低的")
                         Spacer()
                         DecimalTextField("0", value: $state.lowGlucose, formatter: glucoseFormatter)
                         Text(state.units.rawValue).foregroundColor(.secondary)
                     }
 
                     HStack {
-                        Text("High")
+                        Text("高的")
                         Spacer()
                         DecimalTextField("0", value: $state.highGlucose, formatter: glucoseFormatter)
                         Text(state.units.rawValue).foregroundColor(.secondary)
                     }
                 }
 
-                Section(header: Text("Other")) {
+                Section(header: Text("其他")) {
                     HStack {
-                        Text("Carbs Required Threshold")
+                        Text("碳水化合物需要阈值")
                         Spacer()
                         DecimalTextField("0", value: $state.carbsRequiredThreshold, formatter: carbsFormatter)
                         Text("g").foregroundColor(.secondary)
@@ -81,7 +81,7 @@ extension NotificationsConfig {
 
                 if #available(iOS 16.2, *) {
                     Section(
-                        header: Text("Live Activity"),
+                        header: Text("现场活动"),
                         footer: Text(
                             liveActivityFooterText()
                         ),

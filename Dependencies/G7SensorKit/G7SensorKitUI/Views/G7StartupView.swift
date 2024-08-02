@@ -26,16 +26,16 @@ struct G7StartupView: View {
                     .frame(height: 120)
                     .padding(.horizontal)
             }.frame(maxWidth: .infinity)
-            Text(LocalizedString("iAPS can read G7 CGM data, but you must still use the Dexcom G7 App for pairing, calibration, and other sensor management.", comment: "Descriptive text on G7StartupView"))
+            Text(LocalizedString("IAP可以读取G7 CGM数据，但是您仍然必须使用Dexcom G7应用程序进行配对，校准和其他传感器管理。", comment: "Descriptive text on G7StartupView"))
                 .fixedSize(horizontal: false, vertical: true)
                 .foregroundColor(.secondary)
             Spacer()
             Button(action: { self.didContinue?() }) {
-                Text(LocalizedString("Continue", comment:"Button title for starting setup"))
+                Text(LocalizedString("继续", comment:"Button title for starting setup"))
                     .actionButtonStyle(.primary)
             }
             Button(action: { self.didCancel?() } ) {
-                Text(LocalizedString("Cancel", comment: "Button text to cancel G7 setup")).padding(.top, 20)
+                Text(LocalizedString("取消", comment: "Button text to cancel G7 setup")).padding(.top, 20)
             }
         }
         .padding()

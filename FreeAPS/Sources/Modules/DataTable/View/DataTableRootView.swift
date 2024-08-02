@@ -103,7 +103,7 @@ extension DataTable {
                         state.externalInsulinDate = Date() }, label: {
                         HStack {
                             Image(systemName: "syringe")
-                            Text("Add")
+                            Text("添加")
                                 .foregroundColor(Color.secondary)
                                 .font(.caption)
                         }.frame(maxWidth: .infinity, alignment: .leading)
@@ -123,27 +123,27 @@ extension DataTable {
 
                 HStack {
                     HStack {
-                        Text("Total")
+                        Text("全部的")
                         Text(insulinFormatter.string(from: (state.tdd.0 + state.tdd.1) as NSNumber) ?? "")
                         Text("U")
                     }
                     Spacer()
                     HStack {
                         Text(hourFormatter.string(from: state.tdd.2 as NSNumber) ?? "")
-                        Text("h")
+                        Text("H")
                     }
                 }.foregroundStyle(.gray)
 
                 HStack {
                     HStack {
-                        Text("Today")
+                        Text("今天")
                         Text(insulinFormatter.string(from: (state.insulinToday.0 + state.tdd.1) as NSNumber) ?? "")
                         Text("U")
                     }
                     Spacer()
                     HStack {
                         Text(hourFormatter.string(from: state.insulinToday.2 as NSNumber) ?? "")
-                        Text("h")
+                        Text("H")
                     }
                 }.foregroundStyle(.gray)
 
@@ -161,7 +161,7 @@ extension DataTable {
                     }
                 } else {
                     HStack {
-                        Text("No data.")
+                        Text("没有数据。")
                     }
                 }
             }
@@ -178,7 +178,7 @@ extension DataTable {
                     ).buttonStyle(.borderless)
                     Text(state.units.rawValue).foregroundStyle(.secondary)
                     Spacer()
-                    Text("Time").foregroundStyle(.secondary)
+                    Text("时间").foregroundStyle(.secondary)
                 }
                 if !state.glucose.isEmpty {
                     ForEach(state.glucose) { item in
@@ -186,7 +186,7 @@ extension DataTable {
                     }
                 } else {
                     HStack {
-                        Text("No data.")
+                        Text("没有数据。")
                     }
                 }
             }
@@ -198,7 +198,7 @@ extension DataTable {
                     Form {
                         Section {
                             HStack {
-                                Text("New Glucose")
+                                Text("新血糖")
                                 DecimalTextField(
                                     " ... ",
                                     value: $state.manualGlucose,
@@ -219,7 +219,7 @@ extension DataTable {
                                     isAmountUnconfirmed = false
                                     showManualGlucose = false
                                 }
-                                label: { Text("Save") }
+                                label: { Text("保存") }
                                     .frame(maxWidth: .infinity, alignment: .center)
                                     .disabled(state.manualGlucose < limitLow || state.manualGlucose > limitHigh)
                             }
@@ -308,7 +308,7 @@ extension DataTable {
                     Form {
                         Section {
                             HStack {
-                                Text("Amount")
+                                Text("数量")
                                 Spacer()
                                 DecimalTextField(
                                     "0",
@@ -335,7 +335,7 @@ extension DataTable {
                                     showExternalInsulin = false
                                 }
                                 label: {
-                                    Text("Log external insulin")
+                                    Text("日志外部胰岛素")
                                 }
                                 .foregroundColor(amountWarningCondition ? Color.white : Color.accentColor)
                                 .frame(maxWidth: .infinity, alignment: .center)
@@ -347,7 +347,7 @@ extension DataTable {
                         header: {
                             if amountWarningCondition
                             {
-                                Text("⚠️ Warning! The entered insulin amount is greater than your Max Bolus setting!")
+                                Text("⚠️警告！输入的胰岛素量大于最大推注设置！")
                             }
                         }
                         .listRowBackground(

@@ -206,7 +206,7 @@ class TransmitterSettingsViewController: UITableViewController {
         case .transmitterID:
             let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.className, for: indexPath) as! SettingsTableViewCell
 
-            cell.textLabel?.text = LocalizedString("Transmitter ID", comment: "The title text for the Dexcom G5/G6 transmitter ID config value")
+            cell.textLabel?.text = LocalizedString("发射器ID", comment: "The title text for the Dexcom G5/G6 transmitter ID config value")
 
             cell.detailTextLabel?.text = cgmManager.transmitter.ID
 
@@ -216,7 +216,7 @@ class TransmitterSettingsViewController: UITableViewController {
 
             switchCell.selectionStyle = .none
             switchCell.switch?.isOn = cgmManager.shouldSyncToRemoteService
-            switchCell.textLabel?.text = LocalizedString("Upload Readings", comment: "The title text for the upload glucose switch cell")
+            switchCell.textLabel?.text = LocalizedString("上传读数", comment: "The title text for the upload glucose switch cell")
 
             switchCell.switch?.addTarget(self, action: #selector(uploadEnabledChanged(_:)), for: .valueChanged)
 
@@ -231,7 +231,7 @@ class TransmitterSettingsViewController: UITableViewController {
             case .date:
                 cell.setGlucoseDate(glucose?.readDate, formatter: dateFormatter)
             case .trend:
-                cell.textLabel?.text = LocalizedString("Trend", comment: "Title describing glucose trend")
+                cell.textLabel?.text = LocalizedString("趋势", comment: "Title describing glucose trend")
 
                 if let trendRate = glucose?.trendRate {
                     let glucoseUnitPerMinute = glucoseUnit.unitDivided(by: .minute())
@@ -246,7 +246,7 @@ class TransmitterSettingsViewController: UITableViewController {
                     cell.detailTextLabel?.text = SettingsTableViewCell.NoValueString
                 }
             case .status:
-                cell.textLabel?.text = LocalizedString("Status", comment: "Title describing CGM calibration and battery state")
+                cell.textLabel?.text = LocalizedString("状态", comment: "Title describing CGM calibration and battery state")
 
                 if let stateDescription = glucose?.stateDescription, !stateDescription.isEmpty {
                     cell.detailTextLabel?.text = stateDescription
@@ -285,7 +285,7 @@ class TransmitterSettingsViewController: UITableViewController {
             
             switch AgeRow(rawValue: indexPath.row)! {
             case .sensorAge:
-                cell.textLabel?.text = LocalizedString("Session Age", comment: "Title describing sensor session age")
+                cell.textLabel?.text = LocalizedString("会话年龄", comment: "Title describing sensor session age")
                 
                 if let stateDescription = glucose?.stateDescription, !stateDescription.isEmpty && !stateDescription.contains("stopped") {
                     if let sessionStart = cgmManager.latestReading?.sessionStartDate {
@@ -298,13 +298,13 @@ class TransmitterSettingsViewController: UITableViewController {
                 }
                 
             case .sensorCountdown:
-                cell.textLabel?.text = LocalizedString("Sensor Expires", comment: "Title describing sensor sensor expiration")
+                cell.textLabel?.text = LocalizedString("传感器到期", comment: "Title describing sensor sensor expiration")
                 
                 if let stateDescription = glucose?.stateDescription, !stateDescription.isEmpty && !stateDescription.contains("stopped") {
                     if let sessionExp = cgmManager.latestReading?.sessionExpDate {
                         let sessionCountDown = sessionExp.timeIntervalSince(Date())
                         if sessionCountDown < 0 {
-                            cell.textLabel?.text = LocalizedString("Sensor Expired", comment: "Title describing past sensor sensor expiration")
+                            cell.textLabel?.text = LocalizedString("传感器过期", comment: "Title describing past sensor sensor expiration")
                             cell.detailTextLabel?.text = (sessionLengthFormatter.string(from: sessionCountDown * -1) ?? "") + " ago"
                         } else {
                             cell.detailTextLabel?.text = sessionLengthFormatter.string(from: sessionCountDown)
@@ -333,7 +333,7 @@ class TransmitterSettingsViewController: UITableViewController {
                 }
             
             case .transmitter:
-                cell.textLabel?.text = LocalizedString("Transmitter Age", comment: "Title describing transmitter session age")
+                cell.textLabel?.text = LocalizedString("发射机年龄", comment: "Title describing transmitter session age")
 
                 if let activation = cgmManager.latestReading?.activationDate {
                     cell.detailTextLabel?.text = transmitterLengthFormatter.string(from: Date().timeIntervalSince(activation))
@@ -357,14 +357,14 @@ class TransmitterSettingsViewController: UITableViewController {
             case .openApp:
                 let cell = tableView.dequeueReusableCell(withIdentifier: TextButtonTableViewCell.className, for: indexPath)
 
-                cell.textLabel?.text = LocalizedString("Open App", comment: "Button title to open CGM app")
+                cell.textLabel?.text = LocalizedString("打开应用", comment: "Button title to open CGM app")
 
                 return cell
             }
         case .delete:
             let cell = tableView.dequeueReusableCell(withIdentifier: TextButtonTableViewCell.className, for: indexPath) as! TextButtonTableViewCell
 
-            cell.textLabel?.text = LocalizedString("Delete CGM", comment: "Title text for the button to remove a CGM from Loop")
+            cell.textLabel?.text = LocalizedString("删除CGM", comment: "Title text for the button to remove a CGM from Loop")
             cell.textLabel?.textAlignment = .center
             cell.tintColor = .delete
             cell.isEnabled = true
@@ -377,13 +377,13 @@ class TransmitterSettingsViewController: UITableViewController {
         case .transmitterID:
             return nil
         case .remoteDataSync:
-            return LocalizedString("Remote Data Synchronization", comment: "Section title for remote data synchronization")
+            return LocalizedString("远程数据同步", comment: "Section title for remote data synchronization")
         case .latestReading:
-            return LocalizedString("Latest Reading", comment: "Section title for latest glucose reading")
+            return LocalizedString("最新阅读", comment: "Section title for latest glucose reading")
         case .latestCalibration:
-            return LocalizedString("Latest Calibration", comment: "Section title for latest glucose calibration")
+            return LocalizedString("最新的校准", comment: "Section title for latest glucose calibration")
         case .latestConnection:
-            return LocalizedString("Latest Connection", comment: "Section title for latest connection date")
+            return LocalizedString("最新连接", comment: "Section title for latest connection date")
         case .ages:
             return nil
         case .share:
@@ -513,19 +513,19 @@ private extension UIAlertController {
     convenience init(cgmDeletionHandler handler: @escaping () -> Void) {
         self.init(
             title: nil,
-            message: LocalizedString("Are you sure you want to delete this CGM?", comment: "Confirmation message for deleting a CGM"),
+            message: LocalizedString("您确定要删除此CGM吗？", comment: "Confirmation message for deleting a CGM"),
             preferredStyle: .actionSheet
         )
 
         addAction(UIAlertAction(
-            title: LocalizedString("Delete CGM", comment: "Button title to delete CGM"),
+            title: LocalizedString("删除CGM", comment: "Button title to delete CGM"),
             style: .destructive,
             handler: { (_) in
                 handler()
             }
         ))
 
-        let cancel = LocalizedString("Cancel", comment: "The title of the cancel action in an action sheet")
+        let cancel = LocalizedString("取消", comment: "The title of the cancel action in an action sheet")
         addAction(UIAlertAction(title: cancel, style: .cancel, handler: nil))
     }
 }
@@ -534,9 +534,9 @@ private extension UIAlertController {
 private extension SettingsTableViewCell {
     func setGlucose(_ glucose: HKQuantity?, unit: HKUnit, formatter: QuantityFormatter, isDisplayOnly: Bool) {
         if isDisplayOnly {
-            textLabel?.text = LocalizedString("Glucose (Adjusted)", comment: "Describes a glucose value adjusted to reflect a recent calibration")
+            textLabel?.text = LocalizedString("血糖（调整后）", comment: "Describes a glucose value adjusted to reflect a recent calibration")
         } else {
-            textLabel?.text = LocalizedString("Glucose", comment: "Title describing glucose value")
+            textLabel?.text = LocalizedString("血糖", comment: "Title describing glucose value")
         }
 
         if let quantity = glucose, let formatted = formatter.string(from: quantity, for: unit) {
@@ -547,7 +547,7 @@ private extension SettingsTableViewCell {
     }
 
     func setGlucoseDate(_ date: Date?, formatter: DateFormatter) {
-        textLabel?.text = LocalizedString("Date", comment: "Title describing glucose date")
+        textLabel?.text = LocalizedString("日期", comment: "Title describing glucose date")
 
         if let date = date {
             detailTextLabel?.text = formatter.string(from: date)

@@ -168,7 +168,7 @@ extension Home {
                     comment: "Manual Temp basal"
                 )
             }
-            return rateString + " " + NSLocalizedString(" U/hr", comment: "Unit per hour with space") + manualBasalString
+            return rateString + " " + NSLocalizedString("u/hr", comment: "Unit per hour with space") + manualBasalString
         }
 
         var tempTargetString: String? {
@@ -183,7 +183,7 @@ extension Home {
                 ZStack {
                     HStack {
                         if state.pumpSuspended {
-                            Text("Pump suspended")
+                            Text("泵悬挂")
                                 .font(.extraSmall).bold().foregroundColor(.loopGray)
                         } else if let tempBasalString = tempBasalString {
                             Text(tempBasalString)
@@ -191,7 +191,7 @@ extension Home {
                                 .foregroundColor(.insulin)
                         }
                         if state.closedLoop, state.settingsManager.preferences.maxIOB == 0 {
-                            Text("Check Max IOB Setting").font(.extraSmall).foregroundColor(.orange)
+                            Text("检查最大IOB设置").font(.extraSmall).foregroundColor(.orange)
                         }
                     }
                 }
@@ -532,7 +532,7 @@ extension Home {
                         } else if override.percentage != 100 {
                             Text(override.percentage.formatted() + " %").font(.statusFont).foregroundStyle(.secondary)
                         } else if override.smbIsOff, !override.smbIsAlwaysOff {
-                            Text("No ").font(.statusFont).foregroundStyle(.secondary) // "No" as in no SMBs
+                            Text("不").font(.statusFont).foregroundStyle(.secondary) // "No" as in no SMBs
                             Image(systemName: "syringe")
                                 .font(.previewNormal).foregroundStyle(.secondary)
                         } else if override.smbIsOff {
@@ -540,7 +540,7 @@ extension Home {
                             Image(systemName: "syringe")
                                 .font(.previewNormal).foregroundStyle(.secondary)
                         } else {
-                            Text("Override").font(.statusFont).foregroundStyle(.secondary)
+                            Text("覆盖").font(.statusFont).foregroundStyle(.secondary)
                         }
                     }
                 }
@@ -552,12 +552,12 @@ extension Home {
                 HStack {
                     VStack {
                         HStack {
-                            Text("Bolusing")
+                            Text("bolusis")
                                 .foregroundColor(.primary).font(.bolusProgressFont)
                             let bolused = targetFormatter.string(from: (amount * progress) as NSNumber) ?? ""
 
                             Text(
-                                bolused + " " + NSLocalizedString("of", comment: "") + " " + amount
+                                bolused + " " + NSLocalizedString("的", comment: "") + " " + amount
                                     .formatted() + NSLocalizedString(" U", comment: "")
                             ).font(.bolusProgressBarFont)
                         }
@@ -664,12 +664,12 @@ extension Home {
         }
 
         var timeSetting: some View {
-            let string = "\(state.hours) " + NSLocalizedString("hours", comment: "") + "   "
+            let string = "\(state.hours) " + NSLocalizedString("小时", comment: "") + "   "
             return Menu(string) {
-                Button("3 " + NSLocalizedString("hours", comment: ""), action: { state.hours = 3 })
-                Button("6 " + NSLocalizedString("hours", comment: ""), action: { state.hours = 6 })
-                Button("12 " + NSLocalizedString("hours", comment: ""), action: { state.hours = 12 })
-                Button("24 " + NSLocalizedString("hours", comment: ""), action: { state.hours = 24 })
+                Button("3 " + NSLocalizedString("小时", comment: ""), action: { state.hours = 3 })
+                Button("6 " + NSLocalizedString("小时", comment: ""), action: { state.hours = 6 })
+                Button("12 " + NSLocalizedString("小时", comment: ""), action: { state.hours = 12 })
+                Button("24 " + NSLocalizedString("小时", comment: ""), action: { state.hours = 24 })
                 Button("UI/UX Settings", action: { state.showModal(for: .statisticsConfig) })
             }
             .buttonStyle(.borderless)
@@ -772,18 +772,18 @@ extension Home {
                     Text(suggestion.reasonConclusion.capitalizingFirstLetter()).font(.suggestionSmallParts)
                         .foregroundColor(.white)
                 } else {
-                    Text("No sugestion found").font(.suggestionHeadline).foregroundColor(.white)
+                    Text("找不到Sugention").font(.suggestionHeadline).foregroundColor(.white)
                 }
                 if let errorMessage = state.errorMessage, let date = state.errorDate {
-                    Text(NSLocalizedString("Error at", comment: "") + " " + dateFormatter.string(from: date))
+                    Text(NSLocalizedString("错误", comment: "") + " " + dateFormatter.string(from: date))
                         .foregroundColor(.white)
                         .font(.suggestionError)
                         .padding(.bottom, 4)
                         .padding(.top, 8)
                     Text(errorMessage).font(.suggestionError).fontWeight(.semibold).foregroundColor(.orange)
                 } else if let suggestion = state.suggestion, (suggestion.bg ?? 100) == 400 {
-                    Text("Invalid CGM reading (HIGH).").font(.suggestionError).bold().foregroundColor(.loopRed).padding(.top, 8)
-                    Text("SMBs and High Temps Disabled.").font(.suggestionParts).foregroundColor(.white).padding(.bottom, 4)
+                    Text("无效的CGM阅读（高）。").font(.suggestionError).bold().foregroundColor(.loopRed).padding(.top, 8)
+                    Text("SMB和高温禁用。").font(.suggestionParts).foregroundColor(.white).padding(.bottom, 4)
                 }
             }
         }

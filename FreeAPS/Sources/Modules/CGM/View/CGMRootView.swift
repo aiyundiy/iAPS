@@ -36,13 +36,13 @@ extension CGM {
                         }
                     }
                     if state.cgm == .xdrip {
-                        Section(header: Text("Heartbeat")) {
+                        Section(header: Text("心跳")) {
                             VStack(alignment: .leading) {
                                 if let cgmTransmitterDeviceAddress = state.cgmTransmitterDeviceAddress {
-                                    Text("CGM address :")
+                                    Text("CGM地址：")
                                     Text(cgmTransmitterDeviceAddress)
                                 } else {
-                                    Text("CGM is not used as heartbeat.")
+                                    Text("CGM不被用作心跳。")
                                 }
                             }
                         }
@@ -51,9 +51,9 @@ extension CGM {
                         Button("Configure Libre Transmitter") {
                             state.showModal(for: .libreConfig)
                         }
-                        Text("Calibrations").navigationLink(to: .calibrations, from: self)
+                        Text("校准").navigationLink(to: .calibrations, from: self)
                     }
-                    Section(header: Text("Calendar")) {
+                    Section(header: Text("日历")) {
                         Toggle("Create Events in Calendar", isOn: $state.createCalendarEvents)
                         if state.calendarIDs.isNotEmpty {
                             Picker("Calendar", selection: $state.currentCalendarID) {
@@ -79,7 +79,7 @@ extension CGM {
                         }
                     }
 
-                    Section(header: Text("Experimental")) {
+                    Section(header: Text("实验")) {
                         Toggle("Smooth Glucose Value", isOn: $state.smoothGlucose)
                     }
                 }

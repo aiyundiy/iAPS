@@ -288,8 +288,8 @@ extension Bolus {
                     .formatted(.number.grouping(.never).rounded().precision(.fractionLength(1))) : evBG.formatted()
 
                 if command == "bolus" {
-                    return "\n" + NSLocalizedString("A Remote Bolus ", comment: "Remote Bolus Alert, part 1") +
-                        NSLocalizedString("was delivered", comment: "Remote Bolus Alert, part 2") + (
+                    return "\n" + NSLocalizedString("远程推注", comment: "Remote Bolus Alert, part 1") +
+                        NSLocalizedString("被交付了", comment: "Remote Bolus Alert, part 2") + (
                             -1 * enactedAnnouncement.createdAt
                                 .timeIntervalSinceNow
                                 .minutes
@@ -319,12 +319,12 @@ extension Bolus {
         private func prepareData() {
             if !eventualBG {
                 var prepareData = [
-                    InsulinRequired(agent: NSLocalizedString("Carbs", comment: ""), amount: wholeCobInsulin),
+                    InsulinRequired(agent: NSLocalizedString("碳水化合物", comment: ""), amount: wholeCobInsulin),
                     InsulinRequired(agent: NSLocalizedString("IOB", comment: ""), amount: iobInsulinReduction),
-                    InsulinRequired(agent: NSLocalizedString("Glucose", comment: ""), amount: targetDifferenceInsulin),
-                    InsulinRequired(agent: NSLocalizedString("Trend", comment: ""), amount: fifteenMinInsulin),
-                    InsulinRequired(agent: NSLocalizedString("Factors", comment: ""), amount: 0),
-                    InsulinRequired(agent: NSLocalizedString("Amount", comment: ""), amount: insulinCalculated)
+                    InsulinRequired(agent: NSLocalizedString("血糖", comment: ""), amount: targetDifferenceInsulin),
+                    InsulinRequired(agent: NSLocalizedString("趋势", comment: ""), amount: fifteenMinInsulin),
+                    InsulinRequired(agent: NSLocalizedString("因素", comment: ""), amount: 0),
+                    InsulinRequired(agent: NSLocalizedString("数量", comment: ""), amount: insulinCalculated)
                 ]
                 let total = prepareData.dropLast().map(\.amount).reduce(0, +)
                 if total > 0 {

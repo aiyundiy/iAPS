@@ -37,7 +37,7 @@ extension UIAlertController {
 
             if let helpAnchor = error.helpAnchor, let url = URL(string: helpAnchor), let helpAnchorHandler = helpAnchorHandler {
                 actions.append(UIAlertAction(
-                    title: LocalizedString("More Info", comment: "Alert action title to open error help"),
+                    title: LocalizedString("更多信息", comment: "Alert action title to open error help"),
                     style: .default,
                     handler: { (_) in helpAnchorHandler(url) }
                 ))

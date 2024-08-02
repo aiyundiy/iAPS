@@ -101,10 +101,10 @@ class AuthenticationViewController<T: ServiceAuthentication>: UITableViewControl
 
             switch state {
             case .Authorized:
-                cell.button.setTitle(NSLocalizedString("Delete Account", comment: "The title of the button to remove the credentials for a service"), forState: .Normal)
+                cell.button.setTitle(NSLocalizedString("删除帐户", comment: "The title of the button to remove the credentials for a service"), forState: .Normal)
                 cell.button.setTitleColor(UIColor.deleteColor, forState: .Normal)
             case .Empty, .Unauthorized, .Verifying:
-                cell.button.setTitle(NSLocalizedString("Add Account", comment: "The title of the button to add the credentials for a service"), forState: .Normal)
+                cell.button.setTitle(NSLocalizedString("新增帐户", comment: "The title of the button to add the credentials for a service"), forState: .Normal)
                 cell.button.setTitleColor(nil, forState: .Normal)
             }
 
@@ -128,7 +128,7 @@ class AuthenticationViewController<T: ServiceAuthentication>: UITableViewControl
             cell.textField.secureTextEntry = credential.isSecret
             cell.textField.returnKeyType = (indexPath.row < authentication.credentials.count - 1) ? .Next : .Done
             cell.textField.text = credential.value
-            cell.textField.placeholder = credential.placeholder ?? NSLocalizedString("Required", comment: "The default placeholder string for a credential")
+            cell.textField.placeholder = credential.placeholder ?? NSLocalizedString("必需的", comment: "The default placeholder string for a credential")
 
             cell.textField.delegate = self
 

@@ -16,9 +16,9 @@ struct ReadPodStatusView: View {
 
     var getDetailedStatus: () async throws -> DetailedStatus
 
-    private let title = LocalizedString("Read Pod Status", comment: "navigation title for read pod status")
-    private let actionString = LocalizedString("Reading Pod Status...", comment: "button title when executing read pod status")
-    private let failedString = LocalizedString("Failed to read pod status.", comment: "Alert title for error when reading pod status")
+    private let title = LocalizedString("读取POD状态", comment: "navigation title for read pod status")
+    private let actionString = LocalizedString("阅读泵状态...", comment: "button title when executing read pod status")
+    private let failedString = LocalizedString("无法读取POD状态。", comment: "Alert title for error when reading pod status")
 
     @State private var alertIsPresented: Bool = false
     @State private var displayString: String = ""

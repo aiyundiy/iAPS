@@ -39,54 +39,54 @@ extension StatConfig {
                     Toggle("Display Chart Threshold lines for Low and High", isOn: $state.rulerMarks)
                     Toggle("Standing / Laying TIR Chart", isOn: $state.oneDimensionalGraph)
                     HStack {
-                        Text("Horizontal Scroll View Visible hours")
+                        Text("水平滚动视图可见时间")
                         Spacer()
                         DecimalTextField("6", value: $state.hours, formatter: carbsFormatter)
-                        Text("hours").foregroundColor(.secondary)
+                        Text("小时").foregroundColor(.secondary)
                     }
                     Toggle("Use insulin bars", isOn: $state.useInsulinBars)
                     HStack {
-                        Text("Hide the bolus amount strings when amount is under")
+                        Text("金额不足时隐藏推注量字符串")
                         Spacer()
                         DecimalTextField("0.2", value: $state.minimumSMB, formatter: insulinFormatter)
                         Text("U").foregroundColor(.secondary)
                     }
                     Toggle("Display Time Interval Setting Button", isOn: $state.timeSettings)
 
-                } header: { Text("Home Chart settings ") }
+                } header: { Text("家庭图表设置") }
 
                 Section {
                     Toggle("Display Temp Targets Button", isOn: $state.useTargetButton)
-                } header: { Text("Home View Button Panel ") }
-                footer: { Text("In case you're using both profiles and temp targets") }
+                } header: { Text("家用按钮面板") }
+                footer: { Text("如果您同时使用配置文件和临时目标") }
 
                 Section {
                     Toggle("Never display the small glucose chart when scrolling", isOn: $state.skipGlucoseChart)
                     Toggle("Always Color Glucose Value (green, yellow etc)", isOn: $state.alwaysUseColors)
-                } header: { Text("Header settings") }
-                footer: { Text("Normally glucose is colored red only when over or under your notification limits for high/low") }
+                } header: { Text("标题设置") }
+                footer: { Text("通常，血糖仅在高/低的通知极限上或以下时才有色红色") }
 
                 Section {
                     HStack {
-                        Text("Low")
+                        Text("低的")
                         Spacer()
                         DecimalTextField("0", value: $state.low, formatter: glucoseFormatter)
                         Text(state.units.rawValue).foregroundColor(.secondary)
                     }
                     HStack {
-                        Text("High")
+                        Text("高的")
                         Spacer()
                         DecimalTextField("0", value: $state.high, formatter: glucoseFormatter)
                         Text(state.units.rawValue).foregroundColor(.secondary)
                     }
                     Toggle("Override HbA1c Unit", isOn: $state.overrideHbA1cUnit)
 
-                } header: { Text("Statistics settings ") }
+                } header: { Text("统计设置") }
 
                 Section {
                     Toggle("Skip Bolus screen after carbs", isOn: $state.skipBolusScreenAfterCarbs)
                     Toggle("Display and allow Fat and Protein entries", isOn: $state.useFPUconversion)
-                } header: { Text("Add Meal View settings ") }
+                } header: { Text("添加餐景设置") }
             }
             .dynamicTypeSize(...DynamicTypeSize.xxLarge)
             .onAppear(perform: configureView)

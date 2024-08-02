@@ -34,32 +34,32 @@ struct NotificationSettingsView: View {
     var body: some View {
         RoundedCardScrollView {
             RoundedCard(
-                title: LocalizedString("Pod Reminders", comment: "Title for pod reminders section"),
-                footer: LocalizedString("The app configures a reminder on the Pod to notify you in advance of Pod expiration. Set the number of hours advance notice you would like to configure by default when pairing a new Pod.", comment: "Footer text for pod reminders section")
+                title: LocalizedString("泵提醒", comment: "Title for pod reminders section"),
+                footer: LocalizedString("该应用程序在POD上配置提醒，以在POD到期之前通知您。设置提前通知的小时数，默认情况下，在配对新泵时要配置。", comment: "Footer text for pod reminders section")
             ) {
                 ExpirationReminderPickerView(expirationReminderDefault: $expirationReminderDefault)
             }
 
             if let allowedDates = allowedScheduledReminderDates {
                 RoundedCard(
-                    footer: LocalizedString("The expiration reminder time for the current Pod.", comment: "Footer text for scheduled reminder area"))
+                    footer: LocalizedString("当前POD的到期提醒时间。", comment: "Footer text for scheduled reminder area"))
                 {
-                    Text(LocalizedString("Scheduled Reminder", comment: "Title of scheduled reminder card on NotificationSettingsView"))
+                    Text(LocalizedString("预定的提醒", comment: "Title of scheduled reminder card on NotificationSettingsView"))
                     Divider()
                     scheduledReminderRow(scheduledDate: scheduledReminderDate, allowedDates: allowedDates)
                 }
             }
 
-            RoundedCard(footer: LocalizedString("The app notifies you when the amount of insulin in the Pod reaches this level.", comment: "Footer text for low reservoir value row")) {
+            RoundedCard(footer: LocalizedString("当POD中的胰岛素量达到此水平时，该应用程序会通知您。", comment: "Footer text for low reservoir value row")) {
                 lowReservoirValueRow
             }
 
             RoundedCard<EmptyView>(
-                title: LocalizedString("Critical Alerts", comment: "Title for critical alerts description"),
+                title: LocalizedString("关键警报", comment: "Title for critical alerts description"),
                 footer: LocalizedString("The above reminders will not sound in the app if your device is in Silent or Do Not Disturb mode. There are other critical Pod alerts that will sound in the app even if your device is set to Silent or Do Not Disturb mode.\n\nThe Pod will also use audible beeps for all Pod reminders and alerts except when the Pod is Silenced.", comment: "Description text for critical alerts")
             )
         }
-        .navigationBarTitle(LocalizedString("Notification Settings", comment: "navigation title for notification settings"))
+        .navigationBarTitle(LocalizedString("通知设置", comment: "navigation title for notification settings"))
     }
     
     @State private var scheduleReminderDateEditViewIsShown: Bool = false
@@ -87,7 +87,7 @@ struct NotificationSettingsView: View {
     
     private func scheduledReminderRowContents(disclosure: Bool) -> some View {
         RoundedCardValueRow(
-            label: LocalizedString("Time", comment: "Label for scheduled reminder value row"),
+            label: LocalizedString("时间", comment: "Label for scheduled reminder value row"),
             value: scheduledReminderDateString(scheduledReminderDate),
             highlightValue: false,
             disclosure: disclosure
@@ -98,7 +98,7 @@ struct NotificationSettingsView: View {
         if let scheduledDate = scheduledDate {
             return dateFormatter.string(from: scheduledDate)
         } else {
-            return LocalizedString("No Reminder", comment: "Value text for no expiration reminder")
+            return LocalizedString("没有提醒", comment: "Value text for no expiration reminder")
         }
     }
 
@@ -114,7 +114,7 @@ struct NotificationSettingsView: View {
             isActive: $lowReservoirReminderEditViewIsShown)
         {
             RoundedCardValueRow(
-                label: LocalizedString("Low Reservoir Reminder", comment: "Label for low reservoir reminder row"),
+                label: LocalizedString("低储层提醒", comment: "Label for low reservoir reminder row"),
                 value: insulinQuantityFormatter.string(from: HKQuantity(unit: .internationalUnit(), doubleValue: Double(lowReservoirReminderValue)), for: .internationalUnit()) ?? "",
                 highlightValue: false,
                 disclosure: true)

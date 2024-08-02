@@ -18,17 +18,17 @@ enum G7ProgressBarState {
     var label: String {
         switch self {
         case .searchingForSensor:
-            return LocalizedString("Searching for sensor", comment: "G7 Progress bar label when searching for sensor")
+            return LocalizedString("搜索传感器", comment: "G7 Progress bar label when searching for sensor")
         case .sensorExpired:
-            return LocalizedString("Sensor expired", comment: "G7 Progress bar label when sensor expired")
+            return LocalizedString("传感器过期", comment: "G7 Progress bar label when sensor expired")
         case .warmupProgress:
-            return LocalizedString("Warmup completes", comment: "G7 Progress bar label when sensor in warmup")
+            return LocalizedString("预热完成", comment: "G7 Progress bar label when sensor in warmup")
         case .sensorFailed:
-            return LocalizedString("Sensor failed", comment: "G7 Progress bar label when sensor failed")
+            return LocalizedString("传感器失败", comment: "G7 Progress bar label when sensor failed")
         case .lifetimeRemaining:
-            return LocalizedString("Sensor expires", comment: "G7 Progress bar label when sensor lifetime progress showing")
+            return LocalizedString("传感器到期", comment: "G7 Progress bar label when sensor lifetime progress showing")
         case .gracePeriodRemaining:
-            return LocalizedString("Grace period remaining", comment: "G7 Progress bar label when sensor grace period progress showing")
+            return LocalizedString("宽限期剩下", comment: "G7 Progress bar label when sensor grace period progress showing")
         }
     }
 

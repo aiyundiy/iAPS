@@ -27,7 +27,7 @@ extension PreferencesEditor {
                         Text("mg/dL").tag(0)
                         Text("mmol/L").tag(1)
                     }
-                } header: { Text("iAPS").textCase(nil) }
+                } header: { Text("IAP").textCase(nil) }
                 ForEach(state.sections.indexed(), id: \.1.id) { sectionIndex, section in
                     Section(header: Text(section.displayName)) {
                         ForEach(section.fields.indexed(), id: \.1.id) { fieldIndex, field in
@@ -108,7 +108,7 @@ extension PreferencesEditor {
                 Alert(
                     title: Text("\(infoButton.oref0Variable)"),
                     message: Text("\(infoButton.description)"),
-                    dismissButton: .default(Text("OK"))
+                    dismissButton: .default(Text("好的"))
                 )
             }
         }

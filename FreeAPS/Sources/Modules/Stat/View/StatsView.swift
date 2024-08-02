@@ -68,22 +68,22 @@ struct StatsView: View {
         return VStack(spacing: 10) {
             HStack(spacing: 35) {
                 VStack(spacing: 5) {
-                    Text("Loops").font(.subheadline).foregroundColor(headline)
+                    Text("闭环").font(.subheadline).foregroundColor(headline)
                     Text(loopsPerDay.formatted())
                 }
                 VStack(spacing: 5) {
-                    Text("Interval").font(.subheadline).foregroundColor(headline)
+                    Text("间隔").font(.subheadline).foregroundColor(headline)
                     Text(intervalAverage.formatted(.number.grouping(.never).rounded().precision(.fractionLength(1))) + " min")
                 }
                 VStack(spacing: 5) {
-                    Text("Duration").font(.subheadline).foregroundColor(headline)
+                    Text("期间").font(.subheadline).foregroundColor(headline)
                     Text(
                         (medianDuration * 60)
                             .formatted(.number.grouping(.never).rounded().precision(.fractionLength(1))) + " s"
                     )
                 }
                 VStack(spacing: 5) {
-                    Text("Success").font(.subheadline).foregroundColor(headline)
+                    Text("成功").font(.subheadline).foregroundColor(headline)
                     Text(
                         ((successRate ?? 100) / 100)
                             .formatted(.percent.grouping(.never).rounded().precision(.fractionLength(1)))
@@ -137,7 +137,7 @@ struct StatsView: View {
                     + " %"
             )
             VStack(spacing: 5) {
-                Text("HbA1C").font(.subheadline).foregroundColor(headline)
+                Text("HBA1C").font(.subheadline).foregroundColor(headline)
                 Text(hba1cString)
             }
             VStack(spacing: 5) {
@@ -151,11 +151,11 @@ struct StatsView: View {
                 )
             }
             VStack(spacing: 5) {
-                Text("CV").font(.subheadline).foregroundColor(.secondary)
+                Text("简历").font(.subheadline).foregroundColor(.secondary)
                 Text(hba1cs.cv.formatted(.number.grouping(.never).rounded().precision(.fractionLength(0))))
             }
             VStack(spacing: 5) {
-                Text("Days").font(.subheadline).foregroundColor(.secondary)
+                Text("天").font(.subheadline).foregroundColor(.secondary)
                 Text(numberOfDays.formatted(.number.grouping(.never).rounded().precision(.fractionLength(1))))
             }
         }
@@ -177,7 +177,7 @@ struct StatsView: View {
                 Text(bgs.readings.formatted(.number.grouping(.never).rounded().precision(.fractionLength(0))))
             }
             VStack(spacing: 5) {
-                Text("Average").font(.subheadline).foregroundColor(headline)
+                Text("平均的").font(.subheadline).foregroundColor(headline)
                 Text(
                     bgs.average
                         .formatted(
@@ -187,7 +187,7 @@ struct StatsView: View {
                 )
             }
             VStack(spacing: 5) {
-                Text("Median").font(.subheadline).foregroundColor(.secondary)
+                Text("中位数").font(.subheadline).foregroundColor(.secondary)
                 Text(
                     bgs.median
                         .formatted(

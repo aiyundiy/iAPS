@@ -185,7 +185,7 @@ extension RileyLinkDevicesTableViewDataSource: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return LocalizedString("Devices", comment: "The title of the devices table section in RileyLink settings")
+        return LocalizedString("设备", comment: "The title of the devices table section in RileyLink settings")
     }
 }
 

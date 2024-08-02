@@ -29,7 +29,7 @@ struct ActiveIOBView: View {
 
     var body: some View {
         VStack {
-            Text("Active Insulin").font(.previewHeadline).padding(.top, 20)
+            Text("活性胰岛素").font(.previewHeadline).padding(.top, 20)
             iobView().frame(maxHeight: 130).padding(.horizontal, 20)
             sumView().frame(maxHeight: 250).padding(.vertical, 30)
         }.dynamicTypeSize(...DynamicTypeSize.xLarge)
@@ -69,19 +69,19 @@ struct ActiveIOBView: View {
     @ViewBuilder private func sumView() -> some View {
         let entries = [
             BolusSummary(
-                variable: NSLocalizedString("Time with negative insulin", comment: ""),
-                formula: NSLocalizedString(" min", comment: ""),
+                variable: NSLocalizedString("阴性胰岛素的时间", comment: ""),
+                formula: NSLocalizedString("最小", comment: ""),
                 insulin: Decimal(neg),
                 color: .red
             ),
             BolusSummary(
-                variable: NSLocalizedString("Insulin compared to yesterday", comment: ""),
+                variable: NSLocalizedString("胰岛素与昨天相比", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tddChange,
                 color: Color(.insulin)
             ),
             BolusSummary(
-                variable: NSLocalizedString("Insulin compared to average", comment: ""),
+                variable: NSLocalizedString("胰岛素与平均", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tddAverage,
                 color: Color(.insulin)
@@ -93,7 +93,7 @@ struct ActiveIOBView: View {
                 color: Color(.clear)
             ),
             BolusSummary(
-                variable: NSLocalizedString("Average Insulin past 24h", comment: ""),
+                variable: NSLocalizedString("平均胰岛素过去24小时", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tddActualAverage,
                 color: .secondary
@@ -105,19 +105,19 @@ struct ActiveIOBView: View {
                 color: Color(.clear)
             ),
             BolusSummary(
-                variable: NSLocalizedString("TDD yesterday", comment: ""),
+                variable: NSLocalizedString("TDD昨天", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tddYesterday,
                 color: .secondary
             ),
             BolusSummary(
-                variable: NSLocalizedString("TDD 2 days ago", comment: ""),
+                variable: NSLocalizedString("TDD 2天前", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tdd2DaysAgo,
                 color: .secondary
             ),
             BolusSummary(
-                variable: NSLocalizedString("TDD 3 days ago", comment: ""),
+                variable: NSLocalizedString("TDD 3天前", comment: ""),
                 formula: NSLocalizedString(" U", comment: ""),
                 insulin: tdd3DaysAgo,
                 color: .secondary

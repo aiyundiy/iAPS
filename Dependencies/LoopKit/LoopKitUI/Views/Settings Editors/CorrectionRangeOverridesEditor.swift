@@ -100,11 +100,11 @@ public struct CorrectionRangeOverridesEditor: View {
                 value.ranges = [:];
                 presetBeingEdited = nil
         } )
-        { Text(LocalizedString("Delete", comment: "Delete values for Pre-Meal, inactivates Pre-Meal icon")) }
+        { Text(LocalizedString("删除", comment: "Delete values for Pre-Meal, inactivates Pre-Meal icon")) }
     }
     
     private var cancelButton: some View {
-        Button(action: { self.dismiss() } ) { Text(LocalizedString("Cancel", comment: "Cancel editing settings button title")) }
+        Button(action: { self.dismiss() } ) { Text(LocalizedString("取消", comment: "Cancel editing settings button title")) }
     }
     
     private var content: some View {
@@ -192,7 +192,7 @@ public struct CorrectionRangeOverridesEditor: View {
 
     private var instructionalContent: some View {
         HStack { // to align with guardrail warning, if present
-            Text(LocalizedString("You can edit a setting by tapping into any line item.", comment: "Description of how to edit setting"))
+            Text(LocalizedString("您可以通过利用任何行项目来编辑设置。", comment: "Description of how to edit setting"))
             .foregroundColor(.secondary)
             .font(.subheadline)
             Spacer()
@@ -245,9 +245,9 @@ public struct CorrectionRangeOverridesEditor: View {
             title: title,
             // For the message, preMeal and workout are the same
             message: Text(TherapySetting.preMealCorrectionRangeOverride.guardrailSaveWarningCaption),
-            primaryButton: .cancel(Text(LocalizedString("Go Back", comment: "Text for go back action on confirmation alert"))),
+            primaryButton: .cancel(Text(LocalizedString("回退.", comment: "Text for go back action on confirmation alert"))),
             secondaryButton: .default(
-                Text(LocalizedString("Continue", comment: "Text for continue action on confirmation alert")),
+                Text(LocalizedString("继续", comment: "Text for continue action on confirmation alert")),
                 action: startSaving
             )
         )
@@ -334,9 +334,9 @@ public extension CorrectionRangeOverrides.Preset {
     var descriptiveText: String {
         switch self {
         case .preMeal:
-            return LocalizedString("Temporarily lower your glucose target before a meal to impact post-meal glucose spikes.", comment: "Description of pre-meal mode")
+            return LocalizedString("进餐前会暂时降低血糖靶标，以撞击圆环后的血糖峰值。", comment: "Description of pre-meal mode")
         case .workout:
-            return LocalizedString("Temporarily raise your glucose target before, during, or after physical activity to reduce the risk of low glucose events.", comment: "Description of workout mode")
+            return LocalizedString("在体育锻炼之前，期间或之后，暂时提高血糖靶标，以降低低血糖事件的风险。", comment: "Description of workout mode")
         }
     }
 

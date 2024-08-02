@@ -19,14 +19,14 @@ struct NightscoutService: ServiceAuthentication {
     init(siteURL: URL?, APISecret: String?) {
         credentials = [
             ServiceCredential(
-                title: LocalizedString("Site URL", comment: "The title of the nightscout site URL credential"),
+                title: LocalizedString("网站URL", comment: "The title of the nightscout site URL credential"),
                 placeholder: LocalizedString("http://mysite.herokuapp.com", comment: "The placeholder text for the nightscout site URL credential"),
                 isSecret: false,
                 keyboardType: .URL,
                 value: siteURL?.absoluteString
             ),
             ServiceCredential(
-                title: LocalizedString("API Secret", comment: "The title of the nightscout API secret credential"),
+                title: LocalizedString("API秘密", comment: "The title of the nightscout API secret credential"),
                 placeholder: nil,
                 isSecret: false,
                 keyboardType: .asciiCapable,

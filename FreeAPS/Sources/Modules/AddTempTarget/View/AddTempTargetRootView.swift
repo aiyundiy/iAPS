@@ -26,7 +26,7 @@ extension AddTempTarget {
         var body: some View {
             Form {
                 if !state.presets.isEmpty {
-                    Section(header: Text("Presets")) {
+                    Section(header: Text("预设")) {
                         ForEach(state.presets) { preset in
                             presetView(for: preset)
                         }
@@ -34,7 +34,7 @@ extension AddTempTarget {
                 }
 
                 HStack {
-                    Text("Experimental")
+                    Text("实验")
                     Toggle(isOn: $state.viewPercantage) {}.controlSize(.mini)
                     Image(systemName: "figure.highintensity.intervaltraining")
                     Image(systemName: "fork.knife")
@@ -67,7 +67,7 @@ extension AddTempTarget {
                                             "\(state.computeTarget().asMmolL.formatted(.number.grouping(.never).rounded().precision(.fractionLength(1)))) mmol/L" :
                                             "\(state.computeTarget().formatted(.number.grouping(.never).rounded().precision(.fractionLength(0)))) mg/dl"
                                     )
-                                        + NSLocalizedString(" Target Glucose", comment: "")
+                                        + NSLocalizedString("血糖", comment: "")
                                 )
                                 .foregroundColor(.green)
                                 .padding(.vertical)
@@ -81,57 +81,57 @@ extension AddTempTarget {
                         }
                     }
                 } else {
-                    Section(header: Text("Custom")) {
+                    Section(header: Text("自定义")) {
                         HStack {
-                            Text("Target")
+                            Text("目标")
                             Spacer()
                             DecimalTextField("0", value: $state.low, formatter: formatter, cleanInput: true)
                             Text(state.units.rawValue).foregroundColor(.secondary)
                         }
                         HStack {
-                            Text("Duration")
+                            Text("期间")
                             Spacer()
                             DecimalTextField("0", value: $state.duration, formatter: formatter, cleanInput: true)
-                            Text("minutes").foregroundColor(.secondary)
+                            Text("分钟").foregroundColor(.secondary)
                         }
                         DatePicker("Date", selection: $state.date)
                         Button { isPromptPresented = true }
-                        label: { Text("Save as preset") }
+                        label: { Text("保存为预设") }
                     }
                 }
                 if state.viewPercantage {
                     Section {
                         HStack {
-                            Text("Duration")
+                            Text("期间")
                             Spacer()
                             DecimalTextField("0", value: $state.duration, formatter: formatter, cleanInput: true)
-                            Text("minutes").foregroundColor(.secondary)
+                            Text("分钟").foregroundColor(.secondary)
                         }
                         DatePicker("Date", selection: $state.date)
                         Button { isPromptPresented = true }
-                        label: { Text("Save as preset") }
+                        label: { Text("保存为预设") }
                             .disabled(state.duration == 0)
                     }
                 }
 
                 Section {
                     Button { state.enact() }
-                    label: { Text("Start") }
+                    label: { Text("开始") }
                     Button { state.cancel() }
-                    label: { Text("Cancel Temp Target") }
+                    label: { Text("取消临时目标") }
                 }
             }
             .popover(isPresented: $isPromptPresented) {
                 Form {
-                    Section(header: Text("Enter preset name")) {
+                    Section(header: Text("输入预设名称")) {
                         TextField("Name", text: $state.newPresetName)
                         Button {
                             state.save()
                             isPromptPresented = false
                         }
-                        label: { Text("Save") }
+                        label: { Text("保存") }
                         Button { isPromptPresented = false }
-                        label: { Text("Cancel") }
+                        label: { Text("取消") }
                     }
                 }
             }
@@ -168,13 +168,13 @@ extension AddTempTarget {
                         Text(state.units.rawValue)
                             .foregroundColor(.secondary)
                             .font(.caption)
-                        Text("for")
+                        Text("为了")
                             .foregroundColor(.secondary)
                             .font(.caption)
                         Text("\(formatter.string(from: preset.duration as NSNumber)!)")
                             .foregroundColor(.secondary)
                             .font(.caption)
-                        Text("min")
+                        Text("最小")
                             .foregroundColor(.secondary)
                             .font(.caption)
 
@@ -191,9 +191,9 @@ extension AddTempTarget {
                     .padding(.vertical)
                     .onTapGesture {
                         removeAlert = Alert(
-                            title: Text("Are you sure?"),
+                            title: Text("你确定吗？"),
                             message: Text("Delete preset \"\(preset.displayName)\""),
-                            primaryButton: .destructive(Text("Delete"), action: { state.removePreset(id: preset.id) }),
+                            primaryButton: .destructive(Text("删除"), action: { state.removePreset(id: preset.id) }),
                             secondaryButton: .cancel()
                         )
                         isRemoveAlertPresented = true

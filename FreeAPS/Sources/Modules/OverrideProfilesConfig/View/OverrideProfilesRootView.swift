@@ -53,7 +53,7 @@ extension OverrideProfilesConfig {
             Form {
                 Section {
                     TextField("Name", text: $state.profileName)
-                } header: { Text("Profile Name").foregroundStyle(.primary) }
+                } header: { Text("配置文件名称").foregroundStyle(.primary) }
 
                 Section {
                     Button("Save") {
@@ -101,104 +101,104 @@ extension OverrideProfilesConfig {
                         ).accentColor(state.percentage >= 130 ? .red : .blue)
                         Spacer()
                         Toggle(isOn: $state._indefinite) {
-                            Text("Enable indefinitely")
+                            Text("无限期启用")
                         }
                     }
                     if !state._indefinite {
                         HStack {
-                            Text("Duration")
+                            Text("期间")
                             DecimalTextField("0", value: $state.duration, formatter: formatter, cleanInput: false)
-                            Text("minutes").foregroundColor(.secondary)
+                            Text("分钟").foregroundColor(.secondary)
                         }
                     }
 
                     HStack {
                         Toggle(isOn: $state.override_target) {
-                            Text("Override Profile Target")
+                            Text("覆盖概况目标")
                         }
                     }
                     if state.override_target {
                         HStack {
-                            Text("Target Glucose")
+                            Text("血糖")
                             DecimalTextField("0", value: $state.target, formatter: glucoseFormatter, cleanInput: false)
                             Text(state.units.rawValue).foregroundColor(.secondary)
                         }
                     }
                     HStack {
                         Toggle(isOn: $state.advancedSettings) {
-                            Text("More options")
+                            Text("更多的选择")
                         }
                     }
                     if state.advancedSettings {
                         HStack {
                             Toggle(isOn: $state.smbIsOff) {
-                                Text("Disable SMBs")
+                                Text("禁用血糖自我监测")
                             }
                         }
                         HStack {
                             Toggle(isOn: $state.smbIsAlwaysOff) {
-                                Text("Schedule when SMBs are Off")
+                                Text("SMB何时关闭的时间表")
                             }.disabled(!state.smbIsOff)
                         }
                         if state.smbIsAlwaysOff {
                             HStack {
-                                Text("First Hour SMBs are Off (24 hours)")
+                                Text("第一个小时血糖自我监测关闭（24小时）")
                                 DecimalTextField("0", value: $state.start, formatter: formatter, cleanInput: false)
-                                Text("hour").foregroundColor(.secondary)
+                                Text("小时").foregroundColor(.secondary)
                             }
                             HStack {
-                                Text("Last Hour SMBs are Off (24 hours)")
+                                Text("最后一个小时的血糖自我监测已关闭（24小时）")
                                 DecimalTextField("0", value: $state.end, formatter: formatter, cleanInput: false)
-                                Text("hour").foregroundColor(.secondary)
+                                Text("小时").foregroundColor(.secondary)
                             }
                         }
                         HStack {
                             Toggle(isOn: $state.isfAndCr) {
-                                Text("Change ISF and CR")
+                                Text("更改ISF和CR")
                             }
                         }
                         if !state.isfAndCr {
                             HStack {
                                 Toggle(isOn: $state.isf) {
-                                    Text("Change ISF")
+                                    Text("更改ISF")
                                 }
                             }
                             HStack {
                                 Toggle(isOn: $state.cr) {
-                                    Text("Change CR")
+                                    Text("更改Cr")
                                 }
                             }
                         }
                         HStack {
-                            Text("SMB Minutes")
+                            Text("SMB分钟")
                             DecimalTextField(
                                 "0",
                                 value: $state.smbMinutes,
                                 formatter: formatter,
                                 cleanInput: false
                             )
-                            Text("minutes").foregroundColor(.secondary)
+                            Text("分钟").foregroundColor(.secondary)
                         }
                         HStack {
-                            Text("UAM SMB Minutes")
+                            Text("UAM SMB分钟")
                             DecimalTextField(
                                 "0",
                                 value: $state.uamMinutes,
                                 formatter: formatter,
                                 cleanInput: false
                             )
-                            Text("minutes").foregroundColor(.secondary)
+                            Text("分钟").foregroundColor(.secondary)
                         }
 
                         HStack {
                             Toggle(isOn: $state.overrideMaxIOB) {
-                                Text("Override Max IOB")
+                                Text("覆盖Max IOB")
                             }
                         }
 
                         if state.overrideMaxIOB {
                             HStack {
-                                Text("Max IOB")
+                                Text("Max Iob")
                                 DecimalTextField(
                                     "0",
                                     value: $state.maxIOB,
@@ -223,7 +223,7 @@ extension OverrideProfilesConfig {
                                                 .formatted(.number.grouping(.never).rounded().precision(.fractionLength(0))) +
                                                 " min."
                                         ) :
-                                        NSLocalizedString(" infinite duration.", comment: "")
+                                        NSLocalizedString("无限持续时间。", comment: "")
                                 ) +
                                 (
                                     (state.target == 0 || !state.override_target) ? "" :
@@ -269,7 +269,7 @@ extension OverrideProfilesConfig {
                         Button {
                             isSheetPresented = true
                         }
-                        label: { Text("Save as Profile") }
+                        label: { Text("另存为个人资料") }
                             .tint(.orange)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .buttonStyle(BorderlessButtonStyle())
@@ -281,7 +281,7 @@ extension OverrideProfilesConfig {
                     }
                 }
 
-                header: { Text("Insulin") }
+                header: { Text("胰岛素") }
                 footer: {
                     Text(
                         "Your profile basal insulin will be adjusted with the override percentage and your profile ISF and CR will be inversly adjusted with the percentage."

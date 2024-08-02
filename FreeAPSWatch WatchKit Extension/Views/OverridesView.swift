@@ -6,7 +6,7 @@ struct OverridesView: View {
     var body: some View {
         List {
             if state.overrides.isEmpty {
-                Text("Set override presets on iPhone first").padding()
+                Text("首先在iPhone上设置覆盖预设").padding()
             } else {
                 ForEach(state.overrides) { override in
                     Button {
@@ -35,7 +35,7 @@ struct OverridesView: View {
                 WKInterfaceDevice.current().play(.click)
                 state.enactOverride(id: "cancel")
             } label: {
-                Text("Cancel Override")
+                Text("取消覆盖")
             }
         }
         .navigationTitle("Overrides")

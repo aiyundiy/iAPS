@@ -69,18 +69,18 @@ struct OmniBLESettingsView: View  {
                 Spacer()
                 daysRemaining.map { (days) in
                     timeComponent(value: days, units: days == 1 ?
-                                  LocalizedString("day", comment: "Unit for singular day in pod life remaining") :
-                                    LocalizedString("days", comment: "Unit for plural days in pod life remaining"))
+                                  LocalizedString("天", comment: "Unit for singular day in pod life remaining") :
+                                    LocalizedString("天", comment: "Unit for plural days in pod life remaining"))
                 }
                 hoursRemaining.map { (hours) in
                     timeComponent(value: hours, units: hours == 1 ?
-                                  LocalizedString("hour", comment: "Unit for singular hour in pod life remaining") :
-                                    LocalizedString("hours", comment: "Unit for plural hours in pod life remaining"))
+                                  LocalizedString("小时", comment: "Unit for singular hour in pod life remaining") :
+                                    LocalizedString("小时", comment: "Unit for plural hours in pod life remaining"))
                 }
                 minutesRemaining.map { (minutes) in
                     timeComponent(value: minutes, units: minutes == 1 ?
-                                  LocalizedString("minute", comment: "Unit for singular minute in pod life remaining") :
-                                    LocalizedString("minutes", comment: "Unit for plural minutes in pod life remaining"))
+                                  LocalizedString("分钟", comment: "Unit for singular minute in pod life remaining") :
+                                    LocalizedString("分钟", comment: "Unit for plural minutes in pod life remaining"))
                 }
             }
             ProgressView(progress: CGFloat(self.viewModel.lifeState.progress)).accentColor(self.viewModel.lifeState.progressColor(guidanceColors: guidanceColors))
@@ -94,9 +94,9 @@ struct OmniBLESettingsView: View  {
     
     var deliverySectionTitle: String {
         if self.viewModel.isScheduledBasal {
-            return LocalizedString("Scheduled Basal", comment: "Title of insulin delivery section")
+            return LocalizedString("计划的基础", comment: "Title of insulin delivery section")
         } else {
-            return LocalizedString("Insulin Delivery", comment: "Title of insulin delivery section")
+            return LocalizedString("胰岛素输送", comment: "Title of insulin delivery section")
         }
     }
     
@@ -165,7 +165,7 @@ struct OmniBLESettingsView: View  {
     
     var reservoirStatus: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text(LocalizedString("Insulin Remaining", comment: "Header for insulin remaining on pod settings screen"))
+            Text(LocalizedString("胰岛素剩余", comment: "Header for insulin remaining on pod settings screen"))
                 .foregroundColor(Color(UIColor.secondaryLabel))
             HStack {
                 if let podError = viewModel.podError {
@@ -187,7 +187,7 @@ struct OmniBLESettingsView: View  {
                         .fixedSize()
                         .foregroundColor(guidanceColors.warning)
                     
-                    FrameworkLocalText("No Pod", comment: "Text shown in insulin remaining space when no pod is paired").fontWeight(.bold)
+                    FrameworkLocalText("没有Pod", comment: "Text shown in insulin remaining space when no pod is paired").fontWeight(.bold)
                 }
                 
             }
@@ -198,7 +198,7 @@ struct OmniBLESettingsView: View  {
         Button(action: {
             self.manualBasalTapped()
         }) {
-            FrameworkLocalText("Set Temporary Basal Rate", comment: "Button title to set temporary basal rate")
+            FrameworkLocalText("设定临时基础率", comment: "Button title to set temporary basal rate")
         }
         .sheet(isPresented: $showManualTempBasalOptions) {
             ManualTempBasalEntryView(
@@ -243,7 +243,7 @@ struct OmniBLESettingsView: View  {
     }
     
     private var doneButton: some View {
-        Button(LocalizedString("Done", comment: "Title of done button on OmniBLESettingsView"), action: {
+        Button(LocalizedString("完毕", comment: "Title of done button on OmniBLESettingsView"), action: {
             self.viewModel.doneTapped()
         })
     }
@@ -306,12 +306,12 @@ struct OmniBLESettingsView: View  {
                 }
             }
 
-            Section(header: SectionHeader(label: LocalizedString("Activity", comment: "Section header for activity section"))) {
+            Section(header: SectionHeader(label: LocalizedString("活动", comment: "Section header for activity section"))) {
                 suspendResumeRow()
                     .disabled(!self.viewModel.podOk)
                 if self.viewModel.podOk, case .suspended(let suspendDate) = self.viewModel.basalDeliveryState {
                     HStack {
-                        FrameworkLocalText("Suspended At", comment: "Label for suspended at time")
+                        FrameworkLocalText("暂停", comment: "Label for suspended at time")
                         Spacer()
                         Text(self.viewModel.timeFormatter.string(from: suspendDate))
                             .foregroundColor(Color.secondary)
@@ -333,11 +333,11 @@ struct OmniBLESettingsView: View  {
                         Button(action: {
                             self.cancelManualBasal()
                         }) {
-                            FrameworkLocalText("Cancel Manual Basal", comment: "Button title to cancel manual basal")
+                            FrameworkLocalText("取消手动基础", comment: "Button title to cancel manual basal")
                         }
                     }
                     HStack {
-                        FrameworkLocalText("Remaining", comment: "Label for remaining time of manual basal")
+                        FrameworkLocalText("其余的", comment: "Label for remaining time of manual basal")
                         Spacer()
                         Text(remainingText)
                             .foregroundColor(.secondary)
@@ -350,7 +350,7 @@ struct OmniBLESettingsView: View  {
 
             Section() {
                 HStack {
-                    FrameworkLocalText("Pod Activated", comment: "Label for pod insertion row")
+                    FrameworkLocalText("POD激活", comment: "Label for pod insertion row")
                     Spacer()
                     Text(self.viewModel.activatedAtString)
                         .foregroundColor(Color.secondary)
@@ -358,9 +358,9 @@ struct OmniBLESettingsView: View  {
 
                 HStack {
                     if let expiresAt = viewModel.expiresAt, expiresAt < Date() {
-                        FrameworkLocalText("Pod Expired", comment: "Label for pod expiration row, past tense")
+                        FrameworkLocalText("Pod过期", comment: "Label for pod expiration row, past tense")
                     } else {
-                        FrameworkLocalText("Pod Expires", comment: "Label for pod expiration row")
+                        FrameworkLocalText("Pod到期", comment: "Label for pod expiration row")
                     }
                     Spacer()
                     Text(self.viewModel.expiresAtString)
@@ -368,29 +368,29 @@ struct OmniBLESettingsView: View  {
                 }
 
                 if let podDetails = self.viewModel.podDetails {
-                    NavigationLink(destination: PodDetailsView(podDetails: podDetails, title: LocalizedString("Pod Details", comment: "title for pod details page"))) {
-                        FrameworkLocalText("Pod Details", comment: "Text for pod details disclosure row")
+                    NavigationLink(destination: PodDetailsView(podDetails: podDetails, title: LocalizedString("POD详细信息", comment: "title for pod details page"))) {
+                        FrameworkLocalText("POD详细信息", comment: "Text for pod details disclosure row")
                             .foregroundColor(Color.primary)
                     }
                 } else {
                     HStack {
-                        FrameworkLocalText("Pod Details", comment: "Text for pod details disclosure row")
+                        FrameworkLocalText("POD详细信息", comment: "Text for pod details disclosure row")
                         Spacer()
-                        Text("—")
+                        Text(" - ")
                             .foregroundColor(Color.secondary)
                     }
                 }
 
                 if let previousPodDetails = viewModel.previousPodDetails {
-                    NavigationLink(destination: PodDetailsView(podDetails: previousPodDetails, title: LocalizedString("Previous Pod", comment: "title for previous pod page"))) {
-                        FrameworkLocalText("Previous Pod Details", comment: "Text for previous pod details row")
+                    NavigationLink(destination: PodDetailsView(podDetails: previousPodDetails, title: LocalizedString("以前的Pod", comment: "title for previous pod page"))) {
+                        FrameworkLocalText("以前的POD详细信息", comment: "Text for previous pod details row")
                             .foregroundColor(Color.primary)
                     }
                 } else {
                     HStack {
-                        FrameworkLocalText("Previous Pod Details", comment: "Text for previous pod details row")
+                        FrameworkLocalText("以前的POD详细信息", comment: "Text for previous pod details row")
                         Spacer()
-                        Text("—")
+                        Text(" - ")
                             .foregroundColor(Color.secondary)
                     }
                 }
@@ -405,7 +405,7 @@ struct OmniBLESettingsView: View  {
                 }
             }
 
-            Section(header: SectionHeader(label: LocalizedString("Configuration", comment: "Section header for configuration section")))
+            Section(header: SectionHeader(label: LocalizedString("配置", comment: "Section header for configuration section")))
             {
                 NavigationLink(destination:
                                 NotificationSettingsView(
@@ -417,11 +417,11 @@ struct OmniBLESettingsView: View  {
                                     onSaveScheduledExpirationReminder: self.viewModel.saveScheduledExpirationReminder,
                                     onSaveLowReservoirReminder: self.viewModel.saveLowReservoirReminder))
                 {
-                    FrameworkLocalText("Notification Settings", comment: "Text for pod details disclosure row").foregroundColor(Color.primary)
+                    FrameworkLocalText("通知设置", comment: "Text for pod details disclosure row").foregroundColor(Color.primary)
                 }
                 NavigationLink(destination: BeepPreferenceSelectionView(initialValue: viewModel.beepPreference, onSave: viewModel.setConfirmationBeeps)) {
                     HStack {
-                        FrameworkLocalText("Confidence Reminders", comment: "Text for confidence reminders navigation link")
+                        FrameworkLocalText("信心提醒", comment: "Text for confidence reminders navigation link")
                             .foregroundColor(Color.primary)
                         Spacer()
                         Text(viewModel.beepPreference.title)
@@ -430,7 +430,7 @@ struct OmniBLESettingsView: View  {
                 }
                 NavigationLink(destination: SilencePodSelectionView(initialValue: viewModel.silencePodPreference, onSave: viewModel.setSilencePod)) {
                     HStack {
-                        FrameworkLocalText("Silence Pod", comment: "Text for silence pod navigation link")
+                        FrameworkLocalText("静音Pod", comment: "Text for silence pod navigation link")
                             .foregroundColor(Color.primary)
                         Spacer()
                         Text(viewModel.silencePodPreference.title)
@@ -439,7 +439,7 @@ struct OmniBLESettingsView: View  {
                 }
                 NavigationLink(destination: InsulinTypeSetting(initialValue: viewModel.insulinType, supportedInsulinTypes: supportedInsulinTypes, allowUnsetInsulinType: false, didChange: viewModel.didChangeInsulinType)) {
                     HStack {
-                        FrameworkLocalText("Insulin Type", comment: "Text for insulin type navigation link").foregroundColor(Color.primary)
+                        FrameworkLocalText("胰岛素类型", comment: "Text for insulin type navigation link").foregroundColor(Color.primary)
                         if let currentTitle = viewModel.insulinType?.brandName {
                             Spacer()
                             Text(currentTitle)
@@ -451,7 +451,7 @@ struct OmniBLESettingsView: View  {
 
             Section() {
                 HStack {
-                    FrameworkLocalText("Pump Time", comment: "The title of the command to change pump time zone")
+                    FrameworkLocalText("泵送时间", comment: "The title of the command to change pump time zone")
                     Spacer()
                     if viewModel.isClockOffset {
                         Image(systemName: "clock.fill")
@@ -462,7 +462,7 @@ struct OmniBLESettingsView: View  {
                 }
                 if viewModel.synchronizingTime {
                     HStack {
-                        FrameworkLocalText("Adjusting Pump Time...", comment: "Text indicating ongoing pump time synchronization")
+                        FrameworkLocalText("调整泵的时间...", comment: "Text indicating ongoing pump time synchronization")
                             .foregroundColor(.secondary)
                         Spacer()
                         ActivityIndicator(isAnimating: .constant(true), style: .medium)
@@ -471,7 +471,7 @@ struct OmniBLESettingsView: View  {
                     Button(action: {
                         showSyncTimeOptions = true
                     }) {
-                        FrameworkLocalText("Sync to Current Time", comment: "The title of the command to change pump time zone")
+                        FrameworkLocalText("同步到当前时间", comment: "The title of the command to change pump time zone")
                     }
                     .actionSheet(isPresented: $showSyncTimeOptions) {
                         syncPumpTimeActionSheet
@@ -481,12 +481,12 @@ struct OmniBLESettingsView: View  {
 
             Section() {
                 NavigationLink(destination: PodDiagnosticsView(
-                    title: LocalizedString("Pod Diagnostics", comment: "Title for the pod diagnostic view"),
+                    title: LocalizedString("POD诊断", comment: "Title for the pod diagnostic view"),
                     diagnosticCommands: viewModel.diagnosticCommands,
                     podOk: viewModel.podOk,
                     noPod: viewModel.noPod))
                 {
-                    FrameworkLocalText("Pod Diagnostics", comment: "Text for pod diagnostics row")
+                    FrameworkLocalText("POD诊断", comment: "Text for pod diagnostics row")
                         .foregroundColor(Color.primary)
                 }
             }
@@ -496,7 +496,7 @@ struct OmniBLESettingsView: View  {
                     Button(action: {
                         self.showingDeleteConfirmation = true
                     }) {
-                        FrameworkLocalText("Switch to other insulin delivery device", comment: "Label for PumpManager deletion button")
+                        FrameworkLocalText("切换到其他胰岛素输送设备", comment: "Label for PumpManager deletion button")
                             .foregroundColor(guidanceColors.critical)
                     }
                     .actionSheet(isPresented: $showingDeleteConfirmation) {
@@ -512,17 +512,17 @@ struct OmniBLESettingsView: View  {
     }
 
     var syncPumpTimeActionSheet: ActionSheet {
-        ActionSheet(title: FrameworkLocalText("Time Change Detected", comment: "Title for pod sync time action sheet."), message: FrameworkLocalText("The time on your pump is different from the current time. Do you want to update the time on your pump to the current time?", comment: "Message for pod sync time action sheet"), buttons: [
-            .default(FrameworkLocalText("Yes, Sync to Current Time", comment: "Button text to confirm pump time sync")) {
+        ActionSheet(title: FrameworkLocalText("时间变化检测到", comment: "Title for pod sync time action sheet."), message: FrameworkLocalText("泵上的时间与当前时间不同。您想将泵上的时间更新到当前时间吗？", comment: "Message for pod sync time action sheet"), buttons: [
+            .default(FrameworkLocalText("是的，与当前时间同步", comment: "Button text to confirm pump time sync")) {
                 self.viewModel.changeTimeZoneTapped()
             },
-            .cancel(FrameworkLocalText("No, Keep Pump As Is", comment: "Button text to cancel pump time sync"))
+            .cancel(FrameworkLocalText("不，保持泵原样", comment: "Button text to cancel pump time sync"))
         ])
     }
     
     var removePumpManagerActionSheet: ActionSheet {
-        ActionSheet(title: FrameworkLocalText("Remove Pump", comment: "Title for Omnipod DASH PumpManager deletion action sheet."), message: FrameworkLocalText("Are you sure you want to stop using Omnipod DASH?", comment: "Message for Omnipod DASH PumpManager deletion action sheet"), buttons: [
-            .destructive(FrameworkLocalText("Delete Omnipod DASH", comment: "Button text to confirm Omnipod DASH PumpManager deletion")) {
+        ActionSheet(title: FrameworkLocalText("卸下泵", comment: "Title for Omnipod DASH PumpManager deletion action sheet."), message: FrameworkLocalText("您确定要停止使用Omnipod Dash吗？", comment: "Message for Omnipod DASH PumpManager deletion action sheet"), buttons: [
+            .destructive(FrameworkLocalText("删除Omnipod破折号", comment: "Button text to confirm Omnipod DASH PumpManager deletion")) {
                 self.viewModel.stopUsingOmnipodDashTapped()
             },
             .cancel()
@@ -531,13 +531,13 @@ struct OmniBLESettingsView: View  {
     
     var suspendOptionsActionSheet: ActionSheet {
         ActionSheet(
-            title: FrameworkLocalText("Suspend Delivery", comment: "Title for suspend duration selection action sheet"),
-            message: FrameworkLocalText("Insulin delivery will be stopped until you resume manually. Select when you want to be reminded to resume delivery?", comment: "Message for suspend duration selection action sheet"),
+            title: FrameworkLocalText("暂停交互", comment: "Title for suspend duration selection action sheet"),
+            message: FrameworkLocalText("胰岛素输送将停止，直到您手动恢复为止。选择何时想提醒您恢复交互？", comment: "Message for suspend duration selection action sheet"),
             buttons: [
-                .default(FrameworkLocalText("30 minutes", comment: "Button text for 30 minute suspend duration"), action: { self.viewModel.suspendDelivery(duration: .minutes(30)) }),
-                .default(FrameworkLocalText("1 hour", comment: "Button text for 1 hour suspend duration"), action: { self.viewModel.suspendDelivery(duration: .hours(1)) }),
-                .default(FrameworkLocalText("1 hour 30 minutes", comment: "Button text for 1 hour 30 minute suspend duration"), action: { self.viewModel.suspendDelivery(duration: .hours(1.5)) }),
-                .default(FrameworkLocalText("2 hours", comment: "Button text for 2 hour suspend duration"), action: { self.viewModel.suspendDelivery(duration: .hours(2)) }),
+                .default(FrameworkLocalText("30分钟", comment: "Button text for 30 minute suspend duration"), action: { self.viewModel.suspendDelivery(duration: .minutes(30)) }),
+                .default(FrameworkLocalText("1小时", comment: "Button text for 1 hour suspend duration"), action: { self.viewModel.suspendDelivery(duration: .hours(1)) }),
+                .default(FrameworkLocalText("1小时30分钟", comment: "Button text for 1 hour 30 minute suspend duration"), action: { self.viewModel.suspendDelivery(duration: .hours(1.5)) }),
+                .default(FrameworkLocalText("2小时", comment: "Button text for 2 hour suspend duration"), action: { self.viewModel.suspendDelivery(duration: .hours(2)) }),
                 .cancel()
             ])
     }
@@ -580,25 +580,25 @@ struct OmniBLESettingsView: View  {
         switch alert {
         case .suspendError(let error):
             return SwiftUI.Alert(
-                title: Text("Failed to Suspend Insulin Delivery", comment: "Alert title for suspend error"),
+                title: Text("未能暂停胰岛素输送", comment: "Alert title for suspend error"),
                 message: Text(errorText(error))
             )
             
         case .resumeError(let error):
             return SwiftUI.Alert(
-                title: Text("Failed to Resume Insulin Delivery", comment: "Alert title for resume error"),
+                title: Text("无法恢复胰岛素输送", comment: "Alert title for resume error"),
                 message: Text(errorText(error))
             )
             
         case .syncTimeError(let error):
             return SwiftUI.Alert(
-                title: Text("Failed to Set Pump Time", comment: "Alert title for time sync error"),
+                title: Text("未能设置泵的时间", comment: "Alert title for time sync error"),
                 message: Text(errorText(error))
             )
 
         case .cancelManualBasalError(let error):
             return SwiftUI.Alert(
-                title: Text("Failed to Cancel Manual Basal", comment: "Alert title for failing to cancel manual basal error"),
+                title: Text("未能取消手册的基础", comment: "Alert title for failing to cancel manual basal error"),
                 message: Text(errorText(error))
             )
 

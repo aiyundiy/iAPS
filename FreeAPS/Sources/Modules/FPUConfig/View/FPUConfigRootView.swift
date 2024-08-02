@@ -22,24 +22,24 @@ extension FPUConfig {
 
         var body: some View {
             Form {
-                Section(header: Text("Conversion settings")) {
+                Section(header: Text("转换设置")) {
                     HStack {
-                        Text("Delay In Minutes")
+                        Text("延迟几分钟")
                         Spacer()
                         DecimalTextField("60", value: $state.delay, formatter: intFormater)
                     }
                     HStack {
-                        Text("Maximum Duration In Hours")
+                        Text("数小时最大持续时间")
                         Spacer()
                         DecimalTextField("8", value: $state.timeCap, formatter: intFormater)
                     }
                     HStack {
-                        Text("Interval In Minutes")
+                        Text("间隔分钟")
                         Spacer()
                         DecimalTextField("30", value: $state.minuteInterval, formatter: intFormater)
                     }
                     HStack {
-                        Text("Override With A Factor Of ")
+                        Text("覆盖有一个因素")
                         Spacer()
                         DecimalTextField("0.5", value: $state.individualAdjustmentFactor, formatter: conversionFormatter)
                     }

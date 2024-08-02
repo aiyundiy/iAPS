@@ -31,7 +31,7 @@ struct LowReservoirReminderSetupView: View {
                 Text(LocalizedString("The App notifies you when the amount of insulin in the Pod reaches this level (50-10 U).\n\nScroll to set the number of units at which you would like to be reminded.", comment: "Description text on LowReservoirReminderSetupView"))
                 Divider()
                 HStack {
-                    Text(LocalizedString("Low Reservoir", comment: "Label text for low reservoir value row"))
+                    Text(LocalizedString("低水箱", comment: "Label text for low reservoir value row"))
                     Spacer()
                     Text(formatValue(lowReservoirReminderValue))
                 }
@@ -43,16 +43,16 @@ struct LowReservoirReminderSetupView: View {
                 Button(action: {
                     continueButtonTapped?()
                 }) {
-                    Text(LocalizedString("Next", comment: "Text of continue button on ExpirationReminderSetupView"))
+                    Text(LocalizedString("下一个", comment: "Text of continue button on ExpirationReminderSetupView"))
                         .actionButtonStyle(.primary)
                 }
             }
             .padding()
         }
-        .navigationBarTitle(LocalizedString("Low Reservoir", comment: "navigation bar title for low reservoir"), displayMode: .automatic)
+        .navigationBarTitle(LocalizedString("低水箱", comment: "navigation bar title for low reservoir"), displayMode: .automatic)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(LocalizedString("Cancel", comment: "Cancel button title"), action: {
+                Button(LocalizedString("取消", comment: "Cancel button title"), action: {
                     cancelButtonTapped?()
                 })
             }

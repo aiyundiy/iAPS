@@ -6,7 +6,7 @@ struct TempTargetsView: View {
     var body: some View {
         List {
             if state.tempTargets.isEmpty {
-                Text("Set temp targets presets on iPhone first").padding()
+                Text("首先在iPhone上设置临时目标预设").padding()
             } else {
                 ForEach(state.tempTargets) { target in
                     Button {
@@ -31,7 +31,7 @@ struct TempTargetsView: View {
                 WKInterfaceDevice.current().play(.click)
                 state.enactTempTarget(id: "cancel")
             } label: {
-                Text("Cancel Temp Target")
+                Text("取消临时目标")
             }
         }
         .navigationTitle("Temp Targets")

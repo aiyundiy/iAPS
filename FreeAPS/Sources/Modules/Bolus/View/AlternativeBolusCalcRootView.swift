@@ -60,7 +60,7 @@ extension Bolus {
             Form {
                 Section {
                     if state.waitForSuggestion {
-                        Text("Please wait")
+                        Text("请稍等")
                     } else {
                         predictionChart
                     }
@@ -81,7 +81,7 @@ extension Bolus {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(colorScheme == .light ? .black : .white, .blue)
                                     .font(.infoSymbolFont)
-                                Text("Calculations")
+                                Text("计算")
                             })
                                 .foregroundStyle(.blue)
                                 .font(.footnote)
@@ -90,7 +90,7 @@ extension Bolus {
                             if state.fattyMeals {
                                 Spacer()
                                 Toggle(isOn: $state.useFattyMealCorrectionFactor) {
-                                    Text("Fatty Meal")
+                                    Text("脂肪饭")
                                 }
                                 .toggleStyle(CheckboxToggleStyle())
                                 .font(.footnote)
@@ -103,13 +103,13 @@ extension Bolus {
 
                     if state.waitForSuggestion {
                         HStack {
-                            Text("Wait please").foregroundColor(.secondary)
+                            Text("请等一下").foregroundColor(.secondary)
                             Spacer()
                             ActivityIndicator(isAnimating: .constant(true), style: .medium) // fix iOS 15 bug
                         }
                     } else {
                         HStack {
-                            Text("Insulin recommended")
+                            Text("推荐胰岛素")
                             Spacer()
                             Text(
                                 formatter
@@ -123,7 +123,7 @@ extension Bolus {
                     }
 
                     HStack {
-                        Text("Bolus")
+                        Text("推注")
                         Spacer()
                         DecimalTextField(
                             "0",
@@ -149,9 +149,9 @@ extension Bolus {
                         Button {
                             if let remoteBolus = state.remoteBolus() {
                                 remoteBolusAlert = Alert(
-                                    title: Text("A Remote Bolus Was Just Delivered!"),
+                                    title: Text("刚刚交付了一个远程推注！"),
                                     message: Text(remoteBolus),
-                                    primaryButton: .destructive(Text("Bolus"), action: {
+                                    primaryButton: .destructive(Text("推注"), action: {
                                         keepForNextWiew = true
                                         state.add()
                                     }),
@@ -186,8 +186,8 @@ extension Bolus {
                         }
                         label: {
                             fetch ?
-                                Text("Save Meal without bolus") :
-                                Text("Continue without bolus")
+                                Text("不用推注而保存饭") :
+                                Text("继续没有推注")
                         }
                         .frame(maxWidth: .infinity, alignment: .center)
                         .listRowBackground(Color(.systemBlue))
@@ -216,14 +216,14 @@ extension Bolus {
                 label: {
                     HStack {
                         Image(systemName: "chevron.backward")
-                        Text("Meal")
+                        Text("进餐")
                     }
                 },
                 trailing: Button {
                     state.hideModal()
                     state.notActive()
                 }
-                label: { Text("Cancel") }
+                label: { Text("取消") }
             )
             .onAppear {
                 configureView {
@@ -283,7 +283,7 @@ extension Bolus {
                 // Hide button
                 VStack {
                     Button { showInfo = false }
-                    label: { Text("Hide") }.frame(maxWidth: .infinity, alignment: .center)
+                    label: { Text("隐藏") }.frame(maxWidth: .infinity, alignment: .center)
                         .tint(.blue)
                 }.padding(.bottom, 20)
             }

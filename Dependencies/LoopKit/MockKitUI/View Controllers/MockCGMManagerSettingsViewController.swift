@@ -29,7 +29,7 @@ final class MockCGMManagerSettingsViewController: UITableViewController {
         self.displayGlucoseUnitObservable = displayGlucoseUnitObservable
 
         super.init(style: .grouped)
-        title = LocalizedString("CGM Settings", comment: "Title for CGM simulator settings")
+        title = LocalizedString("CGM设置", comment: "Title for CGM simulator settings")
 
         displayGlucoseUnitObservable.$displayGlucoseUnit
             .sink { [weak self] _ in self?.tableView.reloadData() }

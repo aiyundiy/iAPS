@@ -154,7 +154,7 @@ final class BaseGarminManager: NSObject, GarminManager, Injectable {
 
 extension BaseGarminManager: IQUIOverrideDelegate {
     func needsToInstallConnectMobile() {
-        debug(.apsManager, NSLocalizedString("Garmin is not available", comment: ""))
+        debug(.apsManager, NSLocalizedString("Garmin不可用", comment: ""))
         let messageCont = MessageContent(
             content: NSLocalizedString(
                 "The app Garmin Connect must be installed to use for iAPS.\n Go to App Store to download it",

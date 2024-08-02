@@ -66,7 +66,7 @@ struct PreviewChart: View {
             ),
             TIRinPercent(
                 type: "TIR",
-                group: NSLocalizedString("In Range", comment: ""),
+                group: NSLocalizedString("在范围内", comment: ""),
                 percentage: fetched[1].decimal,
                 id: UUID(),
                 offset: 0,
@@ -121,7 +121,7 @@ struct PreviewChart: View {
         data = prepareData(data_: data)
 
         return VStack {
-            Text("Time In Range").padding(.bottom, 10).font(.previewHeadline)
+            Text("时间范围").padding(.bottom, 10).font(.previewHeadline)
 
             Chart(data) { item in
                 BarMark(
@@ -139,7 +139,7 @@ struct PreviewChart: View {
                     )
                 )
                 .annotation(position: .trailing) {
-                    if item.group == NSLocalizedString("In Range", comment: ""), item.percentage > 0 {
+                    if item.group == NSLocalizedString("在范围内", comment: ""), item.percentage > 0 {
                         HStack {
                             if item.percentage < 1 {
                                 Text("< 1%")
@@ -217,7 +217,7 @@ struct PreviewChart: View {
                     "Low",
                     comment: ""
                 ): .red,
-                NSLocalizedString("In Range", comment: ""): .darkGreen,
+                NSLocalizedString("在范围内", comment: ""): .darkGreen,
                 NSLocalizedString(
                     "High",
                     comment: ""

@@ -30,7 +30,7 @@ extension CommandResponseViewController {
                 }
             }
             
-            return LocalizedString("Get Statistics…", comment: "Progress message for getting statistics.")
+            return LocalizedString("获取统计…", comment: "Progress message for getting statistics.")
         }
     }
     
@@ -56,7 +56,7 @@ extension CommandResponseViewController {
                 }
             }
 
-            return LocalizedString("Updating diagnostic LEDs mode", comment: "Progress message for changing diagnostic LED mode")
+            return LocalizedString("更新诊断LED模式", comment: "Progress message for changing diagnostic LED mode")
         }
     }
 }

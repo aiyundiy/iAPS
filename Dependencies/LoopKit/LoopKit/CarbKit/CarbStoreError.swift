@@ -19,7 +19,7 @@ extension CarbStore.CarbStoreError: LocalizedError {
         case .coreDataError(let error):
             return error.localizedDescription
         case .noData:
-            return LocalizedString("No values found", comment: "Describes an error for no data found in a CarbStore request")
+            return LocalizedString("找不到值", comment: "Describes an error for no data found in a CarbStore request")
         }
     }
 
@@ -34,7 +34,7 @@ extension CarbStore.CarbStoreError: LocalizedError {
         case .coreDataError:
             return nil
         case .noData:
-            return LocalizedString("Ensure carb data exists for the specified date", comment: "Recovery suggestion for a no data error")
+            return LocalizedString("确保在指定日期存在碳水化合物数据", comment: "Recovery suggestion for a no data error")
         }
     }
 }

@@ -35,7 +35,7 @@ extension AddCarbs {
                 if let carbsReq = state.carbsRequired, state.carbs < carbsReq {
                     Section {
                         HStack {
-                            Text("Carbs required")
+                            Text("需要碳水化合物")
                             Spacer()
                             Text((formatter.string(from: carbsReq as NSNumber) ?? "") + " g")
                         }
@@ -43,7 +43,7 @@ extension AddCarbs {
                 }
                 Section {
                     HStack {
-                        Text("Carbs").fontWeight(.semibold)
+                        Text("碳水化合物").fontWeight(.semibold)
                         Spacer()
                         DecimalTextField(
                             "0",
@@ -52,7 +52,7 @@ extension AddCarbs {
                             autofocus: true,
                             cleanInput: true
                         )
-                        Text("grams").foregroundColor(.secondary)
+                        Text("克").foregroundColor(.secondary)
                     }
 
                     if state.useFPUconversion {
@@ -62,7 +62,7 @@ extension AddCarbs {
                     // Summary when combining presets
                     if state.waitersNotepad() != "" {
                         HStack {
-                            Text("Total")
+                            Text("全部的")
                             let test = state.waitersNotepad().components(separatedBy: ", ").removeDublicates()
                             HStack(spacing: 0) {
                                 ForEach(test, id: \.self) {
@@ -76,12 +76,12 @@ extension AddCarbs {
                     // Time
                     HStack {
                         let now = Date.now
-                        Text("Time")
+                        Text("时间")
                         Spacer()
                         if !pushed {
                             Button {
                                 pushed = true
-                            } label: { Text("Now") }.buttonStyle(.borderless).foregroundColor(.secondary).padding(.trailing, 5)
+                            } label: { Text("现在") }.buttonStyle(.borderless).foregroundColor(.secondary).padding(.trailing, 5)
                         } else {
                             Button { state.date = state.date.addingTimeInterval(-15.minutes.timeInterval) }
                             label: { Image(systemName: "minus.circle") }.tint(.blue).buttonStyle(.borderless)
@@ -100,7 +100,7 @@ extension AddCarbs {
 
                     // Optional meal note
                     HStack {
-                        Text("Note").foregroundColor(.secondary)
+                        Text("笔记").foregroundColor(.secondary)
                         TextField("", text: $state.note).multilineTextAlignment(.trailing)
                         if state.note != "", isFocused {
                             Button { isFocused = false } label: { Image(systemName: "keyboard.chevron.compact.down") }
@@ -157,13 +157,13 @@ extension AddCarbs {
                             isPromptPresented = false
                         }
                     }
-                    label: { Text("Save") }
+                    label: { Text("保存") }
                     Button {
                         dish = ""
                         saved = false
                         isPromptPresented = false }
-                    label: { Text("Cancel") }
-                } header: { Text("Enter Meal Preset Name") }
+                    label: { Text("取消") }
+                } header: { Text("输入预设名称") }
             }.dynamicTypeSize(...DynamicTypeSize.xxLarge)
         }
 
@@ -228,7 +228,7 @@ extension AddCarbs {
                         minusButton
                     }
                     Picker("Preset", selection: $state.selection) {
-                        Text("Saved Food").tag(nil as Presets?)
+                        Text("保存的食物").tag(nil as Presets?)
                         ForEach(carbPresets, id: \.self) { (preset: Presets) in
                             Text(preset.dish ?? "").tag(preset as Presets?)
                         }
@@ -275,7 +275,7 @@ extension AddCarbs {
                     Button {
                         isPromptPresented = true
                     }
-                    label: { Text("Save as Preset") }
+                    label: { Text("保存为预设") }
                         .buttonStyle(.borderless)
                         .disabled(
                             empty ||
@@ -292,7 +292,7 @@ extension AddCarbs {
 
         @ViewBuilder private func proteinAndFat() -> some View {
             HStack {
-                Text("Fat").foregroundColor(.orange)
+                Text("胖的").foregroundColor(.orange)
                 Spacer()
                 DecimalTextField(
                     "0",
@@ -301,10 +301,10 @@ extension AddCarbs {
                     autofocus: false,
                     cleanInput: true
                 )
-                Text("grams").foregroundColor(.secondary)
+                Text("克").foregroundColor(.secondary)
             }
             HStack {
-                Text("Protein").foregroundColor(.red)
+                Text("蛋白质").foregroundColor(.red)
                 Spacer()
                 DecimalTextField(
                     "0",
@@ -314,7 +314,7 @@ extension AddCarbs {
                     cleanInput: true
                 ).foregroundColor(.loopRed)
 
-                Text("grams").foregroundColor(.secondary)
+                Text("克").foregroundColor(.secondary)
             }
         }
     }

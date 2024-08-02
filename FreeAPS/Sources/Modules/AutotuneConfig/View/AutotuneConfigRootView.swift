@@ -39,25 +39,25 @@ extension AutotuneConfig {
 
                 Section {
                     HStack {
-                        Text("Last run")
+                        Text("最后一步")
                         Spacer()
                         Text(dateFormatter.string(from: state.publishedDate))
                     }
                     Button { state.run() }
-                    label: { Text("Run now") }
+                    label: { Text("现在跑步") }
                 }
 
                 if let autotune = state.autotune {
                     if !state.onlyAutotuneBasals {
                         Section {
                             HStack {
-                                Text("Carb ratio")
+                                Text("碳水化合物比")
                                 Spacer()
                                 Text(isfFormatter.string(from: autotune.carbRatio as NSNumber) ?? "0")
                                 Text("g/U").foregroundColor(.secondary)
                             }
                             HStack {
-                                Text("Sensitivity")
+                                Text("灵敏度")
                                 Spacer()
                                 if state.units == .mmolL {
                                     Text(isfFormatter.string(from: autotune.sensitivity.asMmolL as NSNumber) ?? "0")
@@ -69,7 +69,7 @@ extension AutotuneConfig {
                         }
                     }
 
-                    Section(header: Text("Basal profile")) {
+                    Section(header: Text("基础率设置")) {
                         ForEach(0 ..< autotune.basalProfile.count, id: \.self) { index in
                             HStack {
                                 Text(autotune.basalProfile[index].start).foregroundColor(.secondary)
@@ -79,20 +79,20 @@ extension AutotuneConfig {
                             }
                         }
                         HStack {
-                            Text("Total")
+                            Text("全部的")
                                 .bold()
                                 .foregroundColor(.primary)
                             Spacer()
                             Text(rateFormatter.string(from: autotune.basalProfile.reduce(0) { $0 + $1.rate } as NSNumber) ?? "0")
                                 .foregroundColor(.primary) +
-                                Text(" U/day")
+                                Text("u/day")
                                 .foregroundColor(.secondary)
                         }
                     }
 
                     Section {
                         Button { state.delete() }
-                        label: { Text("Delete autotune data") }
+                        label: { Text("删除自动点数据") }
                             .foregroundColor(.red)
                     }
 
@@ -101,9 +101,9 @@ extension AutotuneConfig {
                          Button {
                              replaceAlert = true
                          }
-                         label: { Text("Save as your Normal Basal Rates") }
+                         label: { Text("保存为正常的基础费率") }
                      } header: {
-                         Text("Save on Pump")
+                         Text("保存泵")
                      }*/
                 }
             }
@@ -111,7 +111,7 @@ extension AutotuneConfig {
             .onAppear(perform: configureView)
             .navigationTitle("Autotune")
             .navigationBarTitleDisplayMode(.automatic)
-            .alert(Text("Are you sure?"), isPresented: $replaceAlert) {
+            .alert(Text("你确定吗？"), isPresented: $replaceAlert) {
                 Button("Yes", action: {
                     state.replace()
                     replaceAlert.toggle()

@@ -15,13 +15,13 @@ extension ContactTrick {
             Form {
                 switch authorization {
                 case .authorized:
-                    Section(header: Text("Contacts")) {
+                    Section(header: Text("联系人")) {
                         list
                         addButton
                     }
                     Section(
                         header: state.changed ?
-                            Text("Don't forget to save your changes.")
+                            Text("不要忘记保存更改。")
                             .frame(maxWidth: .infinity, alignment: .center)
                             .foregroundStyle(.primary) : nil
                     ) {
@@ -46,7 +46,7 @@ extension ContactTrick {
                     }
                     Section {
                         Button(action: onRequestContactsAccess) {
-                            Text("Grant iAPS access to contacts")
+                            Text("授予IAPS访问联系人")
                         }
                     }
 
@@ -127,7 +127,7 @@ extension ContactTrick {
         }
 
         private var addButton: some View {
-            AnyView(Button(action: onAdd) { Text("Add") })
+            AnyView(Button(action: onAdd) { Text("添加") })
         }
 
         func onAdd() {
@@ -156,7 +156,7 @@ extension ContactTrick {
         var body: some View {
             HStack {
                 Text(
-                    NSLocalizedString("Contact", comment: "") + ": " + "iAPS \(index + 1)"
+                    NSLocalizedString("接触", comment: "") + ": " + "iAPS \(index + 1)"
                 )
                 .font(.body)
                 .minimumScaleFactor(0.5)
@@ -221,7 +221,7 @@ extension ContactTrick {
                 Section {
                     Picker(
                         selection: $entry.layout,
-                        label: Text("Layout")
+                        label: Text("布局")
                     ) {
                         ForEach(ContactTrickLayout.allCases) { v in
                             Text(v.displayName).tag(v)
@@ -233,7 +233,7 @@ extension ContactTrick {
                     case .single:
                         Picker(
                             selection: $entry.primary,
-                            label: Text("Primary")
+                            label: Text("基本的")
                         ) {
                             ForEach(ContactTrickValue.allCases) { v in
                                 Text(v.displayName).tag(v)
@@ -241,7 +241,7 @@ extension ContactTrick {
                         }
                         Picker(
                             selection: $entry.top,
-                            label: Text("Top")
+                            label: Text("顶部")
                         ) {
                             ForEach(ContactTrickValue.allCases) { v in
                                 Text(v.displayName).tag(v)
@@ -249,7 +249,7 @@ extension ContactTrick {
                         }
                         Picker(
                             selection: $entry.bottom,
-                            label: Text("Bottom")
+                            label: Text("底部")
                         ) {
                             ForEach(ContactTrickValue.allCases) { v in
                                 Text(v.displayName).tag(v)
@@ -258,7 +258,7 @@ extension ContactTrick {
                     case .split:
                         Picker(
                             selection: $entry.top,
-                            label: Text("Top")
+                            label: Text("顶部")
                         ) {
                             ForEach(ContactTrickValue.allCases) { v in
                                 Text(v.displayName).tag(v)
@@ -266,7 +266,7 @@ extension ContactTrick {
                         }
                         Picker(
                             selection: $entry.bottom,
-                            label: Text("Bottom")
+                            label: Text("底部")
                         ) {
                             ForEach(ContactTrickValue.allCases) { v in
                                 Text(v.displayName).tag(v)
@@ -275,10 +275,10 @@ extension ContactTrick {
                     }
                 }
 
-                Section(header: Text("Ring")) {
+                Section(header: Text("戒指")) {
                     Picker(
                         selection: $entry.ring1,
-                        label: Text("Outer")
+                        label: Text("外")
                     ) {
                         ForEach(ContactTrickLargeRing.allCases) { v in
                             Text(v.displayName).tag(v)
@@ -286,7 +286,7 @@ extension ContactTrick {
                     }
                     Picker(
                         selection: $entry.ringWidth,
-                        label: Text("Width")
+                        label: Text("宽度")
                     ) {
                         ForEach(ringWidths, id: \.self) { s in
                             Text("\(s)").tag(s)
@@ -294,7 +294,7 @@ extension ContactTrick {
                     }
                     Picker(
                         selection: $entry.ringGap,
-                        label: Text("Gap")
+                        label: Text("差距")
                     ) {
                         ForEach(ringGaps, id: \.self) { s in
                             Text("\(s)").tag(s)
@@ -302,7 +302,7 @@ extension ContactTrick {
                     }
                 }
 
-                Section(header: Text("Font")) {
+                Section(header: Text("字体")) {
                     if availableFonts == nil {
                         HStack {
                             Spacer()
@@ -326,7 +326,7 @@ extension ContactTrick {
                     }
                     Picker(
                         selection: $entry.fontSize,
-                        label: Text("Size")
+                        label: Text("尺寸")
                     ) {
                         ForEach(fontSizes, id: \.self) { s in
                             Text("\(s)").tag(s)
@@ -334,7 +334,7 @@ extension ContactTrick {
                     }
                     Picker(
                         selection: $entry.secondaryFontSize,
-                        label: Text("Secondary size")
+                        label: Text("次要大小")
                     ) {
                         ForEach(fontSizes, id: \.self) { s in
                             Text("\(s)").tag(s)
@@ -342,7 +342,7 @@ extension ContactTrick {
                     }
                     Picker(
                         selection: $entry.fontTracking,
-                        label: Text("Tracking")
+                        label: Text("追踪")
                     ) {
                         ForEach(FontTracking.allCases) { w in
                             Text(w.displayName).tag(w)
@@ -351,7 +351,7 @@ extension ContactTrick {
                     if entry.isDefaultFont() {
                         Picker(
                             selection: $entry.fontWeight,
-                            label: Text("Weight")
+                            label: Text("重量")
                         ) {
                             ForEach(FontWeight.allCases) { w in
                                 Text(w.displayName).tag(w)

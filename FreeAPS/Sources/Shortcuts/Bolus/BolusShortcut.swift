@@ -64,16 +64,16 @@ import Intents
 @available(iOS 16.0,*) final class BolusIntentRequest: BaseIntentsRequest {
     func bolus(_ bolusAmount: Double) throws -> String {
         guard settingsManager.settings.allowBolusShortcut else {
-            return NSLocalizedString("Bolus Shortcuts are disabled in iAPS settings", comment: "")
+            return NSLocalizedString("推注捷径在IAPS设置中被禁用", comment: "")
         }
         guard bolusAmount >= Double(settingsManager.preferences.bolusIncrement) else {
-            return NSLocalizedString("too small bolus amount", comment: "")
+            return NSLocalizedString("推注太小", comment: "")
         }
 
         guard bolusAmount <= Double(settingsManager.pumpSettings.maxBolus),
               settingsManager.settings.allowedRemoteBolusAmount >= Decimal(bolusAmount)
         else {
-            return NSLocalizedString("Max Bolus exceeded!", comment: "")
+            return NSLocalizedString("Max Bolus超过了！", comment: "")
         }
 
         let bolus = min(
@@ -82,7 +82,7 @@ import Intents
         )
 
         let resultDisplay: String =
-            NSLocalizedString("A bolus command of ", comment: "") + bolus.formatted() + NSLocalizedString(
+            NSLocalizedString("推注的命令", comment: "") + bolus.formatted() + NSLocalizedString(
                 " U of insulin was sent to iAPS. Verify in iAPS app or in Nightscout if the bolus was delivered.",
                 comment: ""
             )

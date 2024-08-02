@@ -22,19 +22,19 @@ extension BasalProfileEditor {
 
         var body: some View {
             Form {
-                Section(header: Text("Schedule")) {
+                Section(header: Text("日程")) {
                     list
                     addButton
                 }
                 Section {
                     HStack {
-                        Text("Total")
+                        Text("全部的")
                             .bold()
                             .foregroundColor(.primary)
                         Spacer()
                         Text(rateFormatter.string(from: state.total as NSNumber) ?? "0")
                             .foregroundColor(.primary) +
-                            Text(" U/day")
+                            Text("u/day")
                             .foregroundColor(.secondary)
                     }
                 }
@@ -68,8 +68,8 @@ extension BasalProfileEditor {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        Text("Rate").frame(width: geometry.size.width / 2)
-                        Text("Time").frame(width: geometry.size.width / 2)
+                        Text("速度").frame(width: geometry.size.width / 2)
+                        Text("时间").frame(width: geometry.size.width / 2)
                     }
                     HStack(spacing: 0) {
                         Picker(selection: $state.items[index].rateIndex, label: EmptyView()) {
@@ -110,12 +110,12 @@ extension BasalProfileEditor {
                 ForEach(state.items.indexed(), id: \.1.id) { index, item in
                     NavigationLink(destination: pickers(for: index)) {
                         HStack {
-                            Text("Rate").foregroundColor(.secondary)
+                            Text("速度").foregroundColor(.secondary)
                             Text(
                                 "\(rateFormatter.string(from: state.rateValues[item.rateIndex] as NSNumber) ?? "0") U/hr"
                             )
                             Spacer()
-                            Text("starts at").foregroundColor(.secondary)
+                            Text("开始于").foregroundColor(.secondary)
                             Text(
                                 "\(dateFormatter.string(from: Date(timeIntervalSince1970: state.timeValues[item.timeIndex])))"
                             )
@@ -134,7 +134,7 @@ extension BasalProfileEditor {
 
             switch editMode {
             case .inactive:
-                return AnyView(Button(action: onAdd) { Text("Add") })
+                return AnyView(Button(action: onAdd) { Text("添加") })
             default:
                 return AnyView(EmptyView())
             }

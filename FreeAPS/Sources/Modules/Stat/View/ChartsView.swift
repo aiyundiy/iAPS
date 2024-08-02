@@ -123,7 +123,7 @@ struct ChartsView: View {
                 ) + " (≤\(low.formatted(.number.grouping(.never).rounded().precision(.fractionLength(1)))))",
                 percent: fetched[0].decimal
             ),
-            .init(type: NSLocalizedString("In Range", comment: ""), percent: fetched[1].decimal),
+            .init(type: NSLocalizedString("在范围内", comment: ""), percent: fetched[1].decimal),
             .init(
                 type: NSLocalizedString(
                     "High",
@@ -149,7 +149,7 @@ struct ChartsView: View {
                 "Low",
                 comment: ""
             ) + " (≤\(low.formatted(.number.grouping(.never).rounded().precision(.fractionLength(1)))))": .red,
-            NSLocalizedString("In Range", comment: ""): .green,
+            NSLocalizedString("在范围内", comment: ""): .green,
             NSLocalizedString(
                 "High",
                 comment: ""

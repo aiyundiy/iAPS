@@ -87,7 +87,7 @@ struct CurrentGlucoseView: View {
                                 Text(
                                     minutesAgo <= 1 ? "" : (
                                         text + " " +
-                                            NSLocalizedString("min", comment: "Short form for minutes") + " "
+                                            NSLocalizedString("最小", comment: "Short form for minutes") + " "
                                     )
                                 )
                             }.offset(x: 7, y: 0)

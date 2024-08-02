@@ -80,19 +80,19 @@ public enum GlucoseTrend: Int, CaseIterable {
     public var localizedDescription: String {
         switch self {
         case .upUpUp:
-            return LocalizedString("Rising very fast", comment: "Glucose trend up-up-up")
+            return LocalizedString("快速上升", comment: "Glucose trend up-up-up")
         case .upUp:
-            return LocalizedString("Rising fast", comment: "Glucose trend up-up")
+            return LocalizedString("快速上升", comment: "Glucose trend up-up")
         case .up:
-            return LocalizedString("Rising", comment: "Glucose trend up")
+            return LocalizedString("上升", comment: "Glucose trend up")
         case .flat:
-            return LocalizedString("Flat", comment: "Glucose trend flat")
+            return LocalizedString("平坦的", comment: "Glucose trend flat")
         case .down:
-            return LocalizedString("Falling", comment: "Glucose trend down")
+            return LocalizedString("跌倒", comment: "Glucose trend down")
         case .downDown:
-            return LocalizedString("Falling fast", comment: "Glucose trend down-down")
+            return LocalizedString("迅速下降", comment: "Glucose trend down-down")
         case .downDownDown:
-            return LocalizedString("Falling very fast", comment: "Glucose trend down-down-down")
+            return LocalizedString("跌倒很快", comment: "Glucose trend down-down-down")
         }
     }
     
@@ -138,9 +138,9 @@ public protocol GlucoseDisplayable {
 extension GlucoseDisplayable {
     public var stateDescription: String {
         if isStateValid {
-            return LocalizedString("OK", comment: "Sensor state description for the valid state")
+            return LocalizedString("好的", comment: "Sensor state description for the valid state")
         } else {
-            return LocalizedString("Needs Attention", comment: "Sensor state description for the non-valid state")
+            return LocalizedString("需要注意", comment: "Sensor state description for the non-valid state")
         }
     }
 }

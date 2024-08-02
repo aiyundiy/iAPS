@@ -25,7 +25,7 @@ struct LiveActivity: Widget {
                 Text(context.state.change)
             }
         } else {
-            Text("--")
+            Text(" -   - ")
         }
     }
 

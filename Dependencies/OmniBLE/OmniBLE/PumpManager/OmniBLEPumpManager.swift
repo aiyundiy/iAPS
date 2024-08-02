@@ -40,15 +40,15 @@ extension OmniBLEPumpManagerError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .noPodPaired:
-            return LocalizedString("No pod paired", comment: "Error message shown when no pod is paired")
+            return LocalizedString("没有泵配对", comment: "Error message shown when no pod is paired")
         case .podAlreadyPaired:
-            return LocalizedString("Pod already paired", comment: "Error message shown when user cannot pair because pod is already paired")
+            return LocalizedString("POD已经配对", comment: "Error message shown when user cannot pair because pod is already paired")
         case .insulinTypeNotConfigured:
-            return LocalizedString("Insulin type not configured", comment: "Error description for insulin type not configured")
+            return LocalizedString("胰岛素类型未配置", comment: "Error description for insulin type not configured")
         case .notReadyForCannulaInsertion:
-            return LocalizedString("Pod is not in a state ready for cannula insertion.", comment: "Error message when cannula insertion fails because the pod is in an unexpected state")
+            return LocalizedString("POD不在准备插入的状态下。", comment: "Error message when cannula insertion fails because the pod is in an unexpected state")
         case .invalidSetting:
-            return LocalizedString("Invalid Setting", comment: "Error description for invalid setting")
+            return LocalizedString("无效设置", comment: "Error description for invalid setting")
         case .communication(let error):
             if let error = error as? LocalizedError {
                 return error.errorDescription
@@ -71,7 +71,7 @@ extension OmniBLEPumpManagerError: LocalizedError {
     public var recoverySuggestion: String? {
         switch self {
         case .noPodPaired:
-            return LocalizedString("Please pair a new pod", comment: "Recovery suggestion shown when no pod is paired")
+            return LocalizedString("请配对一个新的Pod", comment: "Recovery suggestion shown when no pod is paired")
         default:
             return nil
         }
@@ -82,7 +82,7 @@ public class OmniBLEPumpManager: DeviceManager {
 
     public let managerIdentifier: String = "Omnipod-Dash" // use a single token to make parsing log files easier
 
-    public let localizedTitle = LocalizedString("Omnipod DASH", comment: "Generic title of the OmniBLE pump manager")
+    public let localizedTitle = LocalizedString("Omnipod破折号", comment: "Generic title of the OmniBLE pump manager")
 
     static let podAlarmNotificationIdentifier = "OmniBLE:\(LoopNotificationCategory.pumpFault.rawValue)"
 
@@ -588,7 +588,7 @@ extension OmniBLEPumpManager {
     public func buildPumpStatusHighlight(for state: OmniBLEPumpManagerState, andDate date: Date = Date()) -> PumpStatusHighlight? {
         if state.podState?.needsCommsRecovery == true {
             return PumpStatusHighlight(
-                localizedMessage: LocalizedString("Comms Issue", comment: "Status highlight that delivery is uncertain."),
+                localizedMessage: LocalizedString("通讯问题", comment: "Status highlight that delivery is uncertain."),
                 imageName: "exclamationmark.circle.fill",
                 state: .critical)
         }
@@ -596,30 +596,30 @@ extension OmniBLEPumpManager {
         switch podCommState(for: state) {
         case .activating:
             return PumpStatusHighlight(
-                localizedMessage: LocalizedString("Finish Setup", comment: "Status highlight that when pod is activating."),
+                localizedMessage: LocalizedString("完成设置", comment: "Status highlight that when pod is activating."),
                 imageName: "exclamationmark.circle.fill",
                 state: .warning)
         case .deactivating:
             return PumpStatusHighlight(
-                localizedMessage: LocalizedString("Finish Deactivation", comment: "Status highlight that when pod is deactivating."),
+                localizedMessage: LocalizedString("完成停用", comment: "Status highlight that when pod is deactivating."),
                 imageName: "exclamationmark.circle.fill",
                 state: .warning)
         case .noPod:
             return PumpStatusHighlight(
-                localizedMessage: LocalizedString("No Pod", comment: "Status highlight that when no pod is paired."),
+                localizedMessage: LocalizedString("没有Pod", comment: "Status highlight that when no pod is paired."),
                 imageName: "exclamationmark.circle.fill",
                 state: .warning)
         case .fault(let detail):
             var message: String
             switch detail.faultEventCode.faultType {
             case .reservoirEmpty:
-                message = LocalizedString("No Insulin", comment: "Status highlight message for emptyReservoir alarm.")
+                message = LocalizedString("没有胰岛素", comment: "Status highlight message for emptyReservoir alarm.")
             case .exceededMaximumPodLife80Hrs:
-                message = LocalizedString("Pod Expired", comment: "Status highlight message for podExpired alarm.")
+                message = LocalizedString("Pod过期", comment: "Status highlight message for podExpired alarm.")
             case .occluded:
-                message = LocalizedString("Pod Occlusion", comment: "Status highlight message for occlusion alarm.")
+                message = LocalizedString("POD闭塞", comment: "Status highlight message for occlusion alarm.")
             default:
-                message = LocalizedString("Pod Error", comment: "Status highlight message for other alarm.")
+                message = LocalizedString("POD错误", comment: "Status highlight message for other alarm.")
             }
             return PumpStatusHighlight(
                 localizedMessage: message,
@@ -628,22 +628,22 @@ extension OmniBLEPumpManager {
         case .active:
             if let reservoirPercent = state.reservoirLevel?.percentage, reservoirPercent == 0 {
                 return PumpStatusHighlight(
-                    localizedMessage: LocalizedString("No Insulin", comment: "Status highlight that a pump is out of insulin."),
+                    localizedMessage: LocalizedString("没有胰岛素", comment: "Status highlight that a pump is out of insulin."),
                     imageName: "exclamationmark.circle.fill",
                     state: .critical)
             } else if state.podState?.isSuspended == true {
                 return PumpStatusHighlight(
-                    localizedMessage: LocalizedString("Insulin Suspended", comment: "Status highlight that insulin delivery was suspended."),
+                    localizedMessage: LocalizedString("胰岛素暂停", comment: "Status highlight that insulin delivery was suspended."),
                     imageName: "pause.circle.fill",
                     state: .warning)
             } else if date.timeIntervalSince(state.lastPumpDataReportDate ?? .distantPast) > .minutes(12) {
                 return PumpStatusHighlight(
-                    localizedMessage: LocalizedString("Signal Loss", comment: "Status highlight when communications with the pod haven't happened recently."),
+                    localizedMessage: LocalizedString("信号丢失", comment: "Status highlight when communications with the pod haven't happened recently."),
                     imageName: "exclamationmark.circle.fill",
                     state: .critical)
             } else if isRunningManualTempBasal(for: state) {
                 return PumpStatusHighlight(
-                    localizedMessage: LocalizedString("Manual Basal", comment: "Status highlight when manual temp basal is running."),
+                    localizedMessage: LocalizedString("手动基础", comment: "Status highlight when manual temp basal is running."),
                     imageName: "exclamationmark.circle.fill",
                     state: .warning)
             }
@@ -2358,7 +2358,7 @@ extension OmniBLEPumpManager: PumpManager {
         pumpDelegate.notify { delegate in
             let content = Alert.Content(title: fault.faultEventCode.notificationTitle,
                                         body: fault.faultEventCode.notificationBody,
-                                        acknowledgeActionButtonLabel: LocalizedString("OK", comment: "Alert acknowledgment OK button"))
+                                        acknowledgeActionButtonLabel: LocalizedString("好的", comment: "Alert acknowledgment OK button"))
             delegate?.issueAlert(Alert(identifier: Alert.Identifier(managerIdentifier: OmniBLEPumpManager.podAlarmNotificationIdentifier,
                                                                     alertIdentifier: fault.faultEventCode.description),
                                        foregroundContent: content, backgroundContent: content,
@@ -2567,17 +2567,17 @@ extension FaultEventCode {
     public var notificationTitle: String {
         switch self.faultType {
         case .reservoirEmpty:
-            return LocalizedString("Empty Reservoir", comment: "The title for Empty Reservoir alarm notification")
+            return LocalizedString("空储液器", comment: "The title for Empty Reservoir alarm notification")
         case .occluded, .occlusionCheckStartup1, .occlusionCheckStartup2, .occlusionCheckTimeouts1, .occlusionCheckTimeouts2, .occlusionCheckTimeouts3, .occlusionCheckPulseIssue, .occlusionCheckBolusProblem:
-            return LocalizedString("Occlusion Detected", comment: "The title for Occlusion alarm notification")
+            return LocalizedString("检测到闭塞", comment: "The title for Occlusion alarm notification")
         case .exceededMaximumPodLife80Hrs:
-            return LocalizedString("Pod Expired", comment: "The title for Pod Expired alarm notification")
+            return LocalizedString("Pod过期", comment: "The title for Pod Expired alarm notification")
         default:
             return String(format: LocalizedString("Critical Pod Fault %1$03d", comment: "The title for AlarmCode.other notification: (1: fault code value)"), self.rawValue)
         }
     }
 
     public var notificationBody: String {
-        return LocalizedString("Insulin delivery stopped. Change Pod now.", comment: "The default notification body for AlarmCodes")
+        return LocalizedString("胰岛素输送停止。立即更改POD。", comment: "The default notification body for AlarmCodes")
     }
 }

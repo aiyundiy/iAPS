@@ -22,7 +22,7 @@ extension TargetsEditor {
 
         var body: some View {
             Form {
-                Section(header: Text("Schedule")) {
+                Section(header: Text("日程")) {
                     list
                     addButton
                 }
@@ -33,7 +33,7 @@ extension TargetsEditor {
                         state.save()
                     }
                     label: {
-                        Text("Save")
+                        Text("保存")
                     }
                     .disabled(state.items.isEmpty)
                 }
@@ -55,8 +55,8 @@ extension TargetsEditor {
             GeometryReader { geometry in
                 VStack {
                     HStack {
-                        Text("Target").frame(width: geometry.size.width / 3)
-                        Text("Time").frame(width: geometry.size.width / 3)
+                        Text("目标").frame(width: geometry.size.width / 3)
+                        Text("时间").frame(width: geometry.size.width / 3)
                     }
                     HStack(spacing: 0) {
                         Picker(selection: $state.items[index].lowIndex, label: EmptyView()) {
@@ -97,7 +97,7 @@ extension TargetsEditor {
                             )
                             Text("\(state.units.rawValue)").foregroundColor(.secondary)
                             Spacer()
-                            Text("starts at").foregroundColor(.secondary)
+                            Text("开始于").foregroundColor(.secondary)
                             Text(
                                 "\(dateFormatter.string(from: Date(timeIntervalSince1970: state.timeValues[item.timeIndex])))"
                             )
@@ -116,7 +116,7 @@ extension TargetsEditor {
 
             switch editMode {
             case .inactive:
-                return AnyView(Button(action: onAdd) { Text("Add") })
+                return AnyView(Button(action: onAdd) { Text("添加") })
             default:
                 return AnyView(EmptyView())
             }

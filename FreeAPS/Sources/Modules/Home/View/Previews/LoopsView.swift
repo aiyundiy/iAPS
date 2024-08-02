@@ -12,23 +12,23 @@ struct LoopsView: View {
             let readings = loopStatistics.1
             let percentage = loopStatistics.2
 
-            Text(NSLocalizedString("Loops", comment: "") + " / " + NSLocalizedString("Readings", comment: ""))
+            Text(NSLocalizedString("闭环", comment: "") + " / " + NSLocalizedString("读数", comment: ""))
                 .padding(.bottom, 10).font(.previewHeadline)
 
             loopChart(percentage: percentage)
 
             HStack {
-                Text("Average Interval")
+                Text("平均间隔")
                 Text(loopStatistics.3)
             }.font(.loopFont)
 
             HStack {
-                Text("Readings")
+                Text("读数")
                 Text("\(readings)")
             }.font(.loopFont)
 
             HStack {
-                Text("Loops")
+                Text("闭环")
                 Text("\(loops)")
             }.font(.loopFont)
         }

@@ -35,7 +35,7 @@ struct MainView: View {
                                 .frame(width: 14, height: 14)
                                 .padding(2)
                         }
-                        Text("Updating...").font(.caption2).foregroundColor(.secondary)
+                        Text("更新...").font(.caption2).foregroundColor(.secondary)
                     }
                 }
             }
@@ -88,7 +88,7 @@ struct MainView: View {
                     HStack {
                         /* if minutesAgo > 0 {
                              Text(minuteString)
-                             Text("min")
+                             Text("最小")
                          } */
                         Text(state.delta)
                     }
@@ -104,7 +104,7 @@ struct MainView: View {
                     if state.lastLoopDate != nil {
                         Text(timeString).font(.caption2).foregroundColor(.gray)
                     } else {
-                        Text("--").font(.caption2).foregroundColor(.gray)
+                        Text(" -   - ").font(.caption2).foregroundColor(.gray)
                     }
                 }
             }
@@ -436,7 +436,7 @@ struct MainView: View {
         if minAgo > 1440 {
             return "--"
         }
-        return "\(minAgo) " + NSLocalizedString("min", comment: "Minutes ago since last loop")
+        return "\(minAgo) " + NSLocalizedString("最小", comment: "Minutes ago since last loop")
     }
 
     private var color: Color {

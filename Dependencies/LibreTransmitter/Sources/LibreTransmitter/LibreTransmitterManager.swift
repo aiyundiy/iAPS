@@ -149,7 +149,7 @@ public final class LibreTransmitterManager: LibreTransmitterDelegate {
         Self.className
     }
 
-    static public let localizedTitle = LocalizedString("Libre Bluetooth", comment: "Title for the CGMManager option")
+    static public let localizedTitle = LocalizedString("libre蓝牙", comment: "Title for the CGMManager option")
 
 
 
@@ -258,7 +258,7 @@ extension LibreTransmitterManager {
                 let aday = 86_400.0 //in seconds
                 var humanReadableSensorAge: String {
                     let days = TimeInterval(bleData.age * 60) / aday
-                    return String(format: "%.2f", days) + NSLocalizedString(" day(s)", comment: "Sensor day(s)")
+                    return String(format: "%.2f", days) + NSLocalizedString("天）", comment: "Sensor day(s)")
                 }
 
 
@@ -273,7 +273,7 @@ extension LibreTransmitterManager {
 
                 var humanReadableTimeLeft: String {
                     let days = TimeInterval(minutesLeft * 60) / aday
-                    return String(format: "%.2f", days) + NSLocalizedString(" day(s)", comment: "Sensor day(s)")
+                    return String(format: "%.2f", days) + NSLocalizedString("天）", comment: "Sensor day(s)")
                 }
 
                 //once the sensor has ended we don't know the exact date anymore

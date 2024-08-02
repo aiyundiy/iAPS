@@ -39,7 +39,7 @@ struct BeepPreferenceSelectionView: View {
         VStack {
             List {
                 Section {
-                    Text(LocalizedString("Confidence reminders are beeps from the Pod which can be used to acknowledge selected commands when the Pod is not silenced.", comment: "Help text for BeepPreferenceSelectionView")).fixedSize(horizontal: false, vertical: true)
+                    Text(LocalizedString("置信提醒是来自POD的哔哔声，可用于确认POD时所选命令。", comment: "Help text for BeepPreferenceSelectionView")).fixedSize(horizontal: false, vertical: true)
                         .padding(.vertical, 10)
                 }
 
@@ -88,7 +88,7 @@ struct BeepPreferenceSelectionView: View {
 
         }
         .insetGroupedListStyle()
-        .navigationTitle(LocalizedString("Confidence Reminders", comment: "navigation title for confidence reminders"))
+        .navigationTitle(LocalizedString("信心提醒", comment: "navigation title for confidence reminders"))
         .navigationBarTitleDisplayMode(.inline)
         .alert(isPresented: $alertIsPresented, content: { alert(error: error) })
     }
@@ -110,15 +110,15 @@ struct BeepPreferenceSelectionView: View {
 
     private var cancelButton: some View {
         Button(action: { self.presentationMode.wrappedValue.dismiss() } ) {
-            Text(LocalizedString("Cancel", comment: "Button title for cancelling confidence reminders edit"))
+            Text(LocalizedString("取消", comment: "Button title for cancelling confidence reminders edit"))
         }
     }
 
     var saveButtonText: String {
         if saving {
-            return LocalizedString("Saving...", comment: "button title for saving confidence reminder while saving")
+            return LocalizedString("保存...", comment: "button title for saving confidence reminder while saving")
         } else {
-            return LocalizedString("Save", comment: "button title for saving confidence reminder")
+            return LocalizedString("保存", comment: "button title for saving confidence reminder")
         }
     }
 
@@ -128,7 +128,7 @@ struct BeepPreferenceSelectionView: View {
 
     private func alert(error: Error?) -> SwiftUI.Alert {
         return SwiftUI.Alert(
-            title: Text(LocalizedString("Failed to update confidence reminder preference.", comment: "Alert title for error when updating confidence reminder preference")),
+            title: Text(LocalizedString("无法更新信心提醒偏好。", comment: "Alert title for error when updating confidence reminder preference")),
             message: Text(error?.localizedDescription ?? "No Error")
         )
     }

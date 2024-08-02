@@ -39,7 +39,7 @@ struct SilencePodSelectionView: View {
         VStack {
             List {
                 Section {
-                    Text(LocalizedString("Silence Pod mode suppresses all Pod alert and confirmation reminder beeping.", comment: "Help text for Silence Pod view")).fixedSize(horizontal: false, vertical: true)
+                    Text(LocalizedString("静音POD模式抑制所有POD警报并确认提醒哔哔声。", comment: "Help text for Silence Pod view")).fixedSize(horizontal: false, vertical: true)
                         .padding(.vertical, 10)
                 }
                 Section {
@@ -86,7 +86,7 @@ struct SilencePodSelectionView: View {
             .background(Color(UIColor.secondarySystemGroupedBackground).shadow(radius: 5))
         }
         .insetGroupedListStyle()
-        .navigationTitle(LocalizedString("Silence Pod", comment: "navigation title for Silnce Pod"))
+        .navigationTitle(LocalizedString("静音Pod", comment: "navigation title for Silnce Pod"))
         .navigationBarTitleDisplayMode(.inline)
         .alert(isPresented: $alertIsPresented, content: { alert(error: error) })
     }
@@ -108,15 +108,15 @@ struct SilencePodSelectionView: View {
 
     private var cancelButton: some View {
         Button(action: { self.presentationMode.wrappedValue.dismiss() } ) {
-            Text(LocalizedString("Cancel", comment: "Button title for cancelling silence pod edit"))
+            Text(LocalizedString("取消", comment: "Button title for cancelling silence pod edit"))
         }
     }
 
     var saveButtonText: String {
         if saving {
-            return LocalizedString("Saving...", comment: "button title for saving silence pod preference while saving")
+            return LocalizedString("保存...", comment: "button title for saving silence pod preference while saving")
         } else {
-            return LocalizedString("Save", comment: "button title for saving silence pod preference")
+            return LocalizedString("保存", comment: "button title for saving silence pod preference")
         }
     }
 
@@ -126,7 +126,7 @@ struct SilencePodSelectionView: View {
 
     private func alert(error: Error?) -> SwiftUI.Alert {
         return SwiftUI.Alert(
-            title: Text(LocalizedString("Failed to update silence pod preference.", comment: "Alert title for error when updating silence pod preference")),
+            title: Text(LocalizedString("无法更新静音的POD偏好。", comment: "Alert title for error when updating silence pod preference")),
             message: Text(error?.localizedDescription ?? "No Error")
         )
     }

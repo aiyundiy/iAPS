@@ -23,9 +23,9 @@ extension Calibrations {
         var body: some View {
             GeometryReader { geo in
                 Form {
-                    Section(header: Text("Add calibration")) {
+                    Section(header: Text("添加校准")) {
                         HStack {
-                            Text("Meter glucose")
+                            Text("仪血糖")
                             Spacer()
                             DecimalTextField(
                                 "0",
@@ -39,34 +39,34 @@ extension Calibrations {
                         Button {
                             state.addCalibration()
                         }
-                        label: { Text("Add") }
+                        label: { Text("添加") }
                             .disabled(state.newCalibration <= 0)
                     }
 
-                    Section(header: Text("Info")) {
+                    Section(header: Text("信息")) {
                         HStack {
-                            Text("Slope")
+                            Text("坡")
                             Spacer()
                             Text(formatter.string(from: state.slope as NSNumber)!)
                         }
                         HStack {
-                            Text("Intercept")
+                            Text("截距")
                             Spacer()
                             Text(formatter.string(from: state.intercept as NSNumber)!)
                         }
                     }
 
-                    Section(header: Text("Remove")) {
+                    Section(header: Text("消除")) {
                         Button {
                             state.removeLast()
                         }
-                        label: { Text("Remove Last") }
+                        label: { Text("删除最后") }
                             .disabled(state.calibrations.isEmpty)
 
                         Button {
                             state.removeAll()
                         }
-                        label: { Text("Remove All") }
+                        label: { Text("移除所有") }
                             .disabled(state.calibrations.isEmpty)
                         List {
                             ForEach(state.items) { item in
@@ -88,7 +88,7 @@ extension Calibrations {
                     }
 
                     if state.calibrations.isNotEmpty {
-                        Section(header: Text("Chart")) {
+                        Section(header: Text("图表")) {
                             CalibrationsChart().environmentObject(state)
                                 .frame(minHeight: geo.size.width)
                         }

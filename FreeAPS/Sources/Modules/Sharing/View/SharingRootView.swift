@@ -46,7 +46,7 @@ extension Sharing {
                                 .datePickerStyle(.compact)
                         }
                     }
-                } header: { Text("Upload Settings and Statistics") }
+                } header: { Text("上传设置和统计信息") }
                 footer: {
                     Text(
                         "\nIf you enable \"Share and Backup\" daily backups of your settings and statistics will be made to online database.\n\nMake sure to copy and save your recovery token below. The recovery token is required to import your settings to another phone when using the onboarding view."
@@ -56,7 +56,7 @@ extension Sharing {
                 if !state.uploadStats {
                     Section {
                         Toggle("Just iAPS version number", isOn: $state.uploadVersion)
-                    } header: { Text("Share Bare Minimum") }
+                    } header: { Text("共享最低限度") }
                 }
 
                 Section {}
@@ -68,7 +68,7 @@ extension Sharing {
 
                 Section {
                     HStack {
-                        Text(display ? state.identfier : NSLocalizedString("Tap to display", comment: "Token display button"))
+                        Text(display ? state.identfier : NSLocalizedString("点击以显示", comment: "Token display button"))
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .onTapGesture { display.toggle() }
@@ -81,7 +81,7 @@ extension Sharing {
                         }
                     }
                 }
-                header: { Text("Your recovery token") }
+                header: { Text("您的恢复令牌") }
 
                 footer: {
                     Text((copied && display) ? "" : display ? "Long press to copy" : "")

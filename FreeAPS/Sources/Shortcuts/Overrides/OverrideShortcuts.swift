@@ -78,8 +78,8 @@ enum OverrideIntentError: Error {
             let isDone = finalOverrideApply != nil ? finalOverrideApply?.isPreset ?? false : false
 
             let displayDetail: String = isDone ?
-                NSLocalizedString("The Profile Override", comment: "") + " \(displayName)" +
-                NSLocalizedString("is now activated", comment: "") : "Override Activation Failed"
+                NSLocalizedString("配置文件覆盖", comment: "") + " \(displayName)" +
+                NSLocalizedString("现在已激活", comment: "") : "Override Activation Failed"
             return .result(
                 dialog: IntentDialog(stringLiteral: displayDetail)
             )

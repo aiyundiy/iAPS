@@ -25,9 +25,9 @@ class ViewController: UIViewController {
         navigationController!.navigationBar.addSubview(containerView)
 
         // These are optional and only serve to improve accessibility
-        progressGroup.ring1.accessibilityLabel = NSLocalizedString("Move", comment: "")
-        progressGroup.ring2.accessibilityLabel = NSLocalizedString("Exercise", comment: "")
-        progressGroup.ring3.accessibilityLabel = NSLocalizedString("Stand", comment: "")
+        progressGroup.ring1.accessibilityLabel = NSLocalizedString("移动", comment: "")
+        progressGroup.ring2.accessibilityLabel = NSLocalizedString("锻炼", comment: "")
+        progressGroup.ring3.accessibilityLabel = NSLocalizedString("站立", comment: "")
 
         let n = 7
         for i in 0..<n {

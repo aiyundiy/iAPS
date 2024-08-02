@@ -25,7 +25,7 @@ struct PredictionView: View {
                 chart()
             }
             HStack {
-                Text("Eventual Glucose")
+                Text("最终的血糖")
                 Spacer()
                 Text(
                     Double(eventualBG)
@@ -152,6 +152,6 @@ struct PredictionView: View {
             "Target": Color(.loopGreen),
             insulinString: insulinColor
         ])
-        .chartYAxisLabel(NSLocalizedString("Predictions", comment: "") + ", " + units.rawValue, alignment: .center)
+        .chartYAxisLabel(NSLocalizedString("预测", comment: "") + ", " + units.rawValue, alignment: .center)
     }
 }

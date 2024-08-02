@@ -182,9 +182,9 @@ public extension HKUnit {
                 fallthrough
             @unknown default:
                 if singular {
-                    return LocalizedString("Unit", comment: "The long unit display string for a singular international unit of insulin")
+                    return LocalizedString("单位", comment: "The long unit display string for a singular international unit of insulin")
                 } else {
-                    return LocalizedString("Units", comment: "The long unit display string for international units of insulin")
+                    return LocalizedString("单位", comment: "The long unit display string for international units of insulin")
                 }
             }
         }
@@ -197,9 +197,9 @@ public extension HKUnit {
                 fallthrough
             @unknown default:
                 if singular {
-                    return LocalizedString("Unit/hour", comment: "The long unit display string for a singular international unit of insulin per hour")
+                    return LocalizedString("单位/小时", comment: "The long unit display string for a singular international unit of insulin per hour")
                 } else {
-                    return LocalizedString("Units/hour", comment: "The long unit display string for international units of insulin per hour")
+                    return LocalizedString("单位/小时", comment: "The long unit display string for international units of insulin per hour")
                 }
             }
         }

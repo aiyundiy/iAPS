@@ -18,7 +18,7 @@ class CompletionViewController: UITableViewController {
         if UIApplication.shared.applicationState == .background {
             let content = UNMutableNotificationContent()
             content.badge = 1
-            content.title = NSLocalizedString("Transmitter Reset Complete", comment: "Notification title for background completion notification")
+            content.title = NSLocalizedString("发射机重置已完成", comment: "Notification title for background completion notification")
             content.body = textView.text
             content.sound = .default
 

@@ -29,26 +29,26 @@ class DeactivatePodViewModel: ObservableObject, Identifiable {
         var actionButtonAccessibilityLabel: String {
             switch self {
             case .active:
-                return LocalizedString("Deactivate Pod", comment: "Deactivate pod action button accessibility label while ready to deactivate")
+                return LocalizedString("停用Pod", comment: "Deactivate pod action button accessibility label while ready to deactivate")
             case .deactivating:
-                return LocalizedString("Deactivating.", comment: "Deactivate pod action button accessibility label while deactivating")
+                return LocalizedString("停用。", comment: "Deactivate pod action button accessibility label while deactivating")
             case .resultError(let error):
                 return String(format: "%@ %@", error.errorDescription ?? "", error.recoverySuggestion ?? "")
             case .finished:
-                return LocalizedString("Pod deactivated successfully. Continue.", comment: "Deactivate pod action button accessibility label when deactivation complete")
+                return LocalizedString("POD成功停用了。继续。", comment: "Deactivate pod action button accessibility label when deactivation complete")
             }
         }
 
         var actionButtonDescription: String {
             switch self {
             case .active:
-                return LocalizedString("Slide to Deactivate Pod", comment: "Action button description for deactivate while pod still active")
+                return LocalizedString("滑动到停用Pod", comment: "Action button description for deactivate while pod still active")
             case .resultError:
-                return LocalizedString("Retry", comment: "Action button description for deactivate after failed attempt")
+                return LocalizedString("重试", comment: "Action button description for deactivate after failed attempt")
             case .deactivating:
-                return LocalizedString("Deactivating...", comment: "Action button description while deactivating")
+                return LocalizedString("停用...", comment: "Action button description while deactivating")
             case .finished:
-                return LocalizedString("Continue", comment: "Action button description when deactivated")
+                return LocalizedString("继续", comment: "Action button description when deactivated")
             }
         }
         
@@ -142,15 +142,15 @@ class DeactivatePodViewModel: ObservableObject, Identifiable {
                 // Display the fault code in decimal and hex, the fault description and the pdmRef string for other errors.
                 text = String(format: "⚠️ %1$@ (0x%2$02X)\n%3$@\n", notificationString, faultEventCode.rawValue, faultEventCode.faultDescription)
                 if let pdmRef = fault?.pdmRef {
-                    text += LocalizedString("Ref: ", comment: "PDM Ref string line") + pdmRef + "\n\n"
+                    text += LocalizedString("参考：", comment: "PDM Ref string line") + pdmRef + "\n\n"
                 }
             }
         }
 
         if podAttachedToBody {
-            text += LocalizedString("Please deactivate the pod. When deactivation is complete, you may remove it and pair a new pod.", comment: "Instructions for deactivate pod when pod is on body")
+            text += LocalizedString("请停用Pod。停用后，您可以将其删除并配对新的泵。", comment: "Instructions for deactivate pod when pod is on body")
         } else {
-            text += LocalizedString("Please deactivate the pod. When deactivation is complete, you may pair a new pod.", comment: "Instructions for deactivate pod when pod not on body")
+            text += LocalizedString("请停用Pod。停用后，您可以将一个新的泵配对。", comment: "Instructions for deactivate pod when pod not on body")
         }
 
         self.podDeactivator = podDeactivator
@@ -194,7 +194,7 @@ enum DeactivationError : LocalizedError {
     var recoverySuggestion: String? {
         switch self {
         case .OmnipodPumpManagerError:
-            return LocalizedString("There was a problem communicating with the pod. If this problem persists, tap Discard Pod. You can then activate a new Pod.", comment: "Format string for recovery suggestion during deactivate pod.")
+            return LocalizedString("与Pod通信存在问题。如果此问题持续存在，请点击丢弃泵。然后，您可以激活一个新的泵。", comment: "Format string for recovery suggestion during deactivate pod.")
         }
     }
     

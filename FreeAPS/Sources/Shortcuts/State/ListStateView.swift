@@ -79,9 +79,9 @@ struct ListStateView: View {
                 let minutes = -1 * state.date.timeIntervalSinceNow / 60
                 let text = timaAgoFormatter.string(for: Double(minutes)) ?? ""
                 Text(
-                    minutes <= 1 ? "< 1 " + NSLocalizedString("min", comment: "Short form for minutes") : (
+                    minutes <= 1 ? "< 1 " + NSLocalizedString("最小", comment: "Short form for minutes") : (
                         text + " " +
-                            NSLocalizedString("min", comment: "Short form for minutes") + " "
+                            NSLocalizedString("最小", comment: "Short form for minutes") + " "
                     )
                 )
                 .font(.caption2).foregroundColor(.secondary)

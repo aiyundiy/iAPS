@@ -32,7 +32,7 @@ extension BolusCalculatorConfig {
                         Toggle("Use Bolus Calculator", isOn: $state.useCalc)
                     }
                 }
-                header: { Text("Calculator settings") }
+                header: { Text("计算器设置") }
                 footer: {
                     Text(
                         state
@@ -45,11 +45,11 @@ extension BolusCalculatorConfig {
                 if state.useCalc {
                     Section {
                         HStack {
-                            Text("Override With A Factor Of ")
+                            Text("覆盖有一个因素")
                             Spacer()
                             DecimalTextField("0.8", value: $state.overrideFactor, formatter: conversionFormatter)
                         }
-                    } header: { Text("Adjustment") }
+                    } header: { Text("调整") }
                 }
 
                 if state.useCalc {
@@ -57,33 +57,33 @@ extension BolusCalculatorConfig {
                         Toggle("Apply factor for fatty meals", isOn: $state.fattyMeals)
                         if state.fattyMeals {
                             HStack {
-                                Text("Override With A Factor Of ")
+                                Text("覆盖有一个因素")
                                 Spacer()
                                 DecimalTextField("0.7", value: $state.fattyMealFactor, formatter: conversionFormatter)
                             }
                         }
                     }
-                    header: { Text("Fatty Meals") }
+                    header: { Text("胖餐") }
 
                     Section {
                         Toggle("Display Predictions", isOn: $state.displayPredictions)
-                    } header: { Text("Smaller iPhone Screens") }
+                    } header: { Text("较小的iPhone屏幕") }
 
                     Section {
                         Toggle(isOn: $state.eventualBG) {
                             HStack {
-                                Text("1.")
-                                Text("Eventual Glucose")
+                                Text("1。")
+                                Text("最终的血糖")
                             }
                         }
                         Toggle(isOn: $state.minumimPrediction) {
                             HStack {
-                                Text("2.")
-                                Text("Minimum Predicted Glucose")
+                                Text("2。")
+                                Text("最低预测血糖")
                             }
                         }
                     }
-                    header: { Text("Use OpenAPS glucose predictions") }
+                    header: { Text("使用打开式血糖预测") }
                     footer: {
                         Text(
                             "1. Use the OpenAPS eventual glucose prediction for computing the insulin recommended. This setting will enable the \"old\" calculator. On by default.\n\n2. Use the OpenAPS minPredBG prediction as a complementary safety guard rail, not allowing the glucose prediction to descend below your threshold. This setting can be used together with or without the eventual glucose. On by default"
@@ -93,7 +93,7 @@ extension BolusCalculatorConfig {
                 Section {
                     HStack {
                         Toggle(isOn: $state.allowBolusShortcut) {
-                            Text("Allow iOS Bolus Shortcuts").foregroundStyle(state.allowBolusShortcut ? .red : .primary)
+                            Text("允许iOS大量捷径").foregroundStyle(state.allowBolusShortcut ? .red : .primary)
                         }.disabled(isPresented)
                             ._onBindingChange($state.allowBolusShortcut, perform: { _ in
                                 if state.allowBolusShortcut {
@@ -122,7 +122,7 @@ extension BolusCalculatorConfig {
                             DecimalTextField("0", value: $state.allowedRemoteBolusAmount, formatter: conversionFormatter)
                         }
                     }
-                } header: { Text("iOS Shortcuts") }
+                } header: { Text("iOS快捷方式") }
             }
             .dynamicTypeSize(...DynamicTypeSize.xxLarge)
             .onAppear(perform: configureView)

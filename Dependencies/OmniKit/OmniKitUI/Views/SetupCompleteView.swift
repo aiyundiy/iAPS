@@ -44,7 +44,7 @@ struct SetupCompleteView: View {
                     .fixedSize(horizontal: false, vertical: true)
                 Divider()
                 VStack(alignment: .leading) {
-                    Text(LocalizedString("Scheduled Reminder", comment: "Scheduled reminder card title on SetupCompleteView"))
+                    Text(LocalizedString("预定的提醒", comment: "Scheduled reminder card title on SetupCompleteView"))
                     Divider()
                     NavigationLink(
                         destination: ScheduledExpirationReminderEditView(
@@ -63,7 +63,7 @@ struct SetupCompleteView: View {
                         isActive: $scheduleReminderDateEditViewIsShown)
                     {
                         RoundedCardValueRow(
-                            label: LocalizedString("Time", comment: "Label for expiration reminder row"),
+                            label: LocalizedString("时间", comment: "Label for expiration reminder row"),
                             value: scheduledReminderDateString(scheduledReminderDate),
                             highlightValue: false
                         )
@@ -76,7 +76,7 @@ struct SetupCompleteView: View {
             Button(action: {
                 didFinish()
             }) {
-                Text(LocalizedString("Finish Setup", comment: "Action button title to continue at Setup Complete"))
+                Text(LocalizedString("完成设置", comment: "Action button title to continue at Setup Complete"))
                     .actionButtonStyle(.primary)
             }
             .padding()
@@ -84,14 +84,14 @@ struct SetupCompleteView: View {
             .zIndex(1)
         }
         .animation(.default)
-        .navigationBarTitle(LocalizedString("Setup Complete", comment: "Title of SetupCompleteView"), displayMode: .automatic)
+        .navigationBarTitle(LocalizedString("设置完成", comment: "Title of SetupCompleteView"), displayMode: .automatic)
     }
     
     private func scheduledReminderDateString(_ scheduledDate: Date?) -> String {
         if let scheduledDate = scheduledDate {
             return dateFormatter.string(from: scheduledDate)
         } else {
-            return LocalizedString("No Reminder", comment: "Value text for no expiration reminder")
+            return LocalizedString("没有提醒", comment: "Value text for no expiration reminder")
         }
     }
 }

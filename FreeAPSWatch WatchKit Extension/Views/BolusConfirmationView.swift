@@ -63,7 +63,7 @@ struct BolusConfirmationView: View {
                     state.isConfirmationBolusViewActive = false
                 }
                 label: {
-                    Text("Cancel")
+                    Text("取消")
                 }
                 if isCrownLeftOriented {
                     Spacer().frame(width: elementSize / 2)

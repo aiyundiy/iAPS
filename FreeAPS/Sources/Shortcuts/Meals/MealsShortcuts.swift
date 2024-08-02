@@ -70,8 +70,8 @@ enum MealPresetIntentError: Error {
             let isDone = finalOverrideApply != nil ? true : false
 
             let displayDetail: String = isDone ?
-                NSLocalizedString("The Meal", comment: "") + " \(displayName)  " +
-                NSLocalizedString("has been added to iAPS", comment: "") : "Adding Meal Failed"
+                NSLocalizedString("这餐", comment: "") + " \(displayName)  " +
+                NSLocalizedString("已添加到IAP", comment: "") : "Adding Meal Failed"
             return .result(
                 dialog: IntentDialog(stringLiteral: displayDetail)
             )

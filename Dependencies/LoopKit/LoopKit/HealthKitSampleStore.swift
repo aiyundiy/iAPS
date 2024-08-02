@@ -554,7 +554,7 @@ extension HealthKitSampleStore.StoreError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .authorizationDenied:
-            return LocalizedString("Authorization Denied", comment: "The error description describing when Health sharing was denied")
+            return LocalizedString("授权否认", comment: "The error description describing when Health sharing was denied")
         case .healthKitError(let error):
             return error.localizedDescription
         }
@@ -563,7 +563,7 @@ extension HealthKitSampleStore.StoreError: LocalizedError {
     public var recoverySuggestion: String? {
         switch self {
         case .authorizationDenied:
-            return LocalizedString("Please re-enable sharing in Health", comment: "The error recovery suggestion when Health sharing was denied")
+            return LocalizedString("请重新启用健康共享", comment: "The error recovery suggestion when Health sharing was denied")
         case .healthKitError(let error):
             return error.errorUserInfo[NSLocalizedRecoverySuggestionErrorKey] as? String
         }

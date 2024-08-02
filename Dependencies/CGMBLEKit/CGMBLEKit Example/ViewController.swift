@@ -155,7 +155,7 @@ class ViewController: UIViewController, TransmitterDelegate, UITextFieldDelegate
 
     func transmitter(_ transmitter: Transmitter, didError error: Error) {
         print("Transmitter Error: \(error)")
-        titleLabel.text = NSLocalizedString("Error", comment: "Title displayed during error response")
+        titleLabel.text = NSLocalizedString("错误", comment: "Title displayed during error response")
 
         subtitleLabel.text = "\(error)"
     }
@@ -174,12 +174,12 @@ class ViewController: UIViewController, TransmitterDelegate, UITextFieldDelegate
     }
 
     func transmitter(_ transmitter: Transmitter, didReadUnknownData data: Data) {
-        titleLabel.text = NSLocalizedString("Unknown Data", comment: "Title displayed during unknown data response")
+        titleLabel.text = NSLocalizedString("未知数据", comment: "Title displayed during unknown data response")
         subtitleLabel.text = data.hexadecimalString
     }
     
     func transmitter(_ transmitter: Transmitter, didReadBackfill glucose: [Glucose]) {
-        titleLabel.text = NSLocalizedString("Backfill", comment: "Title displayed during backfill response")
+        titleLabel.text = NSLocalizedString("回填", comment: "Title displayed during backfill response")
         subtitleLabel.text = String(describing: glucose.map { $0.glucose })
     }
     

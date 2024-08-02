@@ -24,7 +24,7 @@ class SensorPairingService: NSObject, NFCTagReaderSessionDelegate, SensorPairing
         if NFCTagReaderSession.readingAvailable {
             accessQueue.async {
                 self.session = NFCTagReaderSession(pollingOption: .iso15693, delegate: self, queue: self.nfcQueue)
-                self.session?.alertMessage = LocalizedString("Hold the top of your iPhone near the sensor to pair", comment: "")
+                self.session?.alertMessage = LocalizedString("将iPhone的顶部靠近传感器配对", comment: "")
                 self.session?.begin()
             }
         }

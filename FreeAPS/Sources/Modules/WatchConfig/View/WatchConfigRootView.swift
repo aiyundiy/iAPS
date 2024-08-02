@@ -11,7 +11,7 @@ extension WatchConfig {
                 Section(header: Text("Apple Watch")) {
                     Picker(
                         selection: $state.selectedAwConfig,
-                        label: Text("Display on Watch")
+                        label: Text("在监视上显示")
                     ) {
                         ForEach(AwConfig.allCases) { v in
                             Text(v.displayName).tag(v)
@@ -25,9 +25,9 @@ extension WatchConfig {
 
                 Section {
                     Toggle("Profile Overrides Button / Temp Targets Button", isOn: $state.profilesOrTempTargets)
-                } header: { Text("Display either Overides or Temp Targets") }
+                } header: { Text("显示过度或临时目标") }
 
-                Section(header: Text("Garmin Watch")) {
+                Section(header: Text("Garmin手表")) {
                     List {
                         ForEach(state.devices, id: \.uuid) { device in
                             Text(device.friendlyName)

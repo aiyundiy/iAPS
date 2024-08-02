@@ -63,12 +63,12 @@ extension Bolus {
                 if fetch {
                     Section {
                         mealEntries
-                    } header: { Text("Meal Summary") }
+                    } header: { Text("进餐摘要") }
                 }
 
                 Section {
                     HStack {
-                        Text("Amount")
+                        Text("数量")
                         Spacer()
                         DecimalTextField(
                             "0",
@@ -79,7 +79,7 @@ extension Bolus {
                         )
                         Text(!(state.amount > state.maxBolus) ? "U" : "😵").foregroundColor(.secondary)
                     }
-                } header: { Text("Bolus") }
+                } header: { Text("推注") }
 
                 Section {
                     if state.amount > 0 {
@@ -98,7 +98,7 @@ extension Bolus {
                             keepForNextWiew = true
                         }
                         label: {
-                            Text("Continue without bolus")
+                            Text("继续没有推注")
                                 .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
@@ -124,11 +124,11 @@ extension Bolus {
                 label: {
                     HStack {
                         Image(systemName: "chevron.backward")
-                        Text("Meal")
+                        Text("进餐")
                     }
                 },
                 trailing: Button { state.hideModal() }
-                label: { Text("Cancel") }
+                label: { Text("取消") }
             )
         }
 
@@ -140,7 +140,7 @@ extension Bolus {
             VStack {
                 if let carbs = meal.first?.carbs, carbs > 0 {
                     HStack {
-                        Text("Carbs")
+                        Text("碳水化合物")
                         Spacer()
                         Text(carbs.formatted())
                         Text("g")
@@ -148,7 +148,7 @@ extension Bolus {
                 }
                 if let fat = meal.first?.fat, fat > 0 {
                     HStack {
-                        Text("Fat")
+                        Text("胖的")
                         Spacer()
                         Text(fat.formatted())
                         Text("g")
@@ -156,7 +156,7 @@ extension Bolus {
                 }
                 if let protein = meal.first?.protein, protein > 0 {
                     HStack {
-                        Text("Protein")
+                        Text("蛋白质")
                         Spacer()
                         Text(protein.formatted())
                         Text("g")
@@ -164,7 +164,7 @@ extension Bolus {
                 }
                 if let note = meal.first?.note, note != "" {
                     HStack {
-                        Text("Note")
+                        Text("笔记")
                         Spacer()
                         Text(note)
                     }.foregroundColor(.secondary)

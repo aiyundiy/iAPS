@@ -42,7 +42,7 @@ extension NightscoutConfig {
                     }
                     if state.connecting {
                         HStack {
-                            Text("Connecting...")
+                            Text("连接...")
                             Spacer()
                             ProgressView()
                         }
@@ -63,7 +63,7 @@ extension NightscoutConfig {
                         /*
                          Toggle(isOn: $state.uploadStats) {
                              HStack {
-                                 Text("Statistics")
+                                 Text("统计数据")
                                  Image(systemName: "info.bubble")
                                      .symbolRenderingMode(.palette)
                                      .foregroundStyle(.primary, .blue)
@@ -87,13 +87,13 @@ extension NightscoutConfig {
                          }*/
                     }
                 } header: {
-                    Text("Allow Uploads")
+                    Text("允许上传")
                 }
 
                 Section {
                     Button("Import settings from Nightscout") {
                         importAlert = Alert(
-                            title: Text("Import settings?"),
+                            title: Text("导入设置？"),
                             message: Text(
                                 "\n" +
                                     NSLocalizedString(
@@ -103,7 +103,7 @@ extension NightscoutConfig {
                                     "\n"
                             ),
                             primaryButton: .destructive(
-                                Text("Yes, Import"),
+                                Text("是的，导入"),
                                 action: {
                                     state.importSettings()
                                     importedHasRun = true
@@ -114,7 +114,7 @@ extension NightscoutConfig {
                         isImportAlertPresented.toggle()
                     }.disabled(state.url.isEmpty || state.connecting)
 
-                } header: { Text("Import from Nightscout") }
+                } header: { Text("从Nightscout进口") }
 
                     .alert(isPresented: $importedHasRun) {
                         Alert(
@@ -128,7 +128,7 @@ extension NightscoutConfig {
                                     NSLocalizedString(fetchedErrors.first?.error ?? "", comment: "Import Error")
                             ),
                             primaryButton: .destructive(
-                                Text("OK")
+                                Text("好的")
                             ),
                             secondaryButton: .cancel()
                         )
@@ -137,10 +137,10 @@ extension NightscoutConfig {
                 Section {
                     Toggle("Use local glucose server", isOn: $state.useLocalSource)
                     HStack {
-                        Text("Port")
+                        Text("港口")
                         DecimalTextField("", value: $state.localPort, formatter: portFormater)
                     }
-                } header: { Text("Local glucose source") }
+                } header: { Text("局部血糖来源") }
                 Section {
                     Button("Backfill glucose") { state.backfillGlucose() }
                         .disabled(state.url.isEmpty || state.connecting || state.backfilling)
@@ -148,7 +148,7 @@ extension NightscoutConfig {
 
                 Section {
                     Toggle("Remote control", isOn: $state.allowAnnouncements)
-                } header: { Text("Allow Remote control of iAPS") }
+                } header: { Text("允许IAP的遥控器") }
             }
             .dynamicTypeSize(...DynamicTypeSize.xxLarge)
             .onAppear(perform: configureView)

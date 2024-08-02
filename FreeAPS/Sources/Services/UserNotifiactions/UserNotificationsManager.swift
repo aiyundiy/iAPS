@@ -103,7 +103,7 @@ final class BaseUserNotificationsManager: NSObject, UserNotificationsManager, In
             let content = UNMutableNotificationContent()
 
             if self.snoozeUntilDate > Date() {
-                titles.append(NSLocalizedString("(Snoozed)", comment: "(Snoozed)"))
+                titles.append(NSLocalizedString("（打sn）", comment: "(Snoozed)"))
             } else {
                 content.sound = .default
                 self.playSoundIfNeeded()
@@ -126,7 +126,7 @@ final class BaseUserNotificationsManager: NSObject, UserNotificationsManager, In
 
     private func scheduleMissingLoopNotifiactions(date _: Date) {
         ensureCanSendNotification {
-            let title = NSLocalizedString("iAPS not active", comment: "iAPS not active")
+            let title = NSLocalizedString("IAP不活跃", comment: "iAPS not active")
             let body = NSLocalizedString("Last loop was more than %d min ago", comment: "Last loop was more than %d min ago")
 
             let firstInterval = 20 // min
@@ -162,7 +162,7 @@ final class BaseUserNotificationsManager: NSObject, UserNotificationsManager, In
 
     private func notifyBolusFailure() {
         ensureCanSendNotification {
-            let title = NSLocalizedString("Bolus failed", comment: "Bolus failed")
+            let title = NSLocalizedString("推注失败", comment: "Bolus failed")
             let body = NSLocalizedString(
                 "Bolus failed or inaccurate. Check pump history before repeating.",
                 comment: "Bolus failed or inaccurate. Check pump history before repeating."
@@ -200,12 +200,12 @@ final class BaseUserNotificationsManager: NSObject, UserNotificationsManager, In
 
             switch self.glucoseStorage.alarm {
             case .none:
-                titles.append(NSLocalizedString("Glucose", comment: "Glucose"))
+                titles.append(NSLocalizedString("血糖", comment: "Glucose"))
             case .low:
-                titles.append(NSLocalizedString("LOWALERT!", comment: "LOWALERT!"))
+                titles.append(NSLocalizedString("Lowalert！", comment: "LOWALERT!"))
                 notificationAlarm = true
             case .high:
-                titles.append(NSLocalizedString("HIGHALERT!", comment: "HIGHALERT!"))
+                titles.append(NSLocalizedString("高级！", comment: "HIGHALERT!"))
                 notificationAlarm = true
             }
 
@@ -214,7 +214,7 @@ final class BaseUserNotificationsManager: NSObject, UserNotificationsManager, In
                 .infoBody()
 
             if self.snoozeUntilDate > Date() {
-                titles.append(NSLocalizedString("(Snoozed)", comment: "(Snoozed)"))
+                titles.append(NSLocalizedString("（打sn）", comment: "(Snoozed)"))
                 notificationAlarm = false
             } else {
                 titles.append(body)
